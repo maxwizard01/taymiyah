@@ -1,0 +1,617 @@
+html{
+    font-size: 10px;
+
+}
+*{box-sizing: border-box;
+user-select: none;
+scroll-behavior: smooth;
+
+}
+
+
+
+/*Welcome page style*/
+
+#myDiv{
+    display: none;
+}
+
+.welcome{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+
+}
+.welcome p {
+    font-size: 5vmin;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+}
+.welcome button{
+    width: 60%;
+    padding: 10px;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5%;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: rgb(19, 220, 235);
+    transition: .8s;
+}
+
+.welcome button:hover{
+    background-color: white;
+    color: #063c60;
+}
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:#063c60 ;
+    width: 60%;
+    height: 90%;
+    padding: 1.5rem;
+    display: none;
+    border-radius: 0.5rem;
+}
+
+/*Quiz Container Header*/
+.header{display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 1.4rem;
+    padding: 2px;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: 500;
+   
+}
+.quiz-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*Style for quiz question progress*/
+#progress{
+    margin-bottom: -1rem;
+    font-size: 4vmin;
+    color: white;
+}
+.countdown{
+    font-size: 1.3rem;
+    color: orangered;
+    padding: 5px;
+    font-weight: 600;
+    margin: 1px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+
+.questions{
+    text-align: left;
+
+}
+
+.questions p{
+    text-align: center;
+    background-color: white;
+    color:#020f18;
+    font-size: 1.5rem;
+    height: 20%;
+    padding: 1px;
+
+}
+
+.footerbtn{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+
+
+.submit-btn{
+    color: #063c60;
+    outline: none;
+     width: 40%;
+      padding: 10px;
+  border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    background-color: #b3b3ff ;
+    font-size: 2.7vmin;
+    opacity: 0.9;
+}
+.submit-btn:hover{
+  opacity: 1;
+}
+
+.button-next{
+    width: 40%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 2.7vmin;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #020f18;
+}
+
+.button-next:hover{
+    background-color: #ddd;
+}
+
+
+.answers{
+    display: block;
+}
+
+/*Style for question options*/
+
+.answers-button{
+    display: block;
+    margin: 10px auto;
+    width: 50%;
+    height: 7%;
+    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+    color:  #020f18;
+    border-radius: 5px;
+    font-size: 2.5vmin;
+    font-weight: 400;
+}
+
+.answers-button:hover{
+    background-color: #ddd;
+    color:  #020f18;
+
+
+}
+
+
+/*Style for questions options on select*/
+.answers-button.valid{
+    font-weight: bold;
+    background-color: rgb(124, 157, 179);
+    color: white;
+}
+
+
+/*Style for quizEnd/QuizStop box*/
+
+#myDiv2{
+    display: none;
+}
+.last-output{padding: 20px;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 3vmin;
+    color: white;
+    z-index: 9;
+    font-family: 'Noto Sans Display', sans-serif;
+ }
+
+ .last-output p{
+    font-size: 2rem;
+
+}
+
+/*Take quiz again*/
+.quiz-repeat{
+    text-align: center;
+    margin: 0 auto;
+   
+   
+}
+
+.quiz-repeat a {
+
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+   
+    padding: 1rem;
+    border-radius: 5px;
+    transition: 1s;
+   
+
+}
+
+.quiz-repeat a:hover{
+    background-color: #fff;
+    color: black;
+}
+
+
+/*Style for score box*/
+.score{
+    font-weight: 700;
+    color: white;
+    border: 1px white solid;
+    padding: 1rem;
+
+}
+
+
+@media screen and (max-width: 700px) {
+    .last-output{
+        margin-top: 20%;
+    }
+
+    .welcome p{
+        font-size: 5vmin;
+    }
+    .welcome button{
+        margin-top: 7%;
+    }
+    .container{
+        width: 95vw;
+        height: 92%;
+    }
+    .answers-button{
+        margin: 5px auto;
+        width: 60%;
+    }
+    .questions p{
+        font-size: 2.5vmin;
+    }
+    
+    
+    
+}
+@media screen and (max-width: 500px){
+    .answers-button{
+        font-size: 3.4vmin;
+    }
+    .questions p{
+      font-size: 3.6vmin;
+    }
+
+
+}
+
+
+/*Style for calculator*/
+
+.openBtn{
+    color: white;
+    cursor: pointer;
+    font-size: 3vmin;
+   
+}
+
+.Calc-container{
+   width: 300px;
+    background-color: white;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    display: none;
+    z-index: 9;
+}
+
+#display{
+    text-align: right;
+    height: 40px;
+    line-height: 35px;
+    padding: 5px 6px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid #063c60;
+    overflow: hidden;
+}
+
+
+
+.Calc-buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+
+
+.Calc-button{
+    border: 0.5px solid #063c60; 
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+#equal{
+    background-color:rgb(124, 157, 179);
+    color: white;
+    line-height: 50px;
+    font-weight: bold;
+   
+}
+
+.CloseButton{
+    border: 0.5px solid #063c60; 
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+
+.Calc-button:hover{
+    background-color: #063c60;
+    border: none;
+    color: white;
+    transition: 0.5s ease-in-out;
+
+}
+
+#closebtn{
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+}
+
+#closebtn:hover{
+    background-color: white;
+    color: orangered;
+
+}
+
+
+
+@media screen and (max-width: 700px){
+    .Calc-container{
+    position: absolute;
+    top: 65%;
+    left: 0;
+    z-index: 9;
+    width: 250px;
+     display: none;
+    }
+    .Calc-button{
+        line-height: 30px;
+    }
+}
+
+
+
+
+/*Roller css*/
+
+.lds-roller {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/*ellipsis Css*/
+
+.lds-ellipsis {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  display:block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+/*Ripple Css*/
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+ 
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:0px; opacity:0 } 
+  to { bottom:50%; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:0px; opacity:0 } 
+  to{ bottom:50%; opacity:1 }
+}

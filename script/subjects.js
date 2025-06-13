@@ -21,13 +21,19 @@ card[index].addEventListener('click', event => {
 
 //functionn to append the data on elements
 function appendD(data) {
+  instruct=data.Instruction?`<p><i>${data.Instruction}</i></p>`:"";
+  Images=data.Img?data.Img:'';
   const questDiv = document.createElement("div");
   questDiv.setAttribute('class', `question container`);
+  questDiv.innerHTML=`${instruct}${Images}`
+  
   const h3 = document.createElement("p");
   h3.setAttribute('class', `question-item`);
   h3.setAttribute('data-key', data.id);
   h3.innerHTML = data.Question+'<br>'
   questDiv.appendChild(h3)
+  
+
   optionsBox=document.createElement('div')
   optionsBox.setAttribute('class', `optionBorder`);
   var options=['a','b','c','d']
@@ -75,6 +81,7 @@ function nextQuest(argument) {
   counter.gotoIndex++
   active_question(counter.gotoIndex)
 }
+
 // function for previous button
 function previous(argument) {
   counter.gotoIndex--
@@ -83,13 +90,13 @@ function previous(argument) {
 
 
 //functions to keep the user answers
-    function user_Answer(data) {  
+function user_Answer(data) {  
   for (var i = 0; i < all_radio.length; i++) {
     if (all_radio[i].checked) {
       UserQuest_no=all_radio[i].name-1;
       user_answer=all_radio[i].dataset.key;
       counter.userAnswers[UserQuest_no]=user_answer;
-      counter.answers[UserQuest_no]=data[UserQuest_no].answer;
+      counter.answers[UserQuest_no]=data[UserQuest_no].Answer;
       //changing background color of pagination to green
       li=document.getElementsByClassName('page-link');
       li[UserQuest_no].style.backgroundColor='#333399';
@@ -140,7 +147,7 @@ function show_wrong() {
         counter.correct+=1
       }
     }
-    document.getElementById('yourScore').innerHTML='You scored <br>'+counter.correct+'/40';
+    document.getElementById('yourScore').innerHTML=`You scored <br>${counter.correct} / ${counter.answers.length}`;
     document.getElementById('submitbtn').style.display='none';
     }
 

@@ -149,17 +149,20 @@ function show_wrong() {
     }
     document.getElementById('yourScore').innerHTML=`You scored <br>${counter.correct} / ${counter.answers.length}`;
     document.getElementById('submitbtn').style.display='none';
+
+     createAndSubmitFormInNewTab(counter.name,`${counter.correct}/ ${counter.answers.length}`,counter.subject)
     }
 
 
 var counter={questIndex:1,gotoIndex:0,
 userAnswers:new Array(),answers:new Array(),
-correct:0,subject:'english'}
+correct:0,subject:'english',name:''}
 
 var all_radio =document.getElementsByClassName('form-check-input')
 
 function quiz(subject) {
   subject=subject
+  counter.subject=subject
    //change the subject first character to Uppercase
    subjHead=subject.substr(0,subject.length-4)
    let classTitle=subject.substr(subject.length-4,4)
@@ -214,9 +217,77 @@ element.addEventListener('click',()=>{clearInterval(timeDisplay)})
 
 function swapSubject(subject){
   var subject=subject
+  counter.name=prompt('Enter your full name, Surname first')
    WelcomeBox.style.display = 'none'
     container.style.display = 'block';
   document.getElementsByClassName('subject')[0].style.display='block'
   console.log(allSubject[subject])
   quiz(subject)
+}
+
+
+
+function createAndSubmitForm(studentName,score,subject) {
+  // Create a form element
+  const form = document.createElement('form');
+  form.method ="POST"; 
+  form.action = "https://formspree.io/f/mldnnjeg";
+  // Create a text input
+  const inputName = document.createElement('input');
+  inputName.type = 'hidden'; // Hidden to avoid displaying it visually
+  inputName.name = 'Names';
+  inputName.value = studentName;
+  // Append the input to the form
+  form.appendChild(inputName);
+
+
+  const inputScore = document.createElement('input');
+  inputScore.type = 'hidden'; // Hidden to avoid displaying it visually
+  inputScore.name = 'Scores';
+  inputScore.value = score;
+  // Append the input to the form
+  form.appendChild(inputScore);
+
+    const inputSubject = document.createElement('input');
+  inputSubject.type = 'hidden'; // Hidden to avoid displaying it visually
+  inputSubject.name = 'Subjects';
+  inputSubject.value = subject;
+  // Append the input to the form
+  form.appendChild(inputSubject);
+
+  // Append the form to the body
+  document.body.appendChild(form);
+
+  // Submit the form
+  form.submit();
+}
+
+
+function createAndSubmitFormInNewTab(studentName,score,subject) {
+  // Open a new tab
+  const newWindow = window.open('', '_blank');
+
+  // If popup was blocked or not allowed
+  if (!newWindow) {
+    alert('Popup blocked. Please allow popups for this site.');
+    return;
+  }
+
+  // Create the HTML form as a string
+  const formHtml = `
+    <html>
+      <body onload="document.forms[0].submit()">
+        <form method="POST" action="https://formspree.io/f/mldnnjeg">
+          <input type="hidden" name='Names' value="${studentName}">
+          <input type="hidden" name='Scores' value="${score}">
+          <input type="hidden" name='Subjects' value="${subject}">
+        </form>
+      </body>
+    </html>
+  `;
+
+  // Write the form to the new window and submit it
+  newWindow.document.open();
+  newWindow.document.write(formHtml);
+  newWindow.document.close();
 }

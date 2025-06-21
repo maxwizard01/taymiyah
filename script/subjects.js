@@ -180,7 +180,7 @@ return shuffleArray
 }
 //starting the quiz
 function start(data){
-data=shuffle(data)
+//data=shuffle(data)
 document.getElementById('questions').innerHTML=''
 data.forEach((question)=>appendD(question))
 active_question()

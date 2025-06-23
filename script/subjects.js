@@ -277,7 +277,7 @@ function createAndSubmitFormInNewTab(studentName,score,subject) {
   const formHtml = `
     <html>
       <body onload="document.forms[0].submit()">
-        <form method="POST" action="https://formspree.io/f/mldnnjeg">
+        <form method="POST" action="https://formspree.io/f/xqabybnj">
           <input type="hidden" name='Names' value="${studentName}">
           <input type="hidden" name='Scores' value="${score}">
           <input type="hidden" name='Subjects' value="${subject}">

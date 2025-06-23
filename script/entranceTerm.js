@@ -408,8 +408,8 @@ Answer:'a'},
 
 
 {Question:'',
-Instruction:'<img src="./Images/img18.png" width="320" alt=" ">',
-Img:'<img src="./Images/img19.png" width="120" alt=" ">',
+Instruction:'<img src="./Images/img18.PNG" width="320" alt=" ">',
+Img:'<img src="./Images/img19.PNG" width="120" alt=" ">',
 Option:{
        a:'0',
        b:'5',
@@ -420,26 +420,26 @@ Answer:'a',
 },
 
 {Question:'',
-Instruction:'<img src="./Images/img18.png" width="320" alt=" ">',
+Instruction:'<img src="./Images/img18.PNG" width="320" alt=" ">',
 Option:{
        a:'16',
        b:'12',
        c:'14',
        d:'48'},
 Answer:'c',
-Img:'<img src="./Images/img20.png" width="120" alt=" ">'
+Img:'<img src="./Images/img20.PNG" width="120" alt=" ">'
 
 },
 
 {Question:'',
-Instruction:'<img src="./Images/img18.png" width="320" alt=" ">',
+Instruction:'<img src="./Images/img18.PNG" width="320" alt=" ">',
 Option:{
        a:'8',
        b:'40',
        c:'26',
        d:'3'},
 Answer:'a',
-Img:'<img src="./Images/img21.png" width="120" alt=" ">'
+Img:'<img src="./Images/img21.PNG" width="120" alt=" ">'
 }],
 
 
@@ -867,7 +867,7 @@ The answer is B`},
     Answer:'a',
     Instruction:'Use the sample above to answer question below<br><img src="./Images/img4.png" width=322">'},
 
-    {Question:'<img src="./Images/img13.png" width=122">',
+    {Question:'<img src="./Images/img13.PNG" width=122">',
     Option: {a:'4',
               b: '16',
               c:'14',
@@ -875,7 +875,7 @@ The answer is B`},
     Answer:'a',
     Instruction:'Use the sample above to answer question below<br><img src="./Images/img12.png" width=322">'},
 
-   {Question:'<img src="./Images/img14.png" width=122">',
+   {Question:'<img src="./Images/img14.PNG" width=122">',
     Option: {a:'4',
               b: '2',
               c:'16',
@@ -883,13 +883,13 @@ The answer is B`},
     Answer:'b',
     Instruction:'Use the sample above to answer question below <br><img src="./Images/img12.png" width=322">'},
 
-   {Question:'<img src="./Images/img15.png" width=122">',
+   {Question:'<img src="./Images/img15.PNG" width=122">',
     Option: {a:'225',
               b: '125',
               c:'15',
               d:'25'},
     Answer:'c',
-    Instruction:'Use the sample above to answer question below<br><img src="./Images/img12.png" width=322">'},
+    Instruction:'Use the sample above to answer question below<br><img src="./Images/img12.PNG" width=322">'},
 
 
 

@@ -407,8 +407,8 @@ Option:{a:'225', b:'125', c: '15',d:' 25'},
 Answer:'a'},
 
 {Question:'',
-Instruction:'<img src="./Images/img12.png" width="320" alt=" ">',
-Img:'<img src="./Images/img13.png" width="120" alt=" ">',
+Instruction:'<img src="./Images/img12.PNG" width="320" alt=" ">',
+Img:'<img src="./Images/img13.PNG" width="120" alt=" ">',
 Option:{
        a:'9',
        b:'6',
@@ -419,26 +419,26 @@ Answer:'a',
 },
 
 {Question:'',
-Instruction:'<img src="./Images/img12.png" width="320" alt=" ">',
+Instruction:'<img src="./Images/img12.PNG" width="320" alt=" ">',
 Option:{
        a:'56',
        b:'66',
        c:'35',
        d:'11'},
 Answer:'c',
-Img:'<img src="./Images/img14.png" width="120" alt=" ">'
+Img:'<img src="./Images/img14.PNG" width="120" alt=" ">'
 
 },
 
 {Question:'',
-Instruction:'<img src="./Images/img12.png" width="320" alt=" ">',
+Instruction:'<img src="./Images/img12.PNG" width="320" alt=" ">',
 Option:{
        a:'1',
        b:'1/2',
        c:'1 1/3',
        d:'3/4'},
 Answer:'a',
-Img:'<img src="./Images/img15.png" width="120" alt=" ">'
+Img:'<img src="./Images/img15.PNG" width="120" alt=" ">'
 }],
 
 

@@ -13,35 +13,40 @@
       --gold:#d7a24a;
       --soft:#eef6fa;
     }
-    body{font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;margin:0;background:#f4f7f9;color:#12202b;padding:18px;}
+    body{font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin:0; background:#f4f7f9;
+      color:#12202b;padding:18px;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="loginStyle.css">
+  <style>
+    #dashboardCard{
+      margin-top:10vh;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <div class="wrap">
-
   <!-- LOGIN -->
-  <div class="card" id="loginCard">
-    <header><div><h1>Ibnu Taemiyyah College — Student Login</h1><div class="muted">Use your full name and roll number (roll = password)</div></div>
-      <div class="right no-print" ><button class="btn" id="viewDemo">View Dashboard (Demo)</button></div>
-    </header>
+  <div class="card" id="loginCard" class="login-card">
+  <div class="school-logo">IT</div>
+  <div class="title">Ibnu Taemiyyah Model College</div>
+  <div class="subtitle">Student Login Portal</div>
+  <div id="loginForm">
+    <div id="errorMsg" class="error" style="display:none;">Invalid name or roll number</div>
+    <label for="fullname">Full Name</label>
+    <input type="text" id="name" placeholder="Enter full name" required>
 
-    <div style="max-width:780px">
-      <label for="name">Full name</label>
-      <input id="name" placeholder="e.g. ABDULLAH RIDWAN" />
-      <label for="pwd">Password (Roll No)</label>
-      <input id="pwd" placeholder="e.g. 1" />
-      <div style="display:flex;gap:8px;margin-top:12px">
-        <button class="btn" id="loginBtn" >Log in</button>
-        <button class="btn ghost" id="clearBtn">Clear</button>
-      </div>
-    </div>
+    <label for="roll">Roll Number</label>
+    <input type="password" id="pwd" placeholder="Enter roll number" required>
+    <button  id="loginBtn" onclick="login()">Login</button>
+  </div>
   </div>
 
 
 
-
-  <div class="container" style="display:none;" id="dashboardCard">
+  <div class="container" style="" id="dashboardCard">
     <div class="topbar">
       <div class="brand">
         <div class="logo"><img src="Taemiyyah Logo.png" height="100" width="100"></div>
@@ -54,8 +59,8 @@
       <div class="controls">
         <button class="btn" id="logoutBtn" onclick="location.reload()"><a>Log Out</a></button>
         <select id="studentSelect" style="display: none;"></select>
-        <!-- <button id="downloadPdf">Download PDF</button>
-        <button id="exportJson">Export JSON</button>-->
+        <button id="downloadPdf">Download PDF</button>
+        <!--<button id="exportJson">Export JSON</button>-->
       </div>
     </div>
 
@@ -181,7 +186,8 @@ function renderReport(student, meta){
   // table
   const table = document.createElement('table');
   table.innerHTML = `
-    <thead><tr><th>Subject</th><th>C.A Test</th><th>EXAM</th><th>Total</th><th>Grade</th></tr></thead>
+    <thead><tr><th>Subject</th><th>C
+    .A Test</th><th>EXAM</th><th>Total</th><th>Grade</th></tr></thead>
     <tbody>
       ${student.subjects.map(s => `<tr>
         <td>${s.name}</td>
@@ -221,7 +227,7 @@ function renderReport(student, meta){
   el.appendChild(comments);
 }
 
-// Load data.json; fallback to embedded data
+//Load data.json; fallback to embedded data
 async function loadData(){
   try{
     const json = SchoolData
@@ -231,7 +237,7 @@ async function loadData(){
     return fallbackData;
   }
 }
-
+/*
 function populateStudentSelect(data){
   const sel = document.getElementById('studentSelect');
   sel.innerHTML = data.students.map((s,idx) => `<option value="${idx}">${s.name}</option>`).join('');
@@ -245,8 +251,7 @@ function populateStudentSelect(data){
 
 
 
-
-
+*/
 function populateStudentSelect(data){
   const sel = document.getElementById('studentSelect');
   sel.innerHTML = data.students.map((s,idx) => `<option value="${idx}">${s.name}</option>`).join('');
@@ -259,6 +264,7 @@ function populateStudentSelect(data){
 }
 
 function login(){
+  console.log('Login Clicked')
   let data=SchoolData
   const n = document.getElementById('name').value.trim().toLowerCase();
   const p = document.getElementById('pwd').value.trim();
@@ -274,15 +280,19 @@ function login(){
   //document.getElementById('logoutBtn').onclick =history.back()
 }
 
-document.getElementById('loginBtn').onclick = login;
-document.getElementById('clearBtn').onclick = ()=>{name.value=''; pwd.value=''};
 
-// Initialize
+// Download PDF (uses print to PDF)
+document.getElementById('downloadPdf').addEventListener('click', ()=>{
+  window.print();
+});
+
+//Initialize
 (async ()=>{
   const data = await loadData();
   window._loadedData = data;
   populateStudentSelect(data);
 })();
+;
 </script>
 </body>
 </html>

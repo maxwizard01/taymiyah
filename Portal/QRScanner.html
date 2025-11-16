@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Scanner (Image Upload)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input { margin-top: 10px; }
+        #result { margin-top: 20px; font-size: 18px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h2>Scan QR Code From Uploaded Image</h2>
+
+<input type="file" id="qrInput" accept="image/*" capture="environment">
+
+<canvas id="qrCanvas" style="display:none;"></canvas>
+
+<div id="result">Decoded text will appear here</div>
+
+<!-- jsQR Library -->
+<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+
+<script>
+document.getElementById("qrInput").addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const img = new Image();
+    img.onload = function () {
+        const canvas = document.getElementById("qrCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Resize canvas to image size
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Draw image on canvas
+        ctx.drawImage(img, 0, 0);
+
+        // Extract image data for QR analysis
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+        if (code) {
+            document.getElementById("result").textContent = 
+                "QR Code Decoded: " + code.data;
+        } else {
+            document.getElementById("result").textContent = 
+                "No valid QR Code found in this image.";
+        }
+    };
+
+    img.src = URL.createObjectURL(file);
+});
+</script>
+
+</body>
+</html>

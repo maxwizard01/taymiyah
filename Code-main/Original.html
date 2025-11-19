@@ -98,7 +98,7 @@ async function decryptText(encryptedObj, password) {
 // ----------- QR GENERATION ------------- //
 
 async function encryptAndGenerateQR() {
-    let text=document.getElementById('GenerateBtn')
+    let text=document.getElementById('inputText').value
     let password='123Police'
     if (!text || !password) {
         alert("Enter text and password!");
@@ -143,3 +143,4 @@ function startScan() {
 </script>
 </body>
 </html>
+

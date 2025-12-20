@@ -1,0 +1,149 @@
+var  SchoolData={
+  "students": [
+  {
+    "Roll No": "1",
+    "name": "ABDULLAH RIDWAN",
+    "subjects": [
+      {
+        "name": "Mathemati cs",
+        "C.A Test": 6,
+        "EXAM": 5
+      },
+      {
+        "name": "English Language",
+        "C.A Test": 24,
+        "EXAM": 33
+      },
+      {
+        "name": "Yoruba",
+        "C.A Test": 2,
+        "EXAM": 44
+      },
+      {
+        "name": "IRS",
+        "C.A Test": 20,
+        "EXAM": 20
+      },
+      {
+        "name": "Arabic",
+        "C.A Test": 11,
+        "EXAM": 33
+      },
+      {
+        "name": "Quran",
+        "C.A Test": 20,
+        "EXAM": 20
+      },
+      {
+        "name": "Civic/Hist ory",
+        "C.A Test": 34,
+        "EXAM": 33
+      },
+      {
+        "name": "Info. Tech",
+        "C.A Test": 30,
+        "EXAM": 40
+      },
+      {
+        "name": "Prevoc",
+        "C.A Test": 30,
+        "EXAM": 40
+      },
+      {
+        "name": "Basic Science",
+        "C.A Test": 20,
+        "EXAM": 40
+      },
+      {
+        "name": "Basic Tech",
+        "C.A Test": 22,
+        "EXAM": 40
+      },
+      {
+        "name": "Physical Health Ed.",
+        "C.A Test": 22,
+        "EXAM": 40
+      }
+    ],
+    "Summary": {
+      "TOTAL": "367",
+      "Average": "39.3",
+      "Position": "2",
+      "Class": "JSS1",
+      "Sex": "Male"
+    }
+  },
+  {
+    "Roll No": "2",
+    "name": "ABDULLAH RIDWAN",
+    "subjects": [
+      {
+        "name": "Mathematics",
+        "C.A Test": 6,
+        "EXAM": 5
+      },
+      {
+        "name": "English Language",
+        "C.A Test": 24,
+        "EXAM": 33
+      },
+      {
+        "name": "Yoruba",
+        "C.A Test": 2,
+        "EXAM": 44
+      },
+      {
+        "name": "IRS",
+        "C.A Test": 20,
+        "EXAM": 20
+      },
+      {
+        "name": "Arabic",
+        "C.A Test": 11,
+        "EXAM": 33
+      },
+      {
+        "name": "Quran",
+        "C.A Test": 20,
+        "EXAM": 20
+      },
+      {
+        "name": "Civic/History",
+        "C.A Test": 34,
+        "EXAM": 33
+      },
+      {
+        "name": "Info. Tech",
+        "C.A Test": 30,
+        "EXAM": 40
+      },
+      {
+        "name": "Prevoc",
+        "C.A Test": 30,
+        "EXAM": 40
+      },
+      {
+        "name": "Basic Science",
+        "C.A Test": 20,
+        "EXAM": 40
+      },
+      {
+        "name": "Basic Tech",
+        "C.A Test": 22,
+        "EXAM": 40
+      },
+      {
+        "name": "Physical Health Ed.",
+        "C.A Test": 22,
+        "EXAM": 40
+      }
+    ],
+    "Summary": {
+      "TOTAL": "367",
+      "Average": "39.3",
+      "Position": "2",
+      "Class": "JSS1",
+      "Sex": "Male"
+    }
+  }
+]}

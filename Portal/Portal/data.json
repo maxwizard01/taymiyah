@@ -1,0 +1,3308 @@
+ [
+    {
+      "Roll No": "1",
+      "name": "ABDULLAH RIDWAN",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 6,
+          "EXAM": 5
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 24,
+          "EXAM": 33
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 2,
+          "EXAM": 44
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 20,
+          "EXAM": 20
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 11,
+          "EXAM": 33
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 20,
+          "EXAM": 20
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 34,
+          "EXAM": 33
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 30,
+          "EXAM": 40
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 30,
+          "EXAM": 40
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 20,
+          "EXAM": 40
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 22,
+          "EXAM": 40
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 22,
+          "EXAM": 40
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 22,
+          "EXAM": 40
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 3,
+          "EXAM": 40
+        }
+      ],
+      "Summary": {
+        "TOTAL": "367",
+        "Average": "39.3",
+        "Position": "2",
+        "Class": "JSS1",
+        "Present": "4",
+        "Percentage": "39%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "2",
+      "name": "ABDULWAHAB ABUBAKRI",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 5,
+          "EXAM": 12
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 20,
+          "EXAM": 30
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 6,
+          "EXAM": 14
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 24,
+          "EXAM": 30
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 20,
+          "EXAM": 30
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 24,
+          "EXAM": 30
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 24,
+          "EXAM": 50
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 30,
+          "EXAM": 34
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 30,
+          "EXAM": 34
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 11,
+          "EXAM": 34
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 39,
+          "EXAM": 34
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 39,
+          "EXAM": 34
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 39,
+          "EXAM": 34
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 14,
+          "EXAM": 34
+        }
+      ],
+      "Summary": {
+        "TOTAL": "380",
+        "Average": "40.7",
+        "Position": "1",
+        "Class": "JSS1",
+        "Present": "5",
+        "Percentage": "41%",
+        "Sex": "Female",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "3",
+      "name": "ADELEKE AWWAL",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 8,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 3,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "5.5",
+        "Average": "0.6",
+        "Position": "39",
+        "Class": "JSS1",
+        "Present": "6",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "4",
+      "name": "ADEMOLA A'WARIS",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 11,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "6.5",
+        "Average": "0.7",
+        "Position": "35",
+        "Class": "JSS1",
+        "Present": "7",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "5",
+      "name": "ADESOKAN MUIDEEN",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 14,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 14,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "14",
+        "Average": "1.5",
+        "Position": "10",
+        "Class": "JSS1",
+        "Present": "8",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "6",
+      "name": "ADEWOLE FARUQ",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 17,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "9.5",
+        "Average": "1.0",
+        "Position": "20",
+        "Class": "JSS1",
+        "Present": "9",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "7",
+      "name": "ADIGUN FAWAS",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 20,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 4,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "12",
+        "Average": "1.3",
+        "Position": "13",
+        "Class": "JSS1",
+        "Present": "10",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "8",
+      "name": "AFOLABI MUBARAK",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 23,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 4,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "14",
+        "Average": "1.4",
+        "Position": "11",
+        "Class": "JSS1",
+        "Present": "11",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "9",
+      "name": "AKINLABI ABDULROSHEED",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 2,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 6,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "4",
+        "Average": "0.4",
+        "Position": "39",
+        "Class": "JSS1",
+        "Present": "12",
+        "Percentage": "0%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "10",
+      "name": "BADMUS A'JELLEL",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 5,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 3,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "4",
+        "Average": "0.4",
+        "Position": "39",
+        "Class": "JSS1",
+        "Present": "13",
+        "Percentage": "0%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "11",
+      "name": "ILORI ABDULQODRI",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 8,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 6,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "7",
+        "Average": "0.8",
+        "Position": "28",
+        "Class": "JSS1",
+        "Present": "14",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "12",
+      "name": "ISA ABDULLAHI",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 11,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 0,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "5.5",
+        "Average": "0.6",
+        "Position": "33",
+        "Class": "JSS1",
+        "Present": "15",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "13",
+      "name": "ISAIAK MUHAMMED",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 14,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 0,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "7",
+        "Average": "0.8",
+        "Position": "28",
+        "Class": "JSS1",
+        "Present": "16",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "14",
+      "name": "ISMAIL MUHAMMED",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 17,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 0,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "8.5",
+        "Average": "0.9",
+        "Position": "21",
+        "Class": "JSS1",
+        "Present": "17",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "15",
+      "name": "IYIOLA A'WARIS",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 20,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 12,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "16",
+        "Average": "1.7",
+        "Position": "3",
+        "Class": "JSS1",
+        "Present": "18",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "16",
+      "name": "LAWAL ABDULQUDUS",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 23,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 6,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "15",
+        "Average": "1.6",
+        "Position": "6",
+        "Class": "JSS1",
+        "Present": "19",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "17",
+      "name": "OLANIYAN ROKEEB",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 5,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 4,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "4.5",
+        "Average": "0.5",
+        "Position": "32",
+        "Class": "JSS1",
+        "Present": "20",
+        "Percentage": "0%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "18",
+      "name": "OLAPADE FAWAS",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 8,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 8,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "8",
+        "Average": "0.9",
+        "Position": "22",
+        "Class": "JSS1",
+        "Present": "21",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "19",
+      "name": "OLAYIWOLA JAMALDEEN",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 11,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "6.5",
+        "Average": "0.7",
+        "Position": "25",
+        "Class": "JSS1",
+        "Present": "22",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "20",
+      "name": "QOZEEM MUJEEB",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 14,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 4,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "9",
+        "Average": "1.0",
+        "Position": "18",
+        "Class": "JSS1",
+        "Present": "23",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "21",
+      "name": "RAJI MUSTOPHA",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 17,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 12,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "15",
+        "Average": "1.6",
+        "Position": "6",
+        "Class": "JSS1",
+        "Present": "24",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "22",
+      "name": "ZAKARIYAHU A'GAFAR",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 20,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 1,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "11",
+        "Average": "1.1",
+        "Position": "12",
+        "Class": "JSS1",
+        "Present": "25",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "23",
+      "name": "SAKIRULLAHI SELIM",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 23,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "13",
+        "Average": "1.3",
+        "Position": "8",
+        "Class": "JSS1",
+        "Present": "26",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "24",
+      "name": "SARAFADEEN MOSHOOD",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 26,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "14",
+        "Average": "1.5",
+        "Position": "7",
+        "Class": "JSS1",
+        "Present": "27",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "25",
+      "name": "YISAU ABDULLATEEF",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 29,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 8,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "19",
+        "Average": "2.0",
+        "Position": "1",
+        "Class": "JSS1",
+        "Present": "28",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "26",
+      "name": "YUSUF ABDULAZEEZ",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 2,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 12,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "7",
+        "Average": "0.8",
+        "Position": "18",
+        "Class": "JSS1",
+        "Present": "29",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "27",
+      "name": "ADIO ISMAIL",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 5,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 14,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "9.5",
+        "Average": "1.0",
+        "Position": "11",
+        "Class": "JSS1",
+        "Present": "30",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "28",
+      "name": "ABDULHAMID FATIMOH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 8,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "5",
+        "Average": "0.5",
+        "Position": "19",
+        "Class": "JSS1",
+        "Present": "31",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "29",
+      "name": "ABDULRAHMAN MEMUMAT",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 11,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "6.5",
+        "Average": "0.7",
+        "Position": "17",
+        "Class": "JSS1",
+        "Present": "32",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "30",
+      "name": "ABDULRASAQ AMEERAH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 14,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "8",
+        "Average": "0.9",
+        "Position": "15",
+        "Class": "JSS1",
+        "Present": "33",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "31",
+      "name": "ABDULSALAM FAHIZAH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 17,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 12,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "15",
+        "Average": "1.6",
+        "Position": "5",
+        "Class": "JSS1",
+        "Present": "34",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "32",
+      "name": "ABDULWASIU FATIMOH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 20,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 10,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "15",
+        "Average": "1.6",
+        "Position": "3",
+        "Class": "JSS1",
+        "Present": "35",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "33",
+      "name": "ADEOYE FATIMAH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 23,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 10,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "17",
+        "Average": "1.8",
+        "Position": "1",
+        "Class": "JSS1",
+        "Present": "36",
+        "Percentage": "2%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "34",
+      "name": "ADEWOLE AISHAT",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 11,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 2,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "6.5",
+        "Average": "0.7",
+        "Position": "13",
+        "Class": "JSS1",
+        "Present": "37",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "35",
+      "name": "ADIGUN ZAINAB",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 14,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 10,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "12",
+        "Average": "1.3",
+        "Position": "3",
+        "Class": "JSS1",
+        "Present": "38",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "36",
+      "name": "ALAO ROKEEBAH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 2,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 4,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "3",
+        "Average": "0.3",
+        "Position": "14",
+        "Class": "JSS1",
+        "Present": "39",
+        "Percentage": "0%",
+        "Sex": "Male",
+        "Grade": "A",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "37",
+      "name": "ALEEM KHODIJAH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 5,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 0,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "2.5",
+        "Average": "0.3",
+        "Position": "14",
+        "Class": "JSS1",
+        "Present": "40",
+        "Percentage": "0%",
+        "Sex": "Male",
+        "Grade": "C",
+        "Total Mark Obtainable": "1400"
+      }
+    },
+    {
+      "Roll No": "38",
+      "name": "BABALOLA MUTMAINAH",
+      "subjects": [
+        {
+          "name": "Mathemati cs",
+          "C.A Test": 8,
+          "EXAM": 0
+        },
+        {
+          "name": "English  Language",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Yoruba",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "IRS",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Arabic",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Quran",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Civic/Hist ory",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Info.  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Prevoc",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Science",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Basic  Tech",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Physical  Health Ed.",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "Business  Studies",
+          "C.A Test": 0,
+          "EXAM": 0
+        },
+        {
+          "name": "R.N.V",
+          "C.A Test": 8,
+          "EXAM": 0
+        }
+      ],
+      "Summary": {
+        "TOTAL": "8",
+        "Average": "0.9",
+        "Position": "11",
+        "Class": "JSS1",
+        "Present": "41",
+        "Percentage": "1%",
+        "Sex": "Male",
+        "Grade": "B",
+        "Total Mark Obtainable": "1400"
+      }
+    }
+  ]

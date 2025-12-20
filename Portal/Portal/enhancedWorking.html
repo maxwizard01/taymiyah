@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ibnu Taemiyyah Model College — Results Portal</title>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<style>
+  :root{
+    --accent: #0b5fff;
+    --muted: #7b7f88;
+    --card-bg: #ffffff;
+    --surface: #f6f8fb;
+    --glass: rgba(11,95,255,0.06);
+    --success: #2dbe60;
+    --danger: #e45b5b;
+    --radius: 12px;
+    --max-width:1100px;
+  }
+
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: linear-gradient(180deg,#f6f8fb 0%, #ffffff 100%);
+    color:#0f1724;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:24px;
+    box-sizing:border-box;
+  }
+
+  .wrap{max-width:var(--max-width);margin:0 auto}
+  .topbar{
+    display:flex;align-items:center;gap:16px;justify-content:space-between;margin-bottom:18px;
+  }
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{
+    width:56px;height:56px;border-radius:12px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700;
+    color:var(--accent);font-size:0.95rem;
+    box-shadow:0 6px 18px rgba(20,30,60,0.06);
+  }
+  h1{margin:0;font-size:1.1rem}
+  .muted{color:var(--muted);font-size:0.95rem}
+
+  .card{
+    background:var(--card-bg);
+    border-radius:var(--radius);
+    box-shadow:0 10px 30px rgba(16,24,40,0.06);
+    padding:16px;
+  }
+
+  .search-row{display:flex;gap:12px;align-items:center;margin:14px 0}
+  .search, select { padding:10px 12px;border-radius:10px;border:1px solid #e8eef9;background:#fff;flex:1;box-sizing:border-box }
+  .small-select{width:160px}
+  button.btn{padding:9px 12px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer}
+  button.ghost{background:transparent;color:var(--accent);border:1px solid rgba(11,95,255,0.12)}
+  .controls{display:flex;gap:8px;align-items:center}
+
+  .grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:12px}
+  .table-wrap{overflow:auto}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f1f5fb}
+  th{font-weight:700;color:#0f1724;background:#fbfdff}
+  td .pos{font-weight:700}
+  .action-btn{padding:6px 8px;border-radius:8px;border:0;cursor:pointer;background:#eef6ff;color:var(--accent);font-weight:600}
+
+  /* Student card layout */
+  .report-header{display:flex;align-items:flex-start;gap:18px}
+  .student-photo{
+    width:112px;height:112px;border-radius:10px;background:#fbfdff;border:1px solid #eef4ff;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)
+  }
+  .student-meta h2{margin:0;font-size:1.05rem}
+  .meta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+  .summary-box{background:#fbfdff;padding:12px;border-radius:10px;border:1px solid #f1f6ff}
+
+  /* print */
+  @media print{
+    body{padding:0}
+    .no-print{display:none !important}
+    .wrap{max-width:100%;padding:0}
+    .card{box-shadow:none;border-radius:0}
+    .grid{grid-template-columns:1fr}
+    table th, table td{font-size:11px}
+  }
+
+  /* responsive */
+  @media (max-width:980px){
+    .grid{grid-template-columns:1fr}
+    .topbar{flex-direction:column;align-items:flex-start;gap:8px}
+    .student-photo{width:88px;height:88px}
+  }
+
+  /* subtle utility */
+  .muted-pill{padding:6px 8px;border-radius:999px;background:#f4f8ff;color:var(--muted);font-weight:600}
+  .kpi{display:flex;gap:12px;align-items:baseline}
+  .kpi .val{font-size:1.2rem;font-weight:800}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">IT</div>
+        <div>
+          <h1>Ibnu Taemiyyah Model College</h1>
+          <div class="muted">Results & Report Cards — Session: 2025/2026 · Term: First</div>
+        </div>
+      </div>
+
+      <div class="controls no-print">
+        <select id="studentSelect" class="small-select">
+          <option value="">Select Student — demo</option>
+        </select>
+        <button id="viewBtn" class="btn">View</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </div>
+
+    <!-- login card -->
+    <div class="card" id="loginCard">
+      <div style="display:flex;gap:16px;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-weight:700">Student Login</div>
+          <div class="muted">Use full name and roll number (roll = password). Or select demo student above.</div>
+        </div>
+        <div style="width:360px;display:flex;gap:8px">
+          <input id="name" placeholder="Full name (e.g. ABDULLAH RIDWAN)" class="search"/>
+          <input id="pwd" placeholder="Roll number" style="width:120px" />
+          <button id="loginBtn" class="btn">Log in</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- dashboard -->
+    <div class="card" id="dashboardCard" style="display:none; margin-top:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-weight:700">Results Dashboard</div>
+          <div class="muted">Search, filter and print student report cards</div>
+        </div>
+        <div class="no-print">
+          <button id="exportJson" class="btn ghost">Download data.json</button>
+          <button id="printAll" class="btn">Print</button>
+        </div>
+      </div>
+
+      <div class="search-row">
+        <input id="q" class="search" placeholder="Search by name or roll no" />
+        <select id="gradeFilter" class="small-select"><option value="">All Grades</option></select>
+        <select id="classFilter" class="small-select"><option value="">All Classes</option></select>
+        <div style="width:160px; text-align:right" class="muted">Total students: <span id="studentCount">0</span></div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <div class="card" style="margin-bottom:12px">
+            <div class="muted">Students</div>
+            <div class="table-wrap" style="margin-top:8px">
+              <table id="studentsTable">
+                <thead>
+                  <tr><th style="width:70px">Roll</th><th>Name</th><th style="width:90px">Total</th><th style="width:90px">Average</th><th style="width:90px">Position</th><th style="width:80px">Class</th><th style="width:70px">Grade</th><th class="no-print" style="width:120px">Action</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <canvas id="summaryChart" style="width:100%;height:220px"></canvas>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card" style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div class="muted">Grade distribution</div>
+                <div style="margin-top:6px;font-weight:800;font-size:1.1rem" id="gradeBreakdown">—</div>
+              </div>
+              <div class="muted-pill no-print" id="presentNow">Present: —</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="muted">Quick KPIs</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <div class="kpi"><div class="val" id="avgPercent">—</div><div class="muted">Avg Percentage</div></div>
+              <div class="kpi"><div class="val" id="topGradeCount">—</div><div class="muted">A Grades</div></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- student report -->
+    <div class="card" id="studentCard" style="display:none; margin-top:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-weight:700" id="studentTitle">Report Card</div>
+          <div class="muted" id="studentMetaSub">Printable student report</div>
+        </div>
+        <div class="no-print">
+          <button id="backBtn" class="btn ghost">Back</button>
+          <button id="printBtn" class="btn">Print / Save as PDF</button>
+          <button id="downloadPdf" class="btn ghost">Download as PDF</button>
+        </div>
+      </div>
+
+      <div style="margin-top:12px" id="reportArea">
+        <!-- generated report content -->
+      </div>
+
+      <div style="margin-top:12px">
+        <canvas id="studentChart" style="width:100%;height:320px"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- your data file (Exam.js) -->
+  <script src="Exam.js"></script>
+
+  <!-- enhanced app script -->
+  <script src="enhanced-app.js"></script>
+</body>
+</html>

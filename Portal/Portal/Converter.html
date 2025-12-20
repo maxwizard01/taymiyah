@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PDF to JSON Converter</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<style>
+  body { font-family: Arial, sans-serif; background:#f8f9fa; color:#222; text-align:center; padding:40px; }
+  .container { max-width:700px; margin:auto; background:white; padding:30px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+  input[type=file] { margin:20px 0; }
+  pre { text-align:left; background:#222; color:#0f0; padding:10px; border-radius:8px; max-height:400px; overflow:auto; }
+  button { padding:10px 20px; background:#007bff; border:none; color:white; border-radius:8px; cursor:pointer; }
+  button:hover { background:#0056b3; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>📄 PDF → JSON Converter</h2>
+  <p>Select your <b>Tester.pdf</b> file to convert it into structured JSON.</p>
+  <input type="file" id="pdfFile" accept="application/pdf" />
+  <button id="convertBtn">Convert to JSON</button>
+  <a id="downloadLink" style="display:none;" download="Tester_converted.json">⬇️ Download JSON</a>
+  <pre id="output"></pre>
+</div>
+
+<script>
+async function pdfToJson(file) {
+  const pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+  const arrayBuffer = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  let text = '';
+
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const content = await page.getTextContent();
+    const strings = content.items.map(item => item.str);
+    text += strings.join(' ') + '\n';
+  }
+
+  const studentRegex = /\d+\s+[A-Z' ]+\d.*?(?=\n\d+\s+[A-Z']|$)/gs;
+  const studentLines = text.match(studentRegex) || [];
+
+  const subjects = [
+    "Mathematics", "English Language", "Yoruba", "IRS", "Arabic", "Quran",
+    "Civic/History", "Info. Tech", "Prevoc", "Basic Science", "Basic Tech",
+    "Physical Health Ed.", "Business Studies", "R.N.V"
+  ];
+
+  const students = studentLines.map(line => {
+    const parts = line.trim().split(/\s+/);
+    const roll = parts.shift();
+    const nameParts = [];
+    while (isNaN(parseFloat(parts[0]))) nameParts.push(parts.shift());
+    const name = nameParts.join(' ');
+    const nums = parts.map(Number).filter(n => !isNaN(n));
+
+    const subj = [];
+    let idx = 0;
+    for (let i = 0; i < subjects.length; i++) {
+      subj.push({
+        name: subjects[i],
+        Test1: nums[idx++] || 0,
+        Test2: nums[idx++] || 0
+      });
+    }
+
+    const summary = {
+      TOTAL: nums[idx++] || 0,
+      Average: nums[idx++] || 0,
+      Position: nums[idx++] || 0,
+      Class: "JSS1",
+      Present: nums[idx++] || 0,
+      Percentage: (nums[idx++] || 0) + "%",
+      Sex: /Female/i.test(line) ? "Female" : "Male",
+      Grade: (line.match(/\s([ABCDEF])\s/) || [])[1] || "N/A",
+      "Total Mark Obtainable": 1400
+    };
+
+    return { "Roll No": roll, name, subjects: subj, Summary: summary };
+  });
+
+  return { students };
+}
+
+document.getElementById("convertBtn").addEventListener("click", async () => {
+  const file = document.getElementById("pdfFile").files[0];
+  if (!file) return alert("Please select your Tester.pdf file first!");
+
+  const jsonData = await pdfToJson(file);
+  const jsonString = JSON.stringify(jsonData, null, 2);
+
+  // Show result preview
+  document.getElementById("output").textContent = jsonString;
+
+  // Download link
+  const blob = new Blob([jsonString], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.getElementById("downloadLink");
+  link.href = url;
+  link.style.display = "inline-block";
+});
+</script>
+</body>
+</html>

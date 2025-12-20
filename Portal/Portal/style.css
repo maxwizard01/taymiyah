@@ -1,0 +1,26 @@
+
+    .container{max-width:980px;margin:0 auto;background: #eee}
+    .topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:100px;height:100px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--gold));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{margin:0;font-size:18px}
+    .controls{display:flex;gap:10px;align-items:center}
+    select, button{padding:8px 10px;border-radius:6px;border:1px solid #d9e6ec;background:white}
+    .page{background:var(--paper);padding:18px;border-radius:8px;box-shadow:0 8px 30px rgba(12,40,60,0.06);border:1px solid rgba(10,30,40,0.04)}
+    .student-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}
+    .info{flex:1;display:flex;gap:12px;align-items:center}
+    .info .meta{background:#fff;padding:12px;border-radius:6px;border:1px solid #eef3f6;width:100%}
+    .info .meta div{margin:4px 0}
+    .stats{width:180px;text-align:right}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:10px 8px;border-bottom:1px solid #eef3f6;text-align:left;font-size:13px}
+    thead th{background:linear-gradient(90deg,var(--table-header),#08546b);color:#fff;font-weight:700}
+    .summary{display:flex;gap:12px;margin-top:12px}
+    .card{flex:1;padding:12px;border-radius:8px;background:#fff;border:1px solid #eef3f6}
+    .big{font-size:26px;font-weight:800;color:var(--accent)}
+    .comments{display:flex;gap:12px;margin-top:12px}
+    .comment-box{flex:1;padding:12px;border-radius:8px;background:#fff;border:1px solid #eef3f6}
+    footer{margin-top:14px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+    .small{font-size:16px;color:var(--muted)}
+    #school{font-size: 34px}
+    textarea{width: 100%;border:1px solid #dddadd;}

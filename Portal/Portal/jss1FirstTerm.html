@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ibnu Taemiyyah Model College — Student Report</title>
+  <link rel="stylesheet" href="style.css"><style>
+    :root{
+      --accent:#0b5f84;
+      --muted:#6b7280;
+      --paper:#fbfbfb;
+      --table-header:#083a4a;
+      --gold:#d7a24a;
+      --soft:#eef6fa;
+    }
+    body{font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;margin:0;background:#f4f7f9;color:#12202b;padding:18px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo"><img src="Taemiyyah Logo.png" height="100" width="100"></div>
+        <div>
+          <h1 id="school">Ibnu Taemiyyah Model College</h1>
+         <!-- <div class="small">Dynamic report generator — use the student dropdown to switch reports</div>-->
+        </div>
+      </div>
+
+      <div class="controls">
+        <label for="studentSelect" class="small">Select Student</label>
+        <select id="studentSelect"></select>
+        <!-- <button id="downloadPdf">Download PDF</button>
+        <button id="exportJson">Export JSON</button>-->
+      </div>
+    </div>
+
+    <div id="reportArea" class="page" role="document">
+      <!-- Content injected by JS -->
+    </div>
+
+    <footer>
+      <div>Designed by Maxwizard</div>
+      <div class="small">2025</div>
+    </footer>
+  </div>
+<script src="jss1FirstTerm.js"></script>
+
+<script>
+// Fallback sample data (used if data.json cannot be fetched)
+  const Term="First"
+  const session="2025/2026"
+const fallbackData = {
+  "school":"Ibnu Taemiyyah Model College",
+  "session":"2024/2025",
+  "term":"First Term",
+  "students":[
+    {
+      "id":"S001",
+      "name":"Abdullahi Titilayo",
+      "class":"JSS1",
+      "sex":"Male",
+      "roll":"221382",
+      "present":25,
+      "total_mark_obtainable":360,
+      "subjects":[
+        {"name":"Mathematics","C.A Test":10,"EXAM":20},
+        {"name":"English","C.A Test":9,"EXAM":18},
+        {"name":"Yoruba","C.A Test":10,"EXAM":10},
+        {"name":"Islamic Studies","C.A Test":2,"EXAM":4},
+        {"name":"Arabic","C.A Test":12,"EXAM":12},
+        {"name":"Quran","C.A Test":10,"EXAM":10},
+        {"name":"Civic Education","C.A Test":12,"EXAM":12},
+        {"name":"Chemistry","C.A Test":11,"EXAM":19},
+        {"name":"Physics","C.A Test":11,"EXAM":19},
+        {"name":"Agric Science","C.A Test":11,"EXAM":0},
+        {"name":"Biology","C.A Test":19,"EXAM":20},
+        {"name":"Economics","C.A Test":8,"EXAM":13}
+      ],
+      "class_teacher_comments":"He is a very brilliant student — keep it up.",
+      "principal_comment":"Good performance; maintain consistency."
+    },
+    {
+      "id":"S002",
+      "name":"Aisha Bello",
+      "class":"JSS1",
+      "sex":"Female",
+      "roll":"221383",
+      "present":24,
+      "total_mark_obtainable":360,
+      "subjects":[
+        {"name":"Mathematics","C.A Test":14,"EXAM":18},
+        {"name":"English","C.A Test":12,"EXAM":16},
+        {"name":"Yoruba","C.A Test":9,"EXAM":11},
+        {"name":"Islamic Studies","C.A Test":8,"EXAM":10},
+        {"name":"Arabic","C.A Test":10,"EXAM":12},
+        {"name":"Quran","C.A Test":9,"EXAM":10},
+        {"name":"Civic Education","C.A Test":10,"EXAM":12},
+        {"name":"Chemistry","C.A Test":13,"EXAM":14},
+        {"name":"Physics","C.A Test":12,"EXAM":13},
+        {"name":"Agric Science","C.A Test":10,"EXAM":9},
+        {"name":"Biology","C.A Test":15,"EXAM":14},
+        {"name":"Economics","C.A Test":10,"EXAM":12}
+      ],
+      "class_teacher_comments":"Shows steady improvement in class.",
+      "principal_comment":"Encouraging progress, work on weak areas."
+    }
+  ]
+};
+
+// Utility: calculate total, percentage, grade
+function calcTotals(student){
+  const subs = student.subjects || [];
+  let total = 0;
+  subs.forEach(s => {
+    s.total = (Number(s["C.A Test"])||0) + (Number(s.EXAM)||0);
+    total += s.total;
+  });
+  student.total_obtained = total;
+   student.total_mark_obtainable=subs.length*100
+   student.session="2025/2026"
+  student.percentage = student.total_mark_obtainable ? (total / student.total_mark_obtainable * 100) : 0;
+  // simple grade mapping
+  student.session='2025/2026'
+  const p = student.percentage;
+  if(p >= 70) student.grade = 'A';
+  else if(p >= 60) student.grade = 'B';
+  else if(p >= 50) student.grade = 'C';
+  else if(p >= 40) student.grade = 'D';
+  else student.grade = 'E';
+  return student;
+}
+
+function renderReport(student, meta){
+  student = calcTotals(student);
+  const el = document.getElementById('reportArea');
+  el.innerHTML = '';
+  const header = document.createElement('div');
+  header.className = 'student-row';
+  header.innerHTML = `
+    <div class="info" class='studentInfo'>
+      <div class="meta">
+        <div><strong>Student's Name:</strong> ${student.name}</div>
+        <div><strong>Roll No:</strong> ${student["Roll No"]} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <strong>Class:</strong> ${student.Summary.Class}  &nbsp; &nbsp; &nbsp; <strong>Sex:</strong> ${student.Summary.Sex}</div>
+        <div> <strong>Session: </strong>${session} &nbsp; &nbsp; &nbsp; <strong> Term: </strong> ${Term}  </div>
+      </div>
+    </div>
+    <div class="stats" class="studentInfo">
+
+           <div class="small" style="margin-top:8px">Total Mark Obtainable: <strong>${student.total_mark_obtainable}</strong></div>
+    </div>
+  `;
+  el.appendChild(header);
+
+  // table
+  const table = document.createElement('table');
+  table.innerHTML = `
+    <thead><tr><th>Subject</th><th>C.A Test</th><th>EXAM</th><th>Total</th><th>Grade</th></tr></thead>
+    <tbody>
+      ${student.subjects.map(s => `<tr>
+        <td>${s.name}</td>
+        <td>${s["C.A Test"]}</td>
+        <td>${s.EXAM}</td>
+        <td><strong>${s.total}</strong></td>
+        <td>${(s.total >= 70 ? 'A' : s.total>=60 ? 'B' : s.total>=50 ? 'C' : s.total>=40 ? 'D' : 'E')}</td>
+      </tr>`).join('')}
+    </tbody>
+  `;
+  el.appendChild(table);
+
+  // summary
+  const summary = document.createElement('div');
+  summary.className = 'summary';
+  summary.innerHTML = `
+    <div class="card">
+      <div class="small">Total Mark Obtained</div>
+      <div class="big">${student.total_obtained}</div>
+      <div class="small" style="margin-top:6px">Out of ${student.total_mark_obtainable}</div>
+    </div>
+    <div class="card">
+      <div class="small">Performance</div>
+      <div class="big">${student.percentage.toFixed(2)}%</div>
+      <div class="small" style="margin-top:6px;">Grade: <strong>${student.grade}</strong></div>
+    </div>
+  `;
+  el.appendChild(summary);
+
+  // comments
+  const comments = document.createElement('div');
+  comments.className = 'comments';
+  comments.innerHTML = `
+    <div class="comment-box"><strong>Class Teacher's Comments</strong><p>${student.class_teacher_comments || ''}</p> <textarea></textarea></div>
+    <div class="comment-box"><strong>Principal's Comments</strong><p>${student.principal_comment || ''}</p><textarea></textarea></div>
+  `;
+  el.appendChild(comments);
+}
+
+// Load data.json; fallback to embedded data
+async function loadData(){
+  try{
+    const json = SchoolData
+    return json;
+  }catch(err){
+    console.warn('Could not load data.json, using fallback data.', err);
+    return fallbackData;
+  }
+}
+
+function populateStudentSelect(data){
+  const sel = document.getElementById('studentSelect');
+  sel.innerHTML = data.students.map((s,idx) => `<option value="${idx}">${s.name}</option>`).join('');
+  sel.addEventListener('change', ()=>{
+    const student = data.students[sel.value];
+    renderReport(student, data);
+  });
+  // initial render
+  if(data.students.length) renderReport(data.students[0], data);
+}
+
+
+// Initialize
+(async ()=>{
+  const data = await loadData();
+  window._loadedData = data;
+  populateStudentSelect(data);
+})();
+</script>
+</body>
+</html>

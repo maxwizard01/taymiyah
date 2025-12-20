@@ -44,7 +44,7 @@
       <div class="small">2025</div>
     </footer>
   </div>
-<script src="Exam.js"></script>
+<script src="database.js"></script>
 
 <script>
 // Fallback sample data (used if data.json cannot be fetched)
@@ -147,9 +147,8 @@ function renderReport(student, meta){
       </div>
     </div>
     <div class="stats" class="studentInfo">
-      <div class="small">No. of times present</div>
-      <div class="big">${student.Summary.Present}</div>
-      <div class="small" style="margin-top:8px">Total Mark Obtainable: <strong>${student.total_mark_obtainable}</strong></div>
+
+           <div class="small" style="margin-top:8px">Total Mark Obtainable: <strong>${student.total_mark_obtainable}</strong></div>
     </div>
   `;
   el.appendChild(header);

@@ -1,6 +1,106 @@
-var  SchoolData={
-  "students":[
-  
+var SchoolData={
+  "school": "Ibnu Taemiyyah Model College",
+  "session": "2024/2025",
+  "term": "First Term",
+    "students":
+[
+  {
+    "Roll No": "Roll No.",
+    "name": "Name",
+    "subjects": [
+      {
+        "name": "Mathematics",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "English Language",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Yoruba",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "IRS",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Arabic",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Quran",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Civic/History",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Info. Tech",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Prevoc.",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Basic Science",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Basic Tech",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Physical Health Ed.",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Business Studies",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "R.N.V",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      }
+    ],
+    "Summary": {
+      "TOTAL": "TOTAL",
+      "average": "Average",
+      "Position": "Position",
+      "Class": "Class",
+      "Sex": "Sex"
+    }
+  },
   {
     "Roll No": "1",
     "name": "ABDULLAH RIDWAN",
@@ -92,8 +192,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 36,
-      "average": 0,
-      "Position": 36,
+      "average": 33.07142857142857,
+      "Position": 3,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -189,8 +289,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 57,
-      "average": 0,
-      "Position": 57,
+      "average": 38.857142857142854,
+      "Position": 7,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -286,8 +386,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 49,
-      "average": 0,
-      "Position": 49,
+      "average": 40.857142857142854,
+      "Position": 10,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -383,8 +483,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 49,
-      "average": 0,
-      "Position": 49,
+      "average": 36.57142857142857,
+      "Position": 5,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -480,8 +580,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 78,
-      "average": 0,
-      "Position": 78,
+      "average": 80.85714285714286,
+      "Position": 47,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -577,8 +677,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 36,
-      "average": 0,
-      "Position": 36,
+      "average": 32.357142857142854,
+      "Position": 2,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -674,8 +774,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "average": 44.785714285714285,
+      "Position": 12,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -771,8 +871,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 55,
-      "average": 0,
-      "Position": 55,
+      "average": 50.07142857142857,
+      "Position": 19,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -868,8 +968,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 63,
-      "average": 0,
-      "Position": 63,
+      "average": 55.357142857142854,
+      "Position": 26,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -965,8 +1065,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 43,
-      "average": 0,
-      "Position": 43,
+      "average": 44.714285714285715,
+      "Position": 11,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1062,8 +1162,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "average": 54.214285714285715,
+      "Position": 23,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1159,8 +1259,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 48,
-      "average": 0,
-      "Position": 48,
+      "average": 43.285714285714285,
+      "Position": 8,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1256,8 +1356,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 62,
-      "average": 0,
-      "Position": 62,
+      "average": 44.92857142857143,
+      "Position": 10,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1353,8 +1453,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 65,
-      "average": 0,
-      "Position": 65,
+      "average": 48.642857142857146,
+      "Position": 13,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1450,8 +1550,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 77,
-      "average": 0,
-      "Position": 77,
+      "average": 65.85714285714286,
+      "Position": 30,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1547,8 +1647,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 39,
-      "average": 0,
-      "Position": 39,
+      "average": 49.285714285714285,
+      "Position": 13,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1644,8 +1744,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 77,
-      "average": 0,
-      "Position": 77,
+      "average": 66.14285714285714,
+      "Position": 29,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1741,8 +1841,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 68,
-      "average": 0,
-      "Position": 68,
+      "average": 56.214285714285715,
+      "Position": 21,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1838,8 +1938,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 35,
-      "average": 0,
-      "Position": 35,
+      "average": 39.42857142857143,
+      "Position": 5,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1868,9 +1968,9 @@ var  SchoolData={
       },
       {
         "name": "IRS",
-        "C.A Test": "",
+        "C.A Test": 0,
         "EXAM": 46,
-        "Total": ""
+        "Total": 0
       },
       {
         "name": "Arabic",
@@ -1935,8 +2035,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 50,
-      "average": 0,
-      "Position": 50,
+      "average": 54,
+      "Position": 16,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2032,8 +2132,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 71,
-      "average": 0,
-      "Position": 71,
+      "average": 55.92857142857143,
+      "Position": 18,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2129,8 +2229,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 38,
-      "average": 0,
-      "Position": 38,
+      "average": 48.214285714285715,
+      "Position": 11,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2226,8 +2326,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 26,
-      "average": 0,
-      "Position": 26,
+      "average": 31.642857142857142,
+      "Position": 1,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2323,8 +2423,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 71,
-      "average": 0,
-      "Position": 71,
+      "average": 65.42857142857143,
+      "Position": 22,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2420,8 +2520,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 52,
-      "average": 0,
-      "Position": 52,
+      "average": 58.142857142857146,
+      "Position": 18,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2517,8 +2617,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 74,
-      "average": 0,
-      "Position": 74,
+      "average": 36.92857142857143,
+      "Position": 3,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2614,8 +2714,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 34,
-      "average": 0,
-      "Position": 34,
+      "average": 52.357142857142854,
+      "Position": 11,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2711,8 +2811,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 54,
-      "average": 0,
-      "Position": 54,
+      "average": 47.642857142857146,
+      "Position": 8,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2808,8 +2908,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 48,
-      "average": 0,
-      "Position": 48,
+      "average": 40.57142857142857,
+      "Position": 4,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2905,8 +3005,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 56,
-      "average": 0,
-      "Position": 56,
+      "average": 75.85714285714286,
+      "Position": 21,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3002,8 +3102,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 84,
-      "average": 0,
-      "Position": 84,
+      "average": 69.57142857142857,
+      "Position": 18,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3099,8 +3199,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 74,
-      "average": 0,
-      "Position": 74,
+      "average": 62.214285714285715,
+      "Position": 15,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3129,9 +3229,9 @@ var  SchoolData={
       },
       {
         "name": "IRS",
-        "C.A Test": "",
+        "C.A Test": 0,
         "EXAM": 31,
-        "Total": ""
+        "Total": 0
       },
       {
         "name": "Arabic",
@@ -3196,8 +3296,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 69,
-      "average": 0,
-      "Position": 69,
+      "average": 57.607142857142854,
+      "Position": 12,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3293,8 +3393,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 68,
-      "average": 0,
-      "Position": 68,
+      "average": 54.214285714285715,
+      "Position": 11,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3390,8 +3490,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 63,
-      "average": 0,
-      "Position": 63,
+      "average": 39.857142857142854,
+      "Position": 3,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -3487,8 +3587,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 43,
-      "average": 0,
-      "Position": 43,
+      "average": 62,
+      "Position": 11,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3584,8 +3684,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 81,
-      "average": 0,
-      "Position": 81,
+      "average": 54,
+      "Position": 9,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3681,8 +3781,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 91,
-      "average": 0,
-      "Position": 91,
+      "average": 80.28571428571429,
+      "Position": 14,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3778,8 +3878,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 62,
-      "average": 0,
-      "Position": 62,
+      "average": 43.5,
+      "Position": 3,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3875,8 +3975,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "average": 33.285714285714285,
+      "Position": 1,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3972,8 +4072,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 35,
-      "average": 0,
-      "Position": 35,
+      "average": 73.21428571428571,
+      "Position": 11,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4069,8 +4169,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 81,
-      "average": 0,
-      "Position": 81,
+      "average": 34.857142857142854,
+      "Position": 1,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4166,8 +4266,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 28,
-      "average": 0,
-      "Position": 28,
+      "average": 44.5,
+      "Position": 1,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4263,8 +4363,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "average": 53.035714285714285,
+      "Position": 4,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4360,8 +4460,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 53,
-      "average": 0,
-      "Position": 53,
+      "average": 67.78571428571429,
+      "Position": 6,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4457,8 +4557,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 73,
-      "average": 0,
-      "Position": 73,
+      "average": 72.5,
+      "Position": 6,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4554,8 +4654,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 53,
-      "average": 0,
-      "Position": 53,
+      "average": 50.67857142857143,
+      "Position": 3,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4651,8 +4751,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 62,
-      "average": 0,
-      "Position": 62,
+      "average": 49.57142857142857,
+      "Position": 2,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4748,8 +4848,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 48,
-      "average": 0,
-      "Position": 48,
+      "average": 46.142857142857146,
+      "Position": 1,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4845,8 +4945,8 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 41,
-      "average": 0,
-      "Position": 41,
+      "average": 63.857142857142854,
+      "Position": 2,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4942,4763 +5042,10 @@ var  SchoolData={
     ],
     "Summary": {
       "TOTAL": 63,
-      "average": 0,
-      "Position": 63,
+      "average": 58.07142857142857,
+      "Position": 1,
       "Class": "JSS1",
       "Sex": "Female"
-    }
-  },
-  {
-    "Roll No": "52",
-    "name": "Abdullahi52",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 8,
-        "EXAM": 29,
-        "Total": 37
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "53",
-    "name": "Abdullahi53",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": "S",
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "54",
-    "name": "Abdullahi54",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "55",
-    "name": "Abdullahi55",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "56",
-    "name": "Abdullahi56",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "57",
-    "name": "Abdullahi57",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "58",
-    "name": "Abdullahi58",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "59",
-    "name": "Abdullahi59",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "JSS1",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "60",
-    "name": "Abdullahi60",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "61",
-    "name": "Abdullahi61",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "62",
-    "name": "Abdullahi62",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "63",
-    "name": "Abdullahi63",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "64",
-    "name": "Abdullahi64",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "65",
-    "name": "Abdullahi65",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "66",
-    "name": "Abdullahi66",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "67",
-    "name": "Abdullahi67",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "68",
-    "name": "Abdullahi68",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "69",
-    "name": "Abdullahi69",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "70",
-    "name": "Abdullahi70",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "71",
-    "name": "Abdullahi71",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "72",
-    "name": "Abdullahi72",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "73",
-    "name": "Abdullahi73",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "74",
-    "name": "Abdullahi74",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "75",
-    "name": "Abdullahi75",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "76",
-    "name": "Abdullahi76",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "77",
-    "name": "Abdullahi77",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "78",
-    "name": "Abdullahi78",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "79",
-    "name": "Abdullahi79",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "80",
-    "name": "Abdullahi80",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "81",
-    "name": "Abdullahi81",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "82",
-    "name": "Abdullahi82",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "83",
-    "name": "Abdullahi83",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "84",
-    "name": "Abdullahi84",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "85",
-    "name": "Abdullahi85",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "86",
-    "name": "Abdullahi86",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "87",
-    "name": "Abdullahi87",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "88",
-    "name": "Abdullahi88",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "89",
-    "name": "Abdullahi89",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "90",
-    "name": "Abdullahi90",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "91",
-    "name": "Abdullahi91",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "92",
-    "name": "Abdullahi92",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "93",
-    "name": "Abdullahi93",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "94",
-    "name": "Abdullahi94",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "95",
-    "name": "Abdullahi95",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "96",
-    "name": "Abdullahi96",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "97",
-    "name": "Abdullahi97",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "98",
-    "name": "Abdullahi98",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "99",
-    "name": "Abdullahi99",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
-    }
-  },
-  {
-    "Roll No": "100",
-    "name": 0,
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "English Language",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "IRS",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Quran",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Civic/History",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": 0,
-        "EXAM": 0,
-        "Total": 0
-      }
-    ],
-    "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 0,
-      "Class": "",
-      "Sex": ""
     }
   }
 ]}

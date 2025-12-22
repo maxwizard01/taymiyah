@@ -23,16 +23,21 @@
         <div class="logo"><img src="Taemiyyah Logo.png" height="100" width="100"></div>
         <div>
           <h1 id="school">Ibnu Taemiyyah Model College</h1>
+          <div class="controls">
+        <label for="studentSelect" class="small">Select Student</label>
+        <select id="studentSelect"></select>
+        <button id="downloadPdf" onclick="window.print()">Download PDF</button>
+      </div>
          <!-- <div class="small">Dynamic report generator — use the student dropdown to switch reports</div>-->
         </div>
       </div>
-
+<!--
       <div class="controls">
         <label for="studentSelect" class="small">Select Student</label>
         <select id="studentSelect"></select>
-        <!-- <button id="downloadPdf">Download PDF</button>
-        <button id="exportJson">Export JSON</button>-->
-      </div>
+        <button id="downloadPdf">Download PDF</button>
+        <button id="exportJson">Export JSON</button>
+      </div>-->
     </div>
 
     <div id="reportArea" class="page" role="document">
@@ -141,14 +146,10 @@ function renderReport(student, meta){
     <div class="info" class='studentInfo'>
       <div class="meta">
         <div><strong>Student's Name:</strong> ${student.name}</div>
-        <div><strong>Roll No:</strong> ${student["Roll No"]} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <strong>Class:</strong> ${student.Summary.Class}  &nbsp; &nbsp; &nbsp; <strong>Sex:</strong> ${student.Summary.Sex}</div>
-        <div> <strong>Session: </strong>${session} &nbsp; &nbsp; &nbsp; <strong> Term: </strong> ${Term}  </div>
+        <div><span><strong>Roll No:</strong> ${student["Roll No"]} </span>&nbsp; &nbsp; <span>
+        <strong>Class:</strong> ${student.Summary.Class} </span> &nbsp;<span><strong>Sex:</strong> ${student.Summary.Sex}</span>
+        <span><strong>Session: </strong>${session}</span> <span>&nbsp; <strong> Term: </strong> ${Term}</span>  </div>
       </div>
-    </div>
-    <div class="stats" class="studentInfo">
-
-           <div class="small" style="margin-top:8px">Total Mark Obtainable: <strong>${student.total_mark_obtainable}</strong></div>
     </div>
   `;
   el.appendChild(header);

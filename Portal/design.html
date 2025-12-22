@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ibnu Taemiyyah Model College</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --primary: #0b4f5c;
+            --secondary: #f5f7fa;
+            --accent: #f4b400;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+        }
+
+        body {
+            background: var(--secondary);
+            color: #333;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header img {
+            width: 60px;
+            height: 60px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+
+        .hero {
+            padding: 80px 8%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #083e49;
+        }
+
+        .hero img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .features {
+            background: white;
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .features h3 {
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            padding: 30px;
+            border-radius: 10px;
+            background: var(--secondary);
+        }
+
+        .feature h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="display:flex; align-items:center;">
+        <img src="logo2.png" alt="School Logo" height="100" width="200">
+        <h1>Ibnu Taemiyyah Model College</h1>
+    </div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#result">Results</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="about">
+    <div>
+        <h2>Raising Knowledgeable & God-Fearing Students</h2>
+        <p>
+            Ibnu Taemiyyah Model College is committed to academic excellence,
+            moral discipline, and Islamic values. We provide quality education
+            from JSS1 to SS3 in a conducive learning environment.
+        </p>
+
+        <!-- LOGIN LINK -->
+        <a href="workingReport2.html" class="btn">Check Student Result</a>
+    </div>
+
+    <div>
+        <img src="taemiyyah.jpg" alt="School Image">
+    </div>
+</section>
+
+<section class="features" id="result">
+    <h3>Why Choose Our School</h3>
+
+    <div class="feature-grid">
+        <div class="feature">
+            <h4>Online Result Portal</h4>
+            <p>Students and parents can easily access results online anytime.</p>
+        </div>
+
+        <div class="feature">
+            <h4>Qualified Teachers</h4>
+            <p>Experienced and dedicated teachers committed to student success.</p>
+        </div>
+
+        <div class="feature">
+            <h4>Islamic & Moral Training</h4>
+            <p>Strong emphasis on character, discipline, and Islamic morals.</p>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <p>
+        © 2025 Ibnu Taemiyyah Model College <br>
+        All Rights Reserved
+    </p>
+</footer>
+
+</body>
+</html>

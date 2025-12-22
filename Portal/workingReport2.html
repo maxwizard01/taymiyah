@@ -141,7 +141,7 @@
       display: none;
     }
 .controls{display: none;}
-   .school-logo{width:149px;height: 149px}
+  .school-logo{width:270px;height: 180px}
   </style>
 </head>
 <body>
@@ -149,7 +149,7 @@
   <div class="wrap">
   <!-- LOGIN -->
   <div class="card" id="loginCard" class="login-card">  
-  <div class="school-logo"><img src="logo2.png" height="100" width="100"></div>
+  <div class="school-logo"><img src="logo2.PNG" height=100% width=200%></div>
   <div class="title">Ibnu Taemiyyah Model College</div>
   <div class="subtitle">Student Login Portal</div>
   <div id="loginForm">
@@ -168,7 +168,7 @@
   <div class="container" style="" id="dashboardCard">
     <div class="topbar">
       <div class="brand">
-        <div class="logo"><img src="Taemiyyah Logo.png" height="200" width="200"></div>
+        <div class="logo"><img src="Taemiyyah Logo.png" height="100" width="100"></div>
         <div>
           <h1 id="school">Ibnu Taemiyyah Model College</h1>
           <div class="controls" >
@@ -284,7 +284,7 @@ function renderReport(student, meta){
   const header = document.createElement('div');
   header.className = 'student-row';
   header.innerHTML = `
-    
+
     <div class="info" class='studentInfo'>
       <div class="meta">
         <div><strong>Student's Name:</strong> ${student.name}</div>
@@ -409,8 +409,6 @@ document.getElementById('downloadPdf').addEventListener('click', ()=>{
 </script>
 </body>
 </html>
-
-
 
 
 

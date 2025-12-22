@@ -137,17 +137,19 @@
 
   <style>
     #dashboardCard{
-      margin-top:10vh;
+      margin-top:4vh;
       display: none;
     }
+.controls{display: none;}
+  
   </style>
 </head>
 <body>
 
   <div class="wrap">
   <!-- LOGIN -->
-  <div class="card" id="loginCard" class="login-card">
-  <div class="school-logo"><img src="Taemiyyah Logo.PNG" height="100" width="100"></div>
+  <div class="card" id="loginCard" class="login-card">  
+  <div class="school-logo"><img src="logo2.PNG" height="100" width="100"></div>
   <div class="title">Ibnu Taemiyyah Model College</div>
   <div class="subtitle">Student Login Portal</div>
   <div id="loginForm">
@@ -160,30 +162,28 @@
     <button  id="loginBtn" onclick="login()">Login</button>
   </div>
   </div>
-
+</div>
 
 
   <div class="container" style="" id="dashboardCard">
     <div class="topbar">
       <div class="brand">
-        <div class="logo"><img src="Taemiyyah Logo.PNG" height="100" width="100"></div>
+        <div class="logo"><img src="Taemiyyah Logo.png" height="100" width="100"></div>
         <div>
           <h1 id="school">Ibnu Taemiyyah Model College</h1>
-         <!-- <div class="small">Dynamic report generator — use the student dropdown to switch reports</div>-->
+          <div class="controls" >
+            <label for="studentSelect" class="small">Select Student</label>
+            <select id="studentSelect"></select>
+          </div>
         </div>
       </div>
 
-      <div class="controls">
-        <button class="btn" id="logoutBtn" onclick="location.reload()"><a>Log Out</a></button>
-        <select id="studentSelect" style="display: none;"></select>
-        <button id="downloadPdf">Download PDF</button>
-        <!--<button id="exportJson">Export JSON</button>-->
-      </div>
     </div>
 
     <div id="reportArea" class="page" role="document">
       <!-- Content injected by JS -->
     </div>
+    <button id="downloadPdf" onclick="window.print()">Download PDF</button>
 
     <footer>
       <div>Designed by Maxwizard</div>
@@ -284,18 +284,14 @@ function renderReport(student, meta){
   const header = document.createElement('div');
   header.className = 'student-row';
   header.innerHTML = `
+    
     <div class="info" class='studentInfo'>
       <div class="meta">
         <div><strong>Student's Name:</strong> ${student.name}</div>
-        <div><strong>Roll No:</strong> ${student["Roll No"]} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <strong>Class:</strong> ${student.Summary.Class}  &nbsp; &nbsp; &nbsp; <strong>Sex:</strong> ${student.Summary.Sex}</div>
-        <div> <strong>Session: </strong>${session} &nbsp; &nbsp; &nbsp; <strong> Term: </strong> ${Term}  </div>
+        <div><span><strong>Roll No:</strong> ${student["Roll No"]} </span> <span>
+        <strong>Class:</strong> ${student.Summary.Class} </span> &nbsp;<span><strong>Sex:</strong> ${student.Summary.Sex}</span>
+        <span><strong>Session: </strong>${session}</span>  <strong> Term: </strong> ${Term}</span>  </div>
       </div>
-    </div>
-    <div class="stats" class="studentInfo">
-      <div class="small">No. of times present</div>
-      <div class="big">${student.Summary.Present}</div>
-      <div class="small" style="margin-top:8px">Total Mark Obtainable: <strong>${student.total_mark_obtainable}</strong></div>
     </div>
   `;
   el.appendChild(header);

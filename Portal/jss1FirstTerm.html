@@ -26,7 +26,7 @@
           <div class="controls">
         <label for="studentSelect" class="small">Select Student</label>
         <select id="studentSelect"></select>
-        <button id="downloadPdf" onclick="window.print()">Download PDF</button>
+      
       </div>
          <!-- <div class="small">Dynamic report generator — use the student dropdown to switch reports</div>-->
         </div>
@@ -43,7 +43,7 @@
     <div id="reportArea" class="page" role="document">
       <!-- Content injected by JS -->
     </div>
-
+<button id="downloadPdf" style="background: #3490aa;color: white" onclick="window.print()">Download PDF</button>
     <footer>
       <div>Designed by Maxwizard</div>
       <div class="small">2025</div>
@@ -229,4 +229,5 @@ function populateStudentSelect(data){
 </script>
 </body>
 </html>
+
 

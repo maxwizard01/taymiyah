@@ -77,47 +77,38 @@ function convertExcel() {
     "EXAM":row["__EMPTY_10"],
     "Total":row["__EMPTY_11"]},
 
-    {"name": "Civic Ed.",
+    {"name": "Civic/History",
     "C.A Test": row["Civic/History"],
     "EXAM":row["__EMPTY_12"],
     "Total":row["__EMPTY_13"]},
 
-    {"name": "Info. Tech",
-    "C.A Test":row["Info. Tech"],
+    {"name": ",Phy/Lit/Acc",
+    "C.A Test":row["Phy/Lit/Acc"],
     "EXAM":row["__EMPTY_14"],
     "Total":row["__EMPTY_15"]},
 
-   {"name":"Prevoc.",
-    "C.A Test": row["Prevoc."],
+   {"name":"Chem/Gov/Comm",  
+
+    "C.A Test": row["Chem/Gov/Comm"],
     "EXAM":row["__EMPTY_16"],
     "Total":row["__EMPTY_17"]},
 
-    {"name":"Basic Science",
-     "C.A Test": row["Basic Science"],
+    {"name":"Agric",
+     "C.A Test": row["Agric"],
      "EXAM":row["__EMPTY_18"],
     "Total":row["__EMPTY_19"]},
 
-    {"name":"Basic Tech",
-     "C.A Test": row["Basic Tech"],
+    {"name":"Biology",
+     "C.A Test": row["Biology"],
     "EXAM":row["__EMPTY_20"],
     "Total":row["__EMPTY_21"]},
 
 
-    {"name":"Physical Health Ed.",
-    "C.A Test":row["Physical Health Ed."],
+    {"name":"Economics ",
+    "C.A Test":row["Economics"],
     "EXAM":row["__EMPTY_22"],
     "Total":row["__EMPTY_23"]},
-
-    {"name": "Business Studies",
-    "C.A Test": row["Business Studies"],
-    "EXAM":row["__EMPTY_24"],
-    "Total":row["__EMPTY_25"]},
-
-    {"name": "R.N.V",
-     "C.A Test": row["R.N.V"],
-    "EXAM":row["__EMPTY_26"],
-    "Total":row["__EMPTY_27"]
-    }]
+]
 
     console.log(row)
       return {
@@ -125,11 +116,11 @@ function convertExcel() {
         "name": row["Name"],
         "subjects": subjects,
       "Summary": {
-    "TOTAL":row["__EMPTY_27"],
-    "average":row["__EMPTY_28"],
-    "Position":row["__EMPTY_29"],
-    "Class":row["__EMPTY_30"],
-    "Sex":row["__EMPTY_31"] }
+    "TOTAL":row["__EMPTY_23"],
+    "average":row["__EMPTY_24"],
+    "Position":row["__EMPTY_25"],
+    "Class":row["__EMPTY_26"],
+    "Sex":row["__EMPTY_27"] }
       };
     });
 

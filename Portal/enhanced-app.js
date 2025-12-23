@@ -36,6 +36,7 @@
   function populateFilters(){
     const grades = new Set(), classes = new Set();
     DATA.students.forEach(s=>{
+     s.Summary.Grade = s.Summary.average >= 70 ? 'A' : s.Summary.average>=60 ? 'B' : s.Summary.average>=50 ? 'C' : s.Summary.average>=40 ? 'D' : 'E'
       const g = s.Summary && s.Summary.Grade ? s.Summary.Grade : '';
       const c = s.Summary && s.Summary.Class ? s.Summary.Class : '';
       if(g) grades.add(g);
@@ -77,6 +78,8 @@
         const stud = DATA.students.find(s => String(s['Roll No']) === String(roll));
         if(stud) showStudent(stud);
       }
+
+
     });
     // keyboard enter on select to view
     studentSelect.addEventListener('keydown', (e) => {
@@ -139,7 +142,7 @@
         <td>${esc(s['Roll No']||'')}</td>
         <td>${esc(s.name||'')}</td>
         <td style="text-align:right">${esc(sum.TOTAL||'')}</td>
-        <td style="text-align:right">${esc(sum.Average||'')}</td>
+        <td style="text-align:right">${esc(sum.average||'')}</td>
         <td style="text-align:right">${esc(sum.Position||'')}</td>
         <td>${esc(sum.Class||'')}</td>
         <td>${esc(sum.Grade||'')}</td>
@@ -178,7 +181,7 @@
               <div class="muted" style="margin-top:6px">Sex: ${escapeHtml(sum.Sex||'')}</div>
               <div class="meta-grid" style="margin-top:10px">
                 <div class="summary-box"><strong>Total</strong><div>${escapeHtml(sum.TOTAL||'')}</div></div>
-                <div class="summary-box"><strong>Average</strong><div>${escapeHtml(sum.Average||'')}</div></div>
+                <div class="summary-box"><strong>Average</strong><div>${escapeHtml(sum.average||'')}</div></div>
                 <div class="summary-box"><strong>Grade</strong><div>${escapeHtml(sum.Grade||'')}</div></div>
                 <div class="summary-box"><strong>Class</strong><div>${escapeHtml(sum.Class||'')}</div></div>
               </div>
@@ -198,7 +201,7 @@
             <h3>Summary</h3>
             <table style="width:100%">
               <tr><th style="text-align:left">Total</th><td style="text-align:right">${escapeHtml(sum.TOTAL||'')}</td></tr>
-              <tr><th style="text-align:left">Average</th><td style="text-align:right">${escapeHtml(sum.Average||'')}</td></tr>
+              <tr><th style="text-align:left">Average</th><td style="text-align:right">${escapeHtml(sum.average||'')}</td></tr>
               <tr><th style="text-align:left">Position</th><td style="text-align:right">${escapeHtml(sum.Position||'')}</td></tr>
               <tr><th style="text-align:left">Present</th><td style="text-align:right">${escapeHtml(sum.Present||'')}</td></tr>
               <tr><th style="text-align:left">Percentage</th><td style="text-align:right">${escapeHtml(sum.Percentage||'')}</td></tr>

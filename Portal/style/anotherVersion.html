@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ibnu Taemiyyah College — Results Portal</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<style>
+:root{--accent:#1f6feb;--muted:#666}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:#f5f7fb;color:#111}
+.wrap{max-width:1100px;margin:28px auto;padding:18px}
+.card{background:white;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(20,30,60,0.06)}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+h1{font-size:1.15rem;margin:0}
+.muted{color:var(--muted);font-size:0.95rem}
+label{display:block;margin:8px 0 6px;font-weight:600}
+input,select,button{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef;box-sizing:border-box}
+.row{display:flex;gap:12px}
+.col{flex:1}
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;border:none;cursor:pointer}
+.btn.ghost{background:#2dbe60}
+.no-print{}
+@media print{.no-print{display:none}.card{box-shadow:none}}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:8px;border-bottom:1px solid #eef2f7;text-align:left}
+th{background:#fafcff;font-weight:700}
+.small{font-size:0.9rem}
+.center{display:flex;align-items:center;gap:8px}
+.right{margin-left:auto}
+.controls{display:flex;gap:8px;align-items:center}
+.search-input{padding:10px;border-radius:8px;border:1px solid #e6e9ef;flex:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- LOGIN -->
+  <div class="card" id="loginCard">
+    <header><div><h1>Ibnu Taemiyyah College — Student Login</h1><div class="muted">Use your full name and roll number (roll = password)</div></div>
+      <div class="right no-print"><button class="btn" id="viewDemo">View Dashboard (Demo)</button></div>
+    </header>
+
+    <div style="max-width:780px">
+      <label for="name">Full name</label>
+      <input id="name" placeholder="e.g. ABDULLAH RIDWAN" />
+      <label for="pwd">Password (Roll No)</label>
+      <input id="pwd" placeholder="e.g. 1" />
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn" id="loginBtn">Log in</button>
+        <button class="btn ghost" id="clearBtn">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="card" id="dashboardCard" style="display:none">
+    <header>
+      <div><h1>Ibnu Taemiyyah College — Results Dashboard</h1><div class="muted">Search, filter and view printable report cards</div></div>
+      <div class="right no-print controls">
+        <button class="btn" id="logoutBtn">Logout</button>
+        <button class="btn" id="downloadJson">Download data.json</button>
+      </div>
+    </header>
+
+    <div class="row" style="align-items:center;">
+      <input id="q" class="search-input" placeholder="Search by name or roll no" oninput="render()"/>
+      <div style="width:160px"><select id="gradeFilter" onchange="render()"><option value="">All Grades</option></select></div>
+      <div style="width:160px"><select id="classFilter" onchange="render()"><option value="">All Classes</option></select></div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <canvas id="summaryChart" style="max-height:260px;width:100%"></canvas>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="muted small">Students</div>
+      <div style="overflow-x:auto">
+        <table id="studentsTable">
+          <thead><tr><th>Roll</th><th>Name</th><th>Total</th><th>Average</th><th>Position</th><th>Class</th><th>Grade</th><th class="no-print">Action</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDENT PAGE -->
+  <div class="card" id="studentCard" style="display:none">
+    <header><div><h1 id="studentTitle">Ibnu Taemiyyah Model College </h1><div class="muted">Printable student report</div></div>
+      <div class="right no-print">
+        <button class="btn" id="backToDash">Back</button>
+        <button class="btn" id="printBtn">Print / Save as PDF</button>
+      </div>
+    </header>
+
+    <div id="reportArea"></div>
+
+    <div style="margin-top:14px">
+      <canvas id="studentChart" style="max-height:380px;width:100%"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="database.js"></script>
+<script>
+/*
+  index.html — Client-side Results Portal
+  Requirements: place a file named data.json (same folder) containing the results object:
+  { "students": [ { "Roll No": "...", "name": "...", "subjects": [...], "Summary": {...} }, ... ] }
+  Login: name (case-insensitive exact match) + roll number (as password)
+*/
+
+let DATA = null;
+let summaryChart = null;
+let studentChart = null;
+
+async function init(){
+  try {
+
+    DATA = SchoolData;
+    
+  } catch(e) {
+    alert('Could not load data.json. Place data.json in the same folder as index.html and reload.');
+    console.error(e);
+    DATA = { students: [] };
+  }
+
+  populateFilters();
+  attachEvents();
+  render();
+  renderSummaryChart();
+}
+
+function populateFilters(){
+  const gradeSet = new Set();
+  const classSet = new Set();
+  (DATA.students || []).forEach(s=>{
+    const g = (s.Summary||{}).Grade || '';
+    const c = (s.Summary||{}).Class || '';
+    if(g) gradeSet.add(g);
+    if(c) classSet.add(c);
+  });
+  const gf = document.getElementById('gradeFilter'), cf = document.getElementById('classFilter');
+  [...gradeSet].sort().forEach(g=>{ const o=document.createElement('option'); o.value=g; o.textContent=g; gf.appendChild(o); });
+  [...classSet].sort().forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; cf.appendChild(o); });
+}
+
+function attachEvents(){
+  document.getElementById('loginBtn').onclick = login;
+  document.getElementById('clearBtn').onclick = ()=>{name.value=''; pwd.value='';};
+  document.getElementById('logoutBtn').onclick = logout;
+  document.getElementById('backToDash').onclick = showDashboard;
+  document.getElementById('printBtn').onclick = ()=>window.print();
+  document.getElementById('downloadJson').onclick = ()=>{ const a=document.createElement('a'); a.href='data.json'; a.download='data.json'; a.click(); };
+  document.getElementById('viewDemo').onclick = ()=>{ showDashboard(); };
+}
+
+function login(){
+  const n = document.getElementById('name').value.trim().toLowerCase();
+  const p = document.getElementById('pwd').value.trim();
+  if(!n || !p){ alert('Enter name and roll number'); return; }
+  const found = (DATA.students || []).find(s => (s.name||'').toString().trim().toLowerCase() === n && (s['Roll No']||'').toString() === p);
+  if(!found){ alert('Invalid name or roll number. Make sure name exactly matches (case-insensitive) and roll number is correct.'); return; }
+  showStudent(found);
+  document.getElementById('loginCard').style.display='none';
+}
+
+function logout(){
+  document.getElementById('loginCard').style.display='block';
+  document.getElementById('dashboardCard').style.display='none';
+  document.getElementById('studentCard').style.display='none';
+}
+
+function showDashboard(){
+  document.getElementById('loginCard').style.display='none';
+  document.getElementById('dashboardCard').style.display='block';
+  document.getElementById('studentCard').style.display='none';
+  render();
+  renderSummaryChart();
+}
+
+
+
+
+function calcTotals(student){
+  const subs = student.subjects || [];
+  let total = 0;
+  subs.forEach(s => {
+    s.total = (Number(s["C.A Test"])||0) + (Number(s.EXAM)||0);
+    total += s.total;
+  });
+  student.total_obtained = total;
+   student.total_mark_obtainable=subs.length*100
+   student.session="2025/2026"
+  student.percentage = student.total_mark_obtainable ? (total / student.total_mark_obtainable * 100) : 0;
+  console.log(student.percentage)
+  // simple grade mapping
+  student.session='2025/2026'
+  const p = student.percentage;
+  if(p >= 70) student.grade = 'A';
+  else if(p >= 60) student.grade = 'B';
+  else if(p >= 50) student.grade = 'C';
+  else if(p >= 40) student.grade = 'D';
+  else student.grade = 'E';
+  return student;
+}
+
+
+
+function showStudent(s){
+  document.getElementById('loginCard').style.display='none';
+  document.getElementById('dashboardCard').style.display='none';
+  document.getElementById('studentCard').style.display='block';
+  //document.getElementById('studentTitle').textContent = `Report — ${s.name} (Roll ${s['Roll No']})`;
+
+  const subjects = s.subjects || [];
+  const sum = s.Summary || {};
+  let rows = subjects.map(sub => {
+    const ca = Number(sub["C.A Test"]||0);
+    const ex = Number(sub["EXAM"]||0);
+    return `<tr><td>${escapeHtml(sub.name)}</td><td style="text-align:right">${ca}</td><td style="text-align:right">${ex}</td><td style="text-align:right">${ca+ex}</td></tr>`;
+  }).join('');
+  const html = `<div style="display:flex;gap:18px;align-items:flex-start">
+    <div style="flex:1">
+      <h2>${escapeHtml(s.name)}</h2>
+      <div class="muted">Roll No: ${escapeHtml(s['Roll No'])}</div>
+      <div style="margin-top:8px">
+        <table><thead><tr><th>Subject</th><th>C.A Test</th><th>EXAM</th><th>Total</th></tr></thead><tbody>${rows}</tbody></table>
+      </div>
+    </div>
+    <div style="width:260px">
+      <div style="background:#fafcff;padding:12px;border-radius:8px">
+        <h3>Summary</h3>
+        <table>
+          <tr><th>Total</th><td>${escapeHtml(sum.TOTAL||'')}</td></tr>
+          <tr><th>Average</th><td>${escapeHtml(sum.average.toFixed(2)||'')}</td></tr>
+          <tr><th>Position</th><td>${escapeHtml(sum.Position||'')}</td></tr>
+          <tr><th>Class</th><td>${escapeHtml(sum.Class||'')}</td></tr>
+          <tr><th>Present</th><td>${escapeHtml(sum.Present||'')}</td></tr>
+          <tr><th>Percentage</th><td>${escapeHtml(sum.average.toFixed(2)||'')}%</td></tr>
+          <tr><th>Grade</th><td>${escapeHtml((sum.average >= 70 ? 'A' : sum.average>=60 ? 'B' : sum.average>=50 ? 'C' : sum.average>=40 ? 'D' : 'E')||'')}</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>`;
+  document.getElementById('reportArea').innerHTML = html;
+
+  // student radar chart
+  const labels = subjects.map(s=>s.name);
+  const totals = subjects.map(s => Number(s["C.A Test"]||0)+Number(s["EXAM"]||0));
+  if(studentChart) studentChart.destroy();
+  const ctx = document.getElementById('studentChart').getContext('2d');
+  studentChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels,
+      datasets: [{ label: 'Scores', data: totals, fill: true }]
+    },
+    options: { responsive:true, scales:{ r: { beginAtZero:true } } }
+  });
+}
+
+function render(){
+  const tbody = document.querySelector('#studentsTable tbody');
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const grade = document.getElementById('gradeFilter').value;
+  const cls = document.getElementById('classFilter').value;
+  tbody.innerHTML = '';
+  (DATA.students || []).filter(s=>{
+    const name = (s.name||'').toString().toLowerCase();
+    const roll = (s['Roll No']||'').toString();
+    const g = (s.Summary||{}).Grade || '';
+    const c = (s.Summary||{}).Class || '';
+    if(grade && g !== grade) return false;
+    if(cls && c !== cls) return false;
+    if(q && !(name.includes(q) || roll.includes(q))) return false;
+    return true;
+  }).forEach(s=>{
+    const sum = s.Summary || {};
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${escapeHtml(s['Roll No']||'')}</td><td>${escapeHtml(s.name||'')}</td><td>${escapeHtml(sum.TOTAL||'')}</td><td>${escapeHtml(sum.average.toFixed(2)||'')}</td><td>${escapeHtml(sum.Position||'')}</td><td>${escapeHtml(sum.Class||'')}</td><td>${escapeHtml((sum.average >= 70 ? 'A' : sum.average>=60 ? 'B' : sum.average>=50 ? 'C' : sum.average>=40 ? 'D' : 'E')||'')}</td><td class="no-print"><button class="btn" onclick='(function(){showStudent(DATA.students.find(x=>x["Roll No"]=="${escapeJs(s["Roll No"])}"));})()'>View</button></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderSummaryChart(){
+  const ctx = document.getElementById('summaryChart').getContext('2d');
+  const counts = {};
+  (DATA.students || []).forEach(s => {
+    const g = (s.Summary||{}).Grade || 'N/A';
+    counts[g] = (counts[g]||0) + 1;
+  });
+  const labels = Object.keys(counts);
+  const values = labels.map(l => counts[l]);
+  if(summaryChart) summaryChart.destroy();
+  summaryChart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets: [{ label:'Students by Grade', data: values, backgroundColor: 'rgba(31,111,235,0.6)' }]},
+    options: { responsive:true, plugins:{legend:{display:false}} }
+  });
+}
+
+/* helpers to avoid injection in generated HTML */
+function escapeHtml(s){
+  if(s==null) return '';
+  return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); });
+}
+function escapeJs(s){
+  if(s==null) return '';
+  return String(s).replace(/'/g,"\\'").replace(/"/g,'\\"').replace(/</g,'\\u003c');
+}
+
+init();
+</script>
+</body>
+</html>

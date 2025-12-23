@@ -13,184 +13,45 @@
       --gold:#d7a24a;
       --soft:#eef6fa;
     }
-    * {
-    box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  }
 
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg);
-  }
-
-  .login-card {
-    background: #fff;
-    border-radius: var(--radius);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
-    width: 100%;
-    max-width: 380px;
-    padding: 40px 30px;
-    animation: fadeIn 0.7s ease;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(15px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-
-  .school-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(11,95,255,0.1);
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 16px;
-    border-radius: 18px;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--accent);
-  }
-
-  .title {
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-    color: var(--text);
-  }
-
-  .subtitle {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-bottom: 24px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: var(--text);
-    font-size: 0.9rem;
-  }
-
-  input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #dce3f5;
-    border-radius: var(--radius);
-    margin-bottom: 16px;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  input:focus {
-    border-color: var(--accent);
-  }
-
-  button {
-    width: 100%;
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: var(--radius);
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  button:hover {
-    background: var(--accent-dark);
-  }
-
-  .footer {
-    text-align: center;
-    margin-top: 18px;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-
-  .footer a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .error {
-    color: #e74c3c;
-    font-size: 0.85rem;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-    body{font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin:0; background:#f4f7f9;
-      color:#12202b;padding:18px;}
-  </style>
-
-  <style>
-    #dashboardCard{
-      margin-top:4vh;
-      display: none;
-    }
-.controls{display: none;}
-  .school-logo{width:270px;height: 180px}
+    body{font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;margin:0;background:#f4f7f9;color:#12202b;padding:18px;}
+    
   </style>
 </head>
 <body>
-
-  <div class="wrap">
-  <!-- LOGIN -->
-  <div class="card" id="loginCard" class="login-card">  
-  <div class="school-logo"><img src="logo2.PNG" height=100% width=200%></div>
-  <div class="title">Ibnu Taemiyyah Model College</div>
-  <div class="subtitle">Student Login Portal</div>
-  <div id="loginForm">
-    <div id="errorMsg" class="error" style="display:none;">Invalid name or roll number</div>
-    <label for="fullname">Full Name</label>
-    <input type="text" id="name" placeholder="Enter full name" required>
-
-    <label for="roll">Roll Number</label>
-    <input type="password" id="pwd" placeholder="Enter roll number" required>
-    <button  id="loginBtn" onclick="login()">Login</button>
-  </div>
-  </div>
-</div>
-
-
-  <div class="container" style="" id="dashboardCard">
+  <div class="container">
     <div class="topbar">
       <div class="brand">
         <div class="logo"><img src="Taemiyyah Logo.png" height="100" width="100"></div>
         <div>
           <h1 id="school">Ibnu Taemiyyah Model College</h1>
-          <div class="controls" >
-            <label for="studentSelect" class="small">Select Student</label>
-            <select id="studentSelect"></select>
-          </div>
+          <div class="controls">
+        <label for="studentSelect" class="small">Select Student</label>
+        <select id="studentSelect"></select>
+        
+      </div>
+         <!-- <div class="small">Dynamic report generator — use the student dropdown to switch reports</div>-->
         </div>
       </div>
-
+<!--
+      <div class="controls">
+        <label for="studentSelect" class="small">Select Student</label>
+        <select id="studentSelect"></select>
+        <button id="downloadPdf">Download PDF</button>
+        <button id="exportJson">Export JSON</button>
+      </div>-->
     </div>
 
     <div id="reportArea" class="page" role="document">
       <!-- Content injected by JS -->
     </div>
     <button id="downloadPdf" onclick="window.print()">Download PDF</button>
-
     <footer>
       <div>Designed by Maxwizard</div>
       <div class="small">2025</div>
     </footer>
   </div>
-<script src="Exam.js"></script>
+<script src="ss2FirstTerm.js"></script>
 
 <script>
 // Fallback sample data (used if data.json cannot be fetched)
@@ -284,13 +145,12 @@ function renderReport(student, meta){
   const header = document.createElement('div');
   header.className = 'student-row';
   header.innerHTML = `
-
     <div class="info" class='studentInfo'>
       <div class="meta">
         <div><strong>Student's Name:</strong> ${student.name}</div>
-        <div><span><strong>Roll No:</strong> ${student["Roll No"]} </span> <span>
+        <div><span><strong>Roll No:</strong> ${student["Roll No"]} </span>&nbsp; &nbsp; <span>
         <strong>Class:</strong> ${student.Summary.Class} </span> &nbsp;<span><strong>Sex:</strong> ${student.Summary.Sex}</span>
-        <span><strong>Session: </strong>${session}</span>  <strong> Term: </strong> ${Term}</span>  </div>
+        <span><strong>Session: </strong>${session}</span> <span>&nbsp; <strong> Term: </strong> ${Term}</span>  </div>
       </div>
     </div>
   `;
@@ -299,8 +159,7 @@ function renderReport(student, meta){
   // table
   const table = document.createElement('table');
   table.innerHTML = `
-    <thead><tr><th>Subject</th><th>C
-    .A Test</th><th>EXAM</th><th>Total</th><th>Grade</th></tr></thead>
+    <thead><tr><th>Subject</th><th>C.A Test</th><th>EXAM</th><th>Total</th><th>Grade</th></tr></thead>
     <tbody>
       ${student.subjects.map(s => `<tr>
         <td>${s.name}</td>
@@ -340,7 +199,7 @@ function renderReport(student, meta){
   el.appendChild(comments);
 }
 
-//Load data.json; fallback to embedded data
+// Load data.json; fallback to embedded data
 async function loadData(){
   try{
     const json = SchoolData
@@ -350,7 +209,7 @@ async function loadData(){
     return fallbackData;
   }
 }
-/*
+
 function populateStudentSelect(data){
   const sel = document.getElementById('studentSelect');
   sel.innerHTML = data.students.map((s,idx) => `<option value="${idx}">${s.name}</option>`).join('');
@@ -363,52 +222,12 @@ function populateStudentSelect(data){
 }
 
 
-
-*/
-function populateStudentSelect(data){
-  const sel = document.getElementById('studentSelect');
-  sel.innerHTML = data.students.map((s,idx) => `<option value="${idx}">${s.name}</option>`).join('');
-  sel.addEventListener('change', ()=>{
-    const student = data.students[sel.value];
-    renderReport(student, data);
-  });
-  // initial render
-  if(data.students.length) renderReport(data.students[0], data);
-}
-
-function login(){
-  console.log('Login Clicked')
-  let data=SchoolData
-  const n = document.getElementById('name').value.trim().toLowerCase();
-  const p = document.getElementById('pwd').value.trim();
-  if(!n || !p){ alert('Enter name and roll number'); return; }
-  const found = (data.students || []).find(s => (s.name||'').toString().trim().toLowerCase() === n && (s['Roll No']||'').toString() === p);
-  if(!found){ alert('Invalid name or roll number. Make sure name exactly matches (case-insensitive) and roll number is correct.'); return; }
-  //showStudent(found);
-  document.getElementById('loginCard').style.display='none';
-  document.getElementById('dashboardCard').style.display='block'
-  document.getElementById("studentSelect").value =p-1
-  const student = data.students[p-1];
-  renderReport(student, data);
-  //document.getElementById('logoutBtn').onclick =history.back()
-}
-
-
-// Download PDF (uses print to PDF)
-document.getElementById('downloadPdf').addEventListener('click', ()=>{
-  window.print();
-});
-
-//Initialize
+// Initialize
 (async ()=>{
   const data = await loadData();
   window._loadedData = data;
   populateStudentSelect(data);
 })();
-;
 </script>
 </body>
 </html>
-
-
-

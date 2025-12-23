@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=1200">
   <title>Ibnu Taemiyyah Model College — Student Report</title>
   <link rel="stylesheet" href="style.css"><style>
     :root{
@@ -14,6 +15,7 @@
       --soft:#eef6fa;
     }
     body{font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;margin:0;background:#f4f7f9;color:#12202b;padding:18px;}
+    span{margin: 9px;}
   </style>
 </head>
 <body>
@@ -79,31 +81,6 @@ const fallbackData = {
       ],
       "class_teacher_comments":"He is a very brilliant student — keep it up.",
       "principal_comment":"Good performance; maintain consistency."
-    },
-    {
-      "id":"S002",
-      "name":"Aisha Bello",
-      "class":"JSS1",
-      "sex":"Female",
-      "roll":"221383",
-      "present":24,
-      "total_mark_obtainable":360,
-      "subjects":[
-        {"name":"Mathematics","C.A Test":14,"EXAM":18},
-        {"name":"English","C.A Test":12,"EXAM":16},
-        {"name":"Yoruba","C.A Test":9,"EXAM":11},
-        {"name":"Islamic Studies","C.A Test":8,"EXAM":10},
-        {"name":"Arabic","C.A Test":10,"EXAM":12},
-        {"name":"Quran","C.A Test":9,"EXAM":10},
-        {"name":"Civic Education","C.A Test":10,"EXAM":12},
-        {"name":"Chemistry","C.A Test":13,"EXAM":14},
-        {"name":"Physics","C.A Test":12,"EXAM":13},
-        {"name":"Agric Science","C.A Test":10,"EXAM":9},
-        {"name":"Biology","C.A Test":15,"EXAM":14},
-        {"name":"Economics","C.A Test":10,"EXAM":12}
-      ],
-      "class_teacher_comments":"Shows steady improvement in class.",
-      "principal_comment":"Encouraging progress, work on weak areas."
     }
   ]
 };
@@ -140,15 +117,16 @@ function renderReport(student, meta){
   header.innerHTML = `
     <div class="info" class='studentInfo'>
       <div class="meta">
-        <div><strong>Student's Name:</strong> ${student.name}</div>
-        <div><strong>Roll No:</strong> ${student["Roll No"]} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <strong>Class:</strong> ${student.Summary.Class}  &nbsp; &nbsp; &nbsp; <strong>Sex:</strong> ${student.Summary.Sex}</div>
-        <div> <strong>Session: </strong>${session} &nbsp; &nbsp; &nbsp; <strong> Term: </strong> ${Term}  </div>
+        <div class="col"><strong>Student's Name:</strong> ${student.name}</div>
+        <div class="col" ><span><strong>Roll No:</strong> ${student["Roll No"]}</span>
+        <span><strong>Class:</strong> ${student.Summary.Class} </span> <span> <strong>Sex:</strong> ${student.Summary.Sex}</span></div>
+        <div class="col"> <strong>Session: </strong>${session} &nbsp; &nbsp; &nbsp; <strong> Term: </strong> ${Term}  </div>
       </div>
     </div>
     <div class="stats" class="studentInfo">
-
-           <div class="small" style="margin-top:8px">Total Mark Obtainable: <strong>${student.total_mark_obtainable}</strong></div>
+      <div class="small">No. of times present</div>
+     <div class="big">${student.Summary.Present}</div>
+      <div class="small" style="margin-top:8px">Total Mark Obtainable: <strong>${student.total_mark_obtainable}</strong></div>
     </div>
   `;
   el.appendChild(header);

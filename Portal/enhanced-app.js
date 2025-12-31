@@ -142,7 +142,7 @@
         <td>${esc(s['Roll No']||'')}</td>
         <td>${esc(s.name||'')}</td>
         <td style="text-align:right">${esc(sum.TOTAL||'')}</td>
-        <td style="text-align:right">${esc(sum.average||'')}</td>
+        <td style="text-align:right">${esc(Number(sum.average).toFixed(2)||'')}</td>
         <td style="text-align:right">${esc(sum.Position||'')}</td>
         <td>${esc(sum.Class||'')}</td>
         <td>${esc(sum.Grade||'')}</td>
@@ -201,11 +201,11 @@
             <h3>Summary</h3>
             <table style="width:100%">
               <tr><th style="text-align:left">Total</th><td style="text-align:right">${escapeHtml(sum.TOTAL||'')}</td></tr>
-              <tr><th style="text-align:left">Average</th><td style="text-align:right">${escapeHtml(sum.average||'')}</td></tr>
+              <tr><th style="text-align:left">Average</th><td style="text-align:right">${escapeHtml(sum.average.toFixed(2)||'')}</td></tr>
               <tr><th style="text-align:left">Position</th><td style="text-align:right">${escapeHtml(sum.Position||'')}</td></tr>
               <tr><th style="text-align:left">Present</th><td style="text-align:right">${escapeHtml(sum.Present||'')}</td></tr>
-              <tr><th style="text-align:left">Percentage</th><td style="text-align:right">${escapeHtml(sum.Percentage||'')}</td></tr>
-              <tr><th style="text-align:left">Total Mark Obtainable</th><td style="text-align:right">${escapeHtml(sum["Total Mark Obtainable"]||'')}</td></tr>
+              <tr><th style="text-align:left">Percentage</th><td style="text-align:right">${sum.average.toFixed(2)||''}%</td></tr>
+              <tr><th style="text-align:left">Total Mark Obtainable</th><td style="text-align:right">${1400}</td></tr>
             </table>
           </div>
 

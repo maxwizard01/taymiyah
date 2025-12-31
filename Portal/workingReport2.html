@@ -149,7 +149,7 @@
   <div class="wrap">
   <!-- LOGIN -->
   <div class="card" id="loginCard" class="login-card">  
-  <div class="school-logo"><img src="logo2.png" height=100% width=200%></div>
+  <div class="school-logo"><img src="logo2.PNG" height=100% width=200%></div>
   <div class="title">Ibnu Taemiyyah Model College</div>
   <div class="subtitle">Student Login Portal</div>
   <div id="loginForm">
@@ -383,6 +383,9 @@ function login(){
   const p = document.getElementById('pwd').value.trim();
   if(!n || !p){ alert('Enter name and roll number'); return; }
   const found = (data.students || []).find(s => (s.name||'').toString().trim().toLowerCase() === n && (s['Roll No']||'').toString() === p);
+  console.log("HEre is")
+  console.log(found)
+
   if(!found){ alert('Invalid name or roll number. Make sure name exactly matches (case-insensitive) and roll number is correct.'); return; }
   //showStudent(found);
   document.getElementById('loginCard').style.display='none';
@@ -409,7 +412,6 @@ document.getElementById('downloadPdf').addEventListener('click', ()=>{
 </script>
 </body>
 </html>
-
 
 
 

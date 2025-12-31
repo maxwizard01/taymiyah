@@ -1,6 +1,103 @@
 var  SchoolData={
-  "students":[
-  
+  "students":
+[
+  {
+    "Roll No": "Roll No.",
+    "name": "Name",
+    "subjects": [
+      {
+        "name": "Mathematics",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "English Language",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Yoruba",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "IRS",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Arabic",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Quran",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Civic Ed.",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Info. Tech",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Prevoc.",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Basic Science",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Basic Tech",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Physical Health Ed.",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "Business Studies",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      },
+      {
+        "name": "R.N.V",
+        "C.A Test": " C. A Test",
+        "EXAM": "EXAM",
+        "Total": "TOTAL"
+      }
+    ],
+    "Summary": {
+      "TOTAL": "TOTAL",
+      "average": "Average",
+      "Position": "Position",
+      "Class": "Class",
+      "Sex": "Sex"
+    }
+  },
   {
     "Roll No": "1",
     "name": "ABDULLAH RIDWAN",
@@ -42,7 +139,7 @@ var  SchoolData={
         "Total": 50
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 18,
         "Total": 28
@@ -91,9 +188,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 36,
-      "average": 0,
-      "Position": 36,
+      "TOTAL": 463,
+      "average": 33.0714285714286,
+      "Position": 49,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -139,7 +236,7 @@ var  SchoolData={
         "Total": 65
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 17,
         "Total": 28
@@ -188,9 +285,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 57,
-      "average": 0,
-      "Position": 57,
+      "TOTAL": 544,
+      "average": 38.8571428571429,
+      "Position": 44,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -236,7 +333,7 @@ var  SchoolData={
         "Total": 68
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 27,
         "Total": 38
@@ -285,9 +382,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 49,
-      "average": 0,
-      "Position": 49,
+      "TOTAL": 572,
+      "average": 40.8571428571429,
+      "Position": 40,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -333,7 +430,7 @@ var  SchoolData={
         "Total": 64
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 6,
         "EXAM": 21,
         "Total": 27
@@ -382,9 +479,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 49,
-      "average": 0,
-      "Position": 49,
+      "TOTAL": 512,
+      "average": 36.5714285714286,
+      "Position": 46,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -430,7 +527,7 @@ var  SchoolData={
         "Total": 70
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 22,
         "EXAM": 47,
         "Total": 69
@@ -479,9 +576,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 78,
-      "average": 0,
-      "Position": 78,
+      "TOTAL": 1132,
+      "average": 80.8571428571429,
+      "Position": 1,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -527,7 +624,7 @@ var  SchoolData={
         "Total": 70
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 7,
         "EXAM": 16,
         "Total": 23
@@ -576,9 +673,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 36,
-      "average": 0,
-      "Position": 36,
+      "TOTAL": 453,
+      "average": 32.3571428571429,
+      "Position": 50,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -624,7 +721,7 @@ var  SchoolData={
         "Total": 63
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 25,
         "Total": 33
@@ -673,9 +770,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "TOTAL": 627,
+      "average": 44.7857142857143,
+      "Position": 35,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -721,7 +818,7 @@ var  SchoolData={
         "Total": 62
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 14,
         "EXAM": 21,
         "Total": 35
@@ -770,9 +867,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 55,
-      "average": 0,
-      "Position": 55,
+      "TOTAL": 701,
+      "average": 50.0714285714286,
+      "Position": 27,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -818,7 +915,7 @@ var  SchoolData={
         "Total": 66
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 13,
         "EXAM": 32,
         "Total": 45
@@ -867,9 +964,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
-      "average": 0,
-      "Position": 63,
+      "TOTAL": 775,
+      "average": 55.3571428571429,
+      "Position": 19,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -915,7 +1012,7 @@ var  SchoolData={
         "Total": 73
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 23,
         "Total": 39
@@ -964,9 +1061,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 43,
-      "average": 0,
-      "Position": 43,
+      "TOTAL": 626,
+      "average": 44.7142857142857,
+      "Position": 36,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1012,7 +1109,7 @@ var  SchoolData={
         "Total": 71
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 6,
         "EXAM": 26,
         "Total": 32
@@ -1061,9 +1158,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "TOTAL": 759,
+      "average": 54.2142857142857,
+      "Position": 20,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1109,7 +1206,7 @@ var  SchoolData={
         "Total": 62
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 26,
         "Total": 36
@@ -1158,9 +1255,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 48,
-      "average": 0,
-      "Position": 48,
+      "TOTAL": 606,
+      "average": 43.2857142857143,
+      "Position": 39,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1206,7 +1303,7 @@ var  SchoolData={
         "Total": 55
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 14,
         "EXAM": 16,
         "Total": 30
@@ -1255,9 +1352,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 62,
-      "average": 0,
-      "Position": 62,
+      "TOTAL": 629,
+      "average": 44.9285714285714,
+      "Position": 34,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1303,7 +1400,7 @@ var  SchoolData={
         "Total": 74
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 29,
         "Total": 39
@@ -1352,9 +1449,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 65,
-      "average": 0,
-      "Position": 65,
+      "TOTAL": 681,
+      "average": 48.6428571428571,
+      "Position": 30,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1400,7 +1497,7 @@ var  SchoolData={
         "Total": 70
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 20,
         "EXAM": 41,
         "Total": 61
@@ -1449,9 +1546,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 77,
-      "average": 0,
-      "Position": 77,
+      "TOTAL": 922,
+      "average": 65.8571428571429,
+      "Position": 9,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1497,7 +1594,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 17,
         "Total": 28
@@ -1546,9 +1643,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 39,
-      "average": 0,
-      "Position": 39,
+      "TOTAL": 690,
+      "average": 49.2857142857143,
+      "Position": 29,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1594,7 +1691,7 @@ var  SchoolData={
         "Total": 66
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 36,
         "Total": 52
@@ -1643,9 +1740,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 77,
-      "average": 0,
-      "Position": 77,
+      "TOTAL": 926,
+      "average": 66.1428571428571,
+      "Position": 8,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1691,7 +1788,7 @@ var  SchoolData={
         "Total": 63
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 13,
         "EXAM": 26,
         "Total": 39
@@ -1740,9 +1837,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 68,
-      "average": 0,
-      "Position": 68,
+      "TOTAL": 787,
+      "average": 56.2142857142857,
+      "Position": 17,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1788,7 +1885,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 6,
         "EXAM": 23,
         "Total": 29
@@ -1837,9 +1934,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 35,
-      "average": 0,
-      "Position": 35,
+      "TOTAL": 552,
+      "average": 39.4285714285714,
+      "Position": 43,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1868,9 +1965,9 @@ var  SchoolData={
       },
       {
         "name": "IRS",
-        "C.A Test": "",
+        "C.A Test": 0,
         "EXAM": 46,
-        "Total": ""
+        "Total": 0
       },
       {
         "name": "Arabic",
@@ -1885,7 +1982,7 @@ var  SchoolData={
         "Total": 68
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 14,
         "EXAM": 36,
         "Total": 50
@@ -1934,9 +2031,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 50,
-      "average": 0,
-      "Position": 50,
+      "TOTAL": 756,
+      "average": 54,
+      "Position": 22,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -1982,7 +2079,7 @@ var  SchoolData={
         "Total": 63
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 13,
         "EXAM": 36,
         "Total": 49
@@ -2031,9 +2128,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 71,
-      "average": 0,
-      "Position": 71,
+      "TOTAL": 783,
+      "average": 55.9285714285714,
+      "Position": 18,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2079,7 +2176,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 20,
         "Total": 31
@@ -2128,9 +2225,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 38,
-      "average": 0,
-      "Position": 38,
+      "TOTAL": 675,
+      "average": 48.2142857142857,
+      "Position": 31,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2176,7 +2273,7 @@ var  SchoolData={
         "Total": 65
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 21,
         "Total": 32
@@ -2225,9 +2322,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 26,
-      "average": 0,
-      "Position": 26,
+      "TOTAL": 443,
+      "average": 31.6428571428571,
+      "Position": 51,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2273,7 +2370,7 @@ var  SchoolData={
         "Total": 67
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 18,
         "EXAM": 41,
         "Total": 59
@@ -2322,9 +2419,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 71,
-      "average": 0,
-      "Position": 71,
+      "TOTAL": 916,
+      "average": 65.4285714285714,
+      "Position": 10,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2370,7 +2467,7 @@ var  SchoolData={
         "Total": 75
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 13,
         "EXAM": 24,
         "Total": 37
@@ -2419,9 +2516,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 52,
-      "average": 0,
-      "Position": 52,
+      "TOTAL": 814,
+      "average": 58.1428571428571,
+      "Position": 14,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -2467,7 +2564,7 @@ var  SchoolData={
         "Total": 67
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 7,
         "EXAM": 18,
         "Total": 25
@@ -2516,9 +2613,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 74,
-      "average": 0,
-      "Position": 74,
+      "TOTAL": 517,
+      "average": 36.9285714285714,
+      "Position": 45,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2564,7 +2661,7 @@ var  SchoolData={
         "Total": 66
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 39,
         "Total": 49
@@ -2613,9 +2710,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 34,
-      "average": 0,
-      "Position": 34,
+      "TOTAL": 733,
+      "average": 52.3571428571429,
+      "Position": 25,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2661,7 +2758,7 @@ var  SchoolData={
         "Total": 67
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 26,
         "Total": 34
@@ -2710,9 +2807,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 54,
-      "average": 0,
-      "Position": 54,
+      "TOTAL": 667,
+      "average": 47.6428571428571,
+      "Position": 32,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2758,7 +2855,7 @@ var  SchoolData={
         "Total": 63
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 0,
         "Total": 8
@@ -2807,9 +2904,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 48,
-      "average": 0,
-      "Position": 48,
+      "TOTAL": 568,
+      "average": 40.5714285714286,
+      "Position": 41,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2855,7 +2952,7 @@ var  SchoolData={
         "Total": 76
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 29,
         "EXAM": 54,
         "Total": 83
@@ -2904,9 +3001,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 56,
-      "average": 0,
-      "Position": 56,
+      "TOTAL": 1062,
+      "average": 75.8571428571429,
+      "Position": 3,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -2952,7 +3049,7 @@ var  SchoolData={
         "Total": 65
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 22,
         "EXAM": 50,
         "Total": 72
@@ -3001,9 +3098,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 84,
-      "average": 0,
-      "Position": 84,
+      "TOTAL": 974,
+      "average": 69.5714285714286,
+      "Position": 6,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3049,7 +3146,7 @@ var  SchoolData={
         "Total": 67
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 39,
         "Total": 56
@@ -3098,9 +3195,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 74,
-      "average": 0,
-      "Position": 74,
+      "TOTAL": 871,
+      "average": 62.2142857142857,
+      "Position": 12,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3129,9 +3226,9 @@ var  SchoolData={
       },
       {
         "name": "IRS",
-        "C.A Test": "",
+        "C.A Test": 0,
         "EXAM": 31,
-        "Total": ""
+        "Total": 0
       },
       {
         "name": "Arabic",
@@ -3146,7 +3243,7 @@ var  SchoolData={
         "Total": 65
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 13,
         "EXAM": 38,
         "Total": 51
@@ -3195,9 +3292,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 69,
-      "average": 0,
-      "Position": 69,
+      "TOTAL": 806.5,
+      "average": 57.6071428571429,
+      "Position": 16,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3243,7 +3340,7 @@ var  SchoolData={
         "Total": 68
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 32,
         "Total": 43
@@ -3292,9 +3389,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 68,
-      "average": 0,
-      "Position": 68,
+      "TOTAL": 759,
+      "average": 54.2142857142857,
+      "Position": 20,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3340,7 +3437,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 23,
         "Total": 34
@@ -3389,9 +3486,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
-      "average": 0,
-      "Position": 63,
+      "TOTAL": 558,
+      "average": 39.8571428571429,
+      "Position": 42,
       "Class": "JSS1",
       "Sex": "Male"
     }
@@ -3437,7 +3534,7 @@ var  SchoolData={
         "Total": 70
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 41,
         "Total": 60
@@ -3486,9 +3583,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 43,
-      "average": 0,
-      "Position": 43,
+      "TOTAL": 868,
+      "average": 62,
+      "Position": 13,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3534,7 +3631,7 @@ var  SchoolData={
         "Total": 65
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 25,
         "Total": 25
@@ -3583,9 +3680,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 81,
-      "average": 0,
-      "Position": 81,
+      "TOTAL": 756,
+      "average": 54,
+      "Position": 22,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3631,7 +3728,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 55,
         "Total": 83
@@ -3680,9 +3777,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 91,
-      "average": 0,
-      "Position": 91,
+      "TOTAL": 1124,
+      "average": 80.2857142857143,
+      "Position": 2,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3728,7 +3825,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 12,
         "EXAM": 29,
         "Total": 41
@@ -3777,9 +3874,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 62,
-      "average": 0,
-      "Position": 62,
+      "TOTAL": 609,
+      "average": 43.5,
+      "Position": 38,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3825,7 +3922,7 @@ var  SchoolData={
         "Total": 63
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 6,
         "EXAM": 19,
         "Total": 25
@@ -3874,9 +3971,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "TOTAL": 466,
+      "average": 33.2857142857143,
+      "Position": 48,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -3922,7 +4019,7 @@ var  SchoolData={
         "Total": 66
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 52,
         "Total": 71
@@ -3971,9 +4068,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 35,
-      "average": 0,
-      "Position": 35,
+      "TOTAL": 1025,
+      "average": 73.2142857142857,
+      "Position": 4,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4019,7 +4116,7 @@ var  SchoolData={
         "Total": 14
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 7,
         "EXAM": 15,
         "Total": 22
@@ -4068,9 +4165,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 81,
-      "average": 0,
-      "Position": 81,
+      "TOTAL": 488,
+      "average": 34.8571428571429,
+      "Position": 47,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4116,7 +4213,7 @@ var  SchoolData={
         "Total": 52
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 6,
         "EXAM": 17,
         "Total": 23
@@ -4165,9 +4262,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 28,
-      "average": 0,
-      "Position": 28,
+      "TOTAL": 623,
+      "average": 44.5,
+      "Position": 37,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4213,7 +4310,7 @@ var  SchoolData={
         "Total": 52
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 33,
         "Total": 43
@@ -4262,9 +4359,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 45,
-      "average": 0,
-      "Position": 45,
+      "TOTAL": 742.5,
+      "average": 53.0357142857143,
+      "Position": 24,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4310,7 +4407,7 @@ var  SchoolData={
         "Total": 61
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 22,
         "EXAM": 54,
         "Total": 76
@@ -4359,9 +4456,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 53,
-      "average": 0,
-      "Position": 53,
+      "TOTAL": 949,
+      "average": 67.7857142857143,
+      "Position": 7,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4407,7 +4504,7 @@ var  SchoolData={
         "Total": 67
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 42,
         "Total": 58
@@ -4456,9 +4553,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 73,
-      "average": 0,
-      "Position": 73,
+      "TOTAL": 1015,
+      "average": 72.5,
+      "Position": 5,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4504,7 +4601,7 @@ var  SchoolData={
         "Total": 70
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 27,
         "Total": 35
@@ -4553,9 +4650,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 53,
-      "average": 0,
-      "Position": 53,
+      "TOTAL": 709.5,
+      "average": 50.6785714285714,
+      "Position": 26,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4601,7 +4698,7 @@ var  SchoolData={
         "Total": 73
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 7,
         "EXAM": 31,
         "Total": 38
@@ -4650,9 +4747,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 62,
-      "average": 0,
-      "Position": 62,
+      "TOTAL": 694,
+      "average": 49.5714285714286,
+      "Position": 28,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4698,7 +4795,7 @@ var  SchoolData={
         "Total": 70
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 7,
         "EXAM": 22,
         "Total": 29
@@ -4747,9 +4844,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 48,
-      "average": 0,
-      "Position": 48,
+      "TOTAL": 646,
+      "average": 46.1428571428571,
+      "Position": 33,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4795,7 +4892,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 45,
         "Total": 56
@@ -4844,9 +4941,9 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 41,
-      "average": 0,
-      "Position": 41,
+      "TOTAL": 894,
+      "average": 63.8571428571429,
+      "Position": 11,
       "Class": "JSS1",
       "Sex": "Female"
     }
@@ -4892,7 +4989,7 @@ var  SchoolData={
         "Total": 67
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 21,
         "EXAM": 45,
         "Total": 66
@@ -4941,15 +5038,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
-      "average": 0,
-      "Position": 63,
+      "TOTAL": 813,
+      "average": 58.0714285714286,
+      "Position": 15,
       "Class": "JSS1",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "1",
+    "Roll No": "52",
     "name": "ABASS FATHIA",
     "subjects": [
       {
@@ -4989,7 +5086,7 @@ var  SchoolData={
         "Total": 54
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 9,
         "Total": 28
@@ -5038,15 +5135,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 69,
-      "average": 40.142857142857146,
-      "Position": 24,
+      "TOTAL": 627,
+      "average": 44.785714285714285,
+      "Position": "35th",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "2",
+    "Roll No": "53",
     "name": "ABDULHAFEEZ RAHMOTULLAHI",
     "subjects": [
       {
@@ -5086,7 +5183,7 @@ var  SchoolData={
         "Total": 56
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 40,
         "Total": 57
@@ -5135,15 +5232,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 72,
-      "average": 48.82142857142857,
-      "Position": 11,
+      "TOTAL": 782.5,
+      "average": 55.892857142857146,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "3",
+    "Roll No": "54",
     "name": "ABDULHAKEEM BALIQIS",
     "subjects": [
       {
@@ -5183,7 +5280,7 @@ var  SchoolData={
         "Total": 57
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 32,
         "Total": 42
@@ -5232,15 +5329,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
-      "average": 40.92857142857143,
-      "Position": 22,
+      "TOTAL": 686,
+      "average": 49,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "4",
+    "Roll No": "55",
     "name": "ABDULLAHI MONSUROH",
     "subjects": [
       {
@@ -5280,7 +5377,7 @@ var  SchoolData={
         "Total": 63
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 13,
         "EXAM": 18,
         "Total": 31
@@ -5329,15 +5426,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 58,
-      "average": 38.92857142857143,
-      "Position": 25,
+      "TOTAL": 626,
+      "average": 44.714285714285715,
+      "Position": "37th",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "5",
+    "Roll No": "56",
     "name": "ABDULMOJEEB MASTUROH",
     "subjects": [
       {
@@ -5377,7 +5474,7 @@ var  SchoolData={
         "Total": 59
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 18,
         "EXAM": 30,
         "Total": 48
@@ -5426,15 +5523,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 84,
-      "average": 52.32142857142857,
-      "Position": 7,
+      "TOTAL": 845.5,
+      "average": 60.392857142857146,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "6",
+    "Roll No": "57",
     "name": "ABDULROSHEED ALIYAH",
     "subjects": [
       {
@@ -5474,7 +5571,7 @@ var  SchoolData={
         "Total": 59
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 32,
         "Total": 49
@@ -5523,15 +5620,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 62,
-      "average": 44.964285714285715,
-      "Position": 16,
+      "TOTAL": 729.5,
+      "average": 52.107142857142854,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "7",
+    "Roll No": "58",
     "name": "ADEAGA AISHA",
     "subjects": [
       {
@@ -5571,7 +5668,7 @@ var  SchoolData={
         "Total": 53
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 35,
         "Total": 51
@@ -5620,15 +5717,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 59,
-      "average": 46.535714285714285,
-      "Position": 14,
+      "TOTAL": 755.5,
+      "average": 53.964285714285715,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "8",
+    "Roll No": "59",
     "name": "ADEAGA HASSANA",
     "subjects": [
       {
@@ -5668,7 +5765,7 @@ var  SchoolData={
         "Total": 53
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 18,
         "EXAM": 36,
         "Total": 54
@@ -5717,15 +5814,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 66,
-      "average": 43.857142857142854,
-      "Position": 18,
+      "TOTAL": 706,
+      "average": 50.42857142857143,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "9",
+    "Roll No": "60",
     "name": "ADEWOLE FRIDAUS",
     "subjects": [
       {
@@ -5765,7 +5862,7 @@ var  SchoolData={
         "Total": 40
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 23,
         "Total": 39
@@ -5814,15 +5911,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 85,
-      "average": 45.392857142857146,
-      "Position": 15,
+      "TOTAL": 734.5,
+      "average": 52.464285714285715,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "10",
+    "Roll No": "61",
     "name": "A'GANIY LATEEFAH",
     "subjects": [
       {
@@ -5862,7 +5959,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 0,
         "Total": 11
@@ -5911,15 +6008,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 19,
-      "average": 11.714285714285714,
-      "Position": 38,
+      "TOTAL": 205,
+      "average": 14.642857142857142,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "11",
+    "Roll No": "62",
     "name": "AJIBOLA KHODIJAH",
     "subjects": [
       {
@@ -5959,7 +6056,7 @@ var  SchoolData={
         "Total": 62
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 20,
         "EXAM": 41,
         "Total": 61
@@ -6008,15 +6105,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 51,
-      "average": 46.964285714285715,
-      "Position": 13,
+      "TOTAL": 748.5,
+      "average": 53.464285714285715,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "12",
+    "Roll No": "63",
     "name": "AKINLABI AMEERAH",
     "subjects": [
       {
@@ -6056,7 +6153,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 25,
         "Total": 35
@@ -6105,15 +6202,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 47,
-      "average": 36.17857142857143,
-      "Position": 29,
+      "TOTAL": 554.5,
+      "average": 39.607142857142854,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "13",
+    "Roll No": "64",
     "name": "AKINWALE NASIROH",
     "subjects": [
       {
@@ -6153,7 +6250,7 @@ var  SchoolData={
         "Total": 74
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 42,
         "Total": 61
@@ -6202,15 +6299,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
-      "average": 53.892857142857146,
-      "Position": 5,
+      "TOTAL": 870.5,
+      "average": 62.17857142857143,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "14",
+    "Roll No": "65",
     "name": "ALABI AMEENAH",
     "subjects": [
       {
@@ -6250,7 +6347,7 @@ var  SchoolData={
         "Total": 73
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 20,
         "EXAM": 19,
         "Total": 39
@@ -6299,15 +6396,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
-      "average": 36.92857142857143,
-      "Position": 26,
+      "TOTAL": 612,
+      "average": 43.714285714285715,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "15",
+    "Roll No": "66",
     "name": "AL-AMEEN FAOSIYYAH",
     "subjects": [
       {
@@ -6347,7 +6444,7 @@ var  SchoolData={
         "Total": 52
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 21,
         "EXAM": 35,
         "Total": 56
@@ -6396,15 +6493,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 62,
-      "average": 50.92857142857143,
-      "Position": 9,
+      "TOTAL": 834,
+      "average": 59.57142857142857,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "16",
+    "Roll No": "67",
     "name": "BASHEER KHODIJAH",
     "subjects": [
       {
@@ -6444,7 +6541,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 9,
         "EXAM": 0,
         "Total": 9
@@ -6493,15 +6590,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 26,
-      "average": 22.392857142857142,
-      "Position": 37,
+      "TOTAL": 364.5,
+      "average": 26.035714285714285,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "17",
+    "Roll No": "68",
     "name": "HASHIM ISLAMIYYAH",
     "subjects": [
       {
@@ -6541,7 +6638,7 @@ var  SchoolData={
         "Total": 57
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 27,
         "Total": 44
@@ -6590,15 +6687,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 40,
-      "average": 40.25,
-      "Position": 23,
+      "TOTAL": 648.5,
+      "average": 46.32142857142857,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "18",
+    "Roll No": "69",
     "name": "JIMOH MUHSINAH",
     "subjects": [
       {
@@ -6638,7 +6735,7 @@ var  SchoolData={
         "Total": 52
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 31,
         "Total": 47
@@ -6687,15 +6784,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 32,
-      "average": 36.857142857142854,
-      "Position": 27,
+      "TOTAL": 612,
+      "average": 43.714285714285715,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "19",
+    "Roll No": "70",
     "name": "MOBOLAJI AMIRAH",
     "subjects": [
       {
@@ -6735,7 +6832,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -6784,15 +6881,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 0,
-      "average": 0,
-      "Position": 41,
+      "TOTAL": 57,
+      "average": 4.071428571428571,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "20",
+    "Roll No": "71",
     "name": "MUHAMMED HABEEBAH",
     "subjects": [
       {
@@ -6832,7 +6929,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 20,
         "EXAM": 42,
         "Total": 62
@@ -6881,15 +6978,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 80,
-      "average": 62.67857142857143,
-      "Position": 4,
+      "TOTAL": 1017.5,
+      "average": 72.67857142857143,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "21",
+    "Roll No": "72",
     "name": "MUSBAUDEEN HANEEFAH",
     "subjects": [
       {
@@ -6929,7 +7026,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -6980,13 +7077,13 @@ var  SchoolData={
     "Summary": {
       "TOTAL": 0,
       "average": 0,
-      "Position": 41,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "22",
+    "Roll No": "73",
     "name": "MUTIU MUBARAKAH",
     "subjects": [
       {
@@ -7026,7 +7123,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -7077,13 +7174,13 @@ var  SchoolData={
     "Summary": {
       "TOTAL": 0,
       "average": 0,
-      "Position": 41,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "23",
+    "Roll No": "74",
     "name": "OKEGBILE MONSURAH",
     "subjects": [
       {
@@ -7123,7 +7220,7 @@ var  SchoolData={
         "Total": 68
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 27,
         "EXAM": 54,
         "Total": 81
@@ -7172,15 +7269,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 90,
-      "average": 67.89285714285714,
-      "Position": 1,
+      "TOTAL": 1101.5,
+      "average": 78.67857142857143,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "24",
+    "Roll No": "75",
     "name": "OKEGBILE YUSROH",
     "subjects": [
       {
@@ -7220,7 +7317,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 46,
         "Total": 74
@@ -7269,15 +7366,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 86,
-      "average": 64.21428571428571,
-      "Position": 2,
+      "TOTAL": 979,
+      "average": 69.92857142857143,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "25",
+    "Roll No": "76",
     "name": "OLADEJI KHODIJAH",
     "subjects": [
       {
@@ -7317,7 +7414,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -7366,15 +7463,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 0,
-      "average": 4.714285714285714,
-      "Position": 39,
+      "TOTAL": 123,
+      "average": 8.785714285714286,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "26",
+    "Roll No": "77",
     "name": "OLALEKAN MUTMAINAH",
     "subjects": [
       {
@@ -7414,7 +7511,7 @@ var  SchoolData={
         "Total": 57
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 44,
         "Total": 61
@@ -7463,15 +7560,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 65,
-      "average": 44.42857142857143,
-      "Position": 17,
+      "TOTAL": 707,
+      "average": 50.5,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "27",
+    "Roll No": "78",
     "name": "OLATOYE AZEEZAH",
     "subjects": [
       {
@@ -7511,7 +7608,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 14,
         "EXAM": 29,
         "Total": 43
@@ -7560,15 +7657,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 73,
-      "average": 43.857142857142854,
-      "Position": 18,
+      "TOTAL": 704,
+      "average": 50.285714285714285,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "28",
+    "Roll No": "79",
     "name": "QOMORUDEEN ROHEEMOH",
     "subjects": [
       {
@@ -7608,7 +7705,7 @@ var  SchoolData={
         "Total": 63
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 45,
         "Total": 62
@@ -7657,15 +7754,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 55,
-      "average": 47.17857142857143,
-      "Position": 12,
+      "TOTAL": 748.5,
+      "average": 53.464285714285715,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "29",
+    "Roll No": "80",
     "name": "QOZEEM FATIMOH",
     "subjects": [
       {
@@ -7705,7 +7802,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -7754,15 +7851,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 0,
+      "TOTAL": 12,
       "average": 0.8571428571428571,
-      "Position": 40,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "30",
+    "Roll No": "81",
     "name": "QOZEEM NIMOTALLAHI",
     "subjects": [
       {
@@ -7802,7 +7899,7 @@ var  SchoolData={
         "Total": 65
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 25,
         "Total": 44
@@ -7851,15 +7948,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 60,
-      "average": 42.107142857142854,
-      "Position": 21,
+      "TOTAL": 659.5,
+      "average": 47.107142857142854,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "31",
+    "Roll No": "82",
     "name": "SAHEED AISHAT",
     "subjects": [
       {
@@ -7899,7 +7996,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -7950,13 +8047,13 @@ var  SchoolData={
     "Summary": {
       "TOTAL": 0,
       "average": 0,
-      "Position": 41,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "32",
+    "Roll No": "83",
     "name": "TAIWO SOFIYYAH",
     "subjects": [
       {
@@ -7996,7 +8093,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -8047,13 +8144,13 @@ var  SchoolData={
     "Summary": {
       "TOTAL": 0,
       "average": 0,
-      "Position": 41,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "33",
+    "Roll No": "84",
     "name": "TAJUDEEN SOFIYYYAH",
     "subjects": [
       {
@@ -8093,7 +8190,7 @@ var  SchoolData={
         "Total": 62
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 21,
         "EXAM": 48,
         "Total": 69
@@ -8142,15 +8239,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 62,
-      "average": 50.07142857142857,
-      "Position": 10,
+      "TOTAL": 815,
+      "average": 58.214285714285715,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "34",
+    "Roll No": "85",
     "name": "USMAN MARYAM",
     "subjects": [
       {
@@ -8190,7 +8287,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -8241,13 +8338,13 @@ var  SchoolData={
     "Summary": {
       "TOTAL": 0,
       "average": 0,
-      "Position": 41,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "35",
+    "Roll No": "86",
     "name": "YUSUF ABDULAZEEZ",
     "subjects": [
       {
@@ -8287,7 +8384,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -8338,13 +8435,13 @@ var  SchoolData={
     "Summary": {
       "TOTAL": 0,
       "average": 0,
-      "Position": 41,
+      "Position": "",
       "Class": "JSS2",
-      "Sex": "Female"
+      "Sex": "Male"
     }
   },
   {
-    "Roll No": "36",
+    "Roll No": "87",
     "name": "YUSUFF ROFIAT",
     "subjects": [
       {
@@ -8384,7 +8481,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -8435,13 +8532,13 @@ var  SchoolData={
     "Summary": {
       "TOTAL": 0,
       "average": 0,
-      "Position": 41,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Female"
     }
   },
   {
-    "Roll No": "37",
+    "Roll No": "88",
     "name": "A'HAMMED A'MALIK",
     "subjects": [
       {
@@ -8481,7 +8578,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 15,
         "EXAM": 21,
         "Total": 36
@@ -8530,15 +8627,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 70,
-      "average": 32.285714285714285,
-      "Position": 31,
+      "TOTAL": 519,
+      "average": 37.07142857142857,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "38",
+    "Roll No": "89",
     "name": "AKEEB MUHYDEEN",
     "subjects": [
       {
@@ -8578,7 +8675,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 22,
         "EXAM": 46,
         "Total": 68
@@ -8627,15 +8724,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 84,
-      "average": 64.14285714285714,
-      "Position": 3,
+      "TOTAL": 1037,
+      "average": 74.07142857142857,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "39",
+    "Roll No": "90",
     "name": "A'LATEEF  MUHTAR",
     "subjects": [
       {
@@ -8675,7 +8772,7 @@ var  SchoolData={
         "Total": 48
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 15,
         "Total": 25
@@ -8724,15 +8821,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 36,
-      "average": 29.535714285714285,
-      "Position": 33,
+      "TOTAL": 455.5,
+      "average": 32.535714285714285,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "40",
+    "Roll No": "91",
     "name": "A'LATEEF A'ROFIU",
     "subjects": [
       {
@@ -8772,7 +8869,7 @@ var  SchoolData={
         "Total": 72
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 37,
         "Total": 48
@@ -8821,15 +8918,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 61,
-      "average": 52.07142857142857,
-      "Position": 8,
+      "TOTAL": 838,
+      "average": 59.857142857142854,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "41",
+    "Roll No": "92",
     "name": "ALIYU ADAM",
     "subjects": [
       {
@@ -8869,7 +8966,7 @@ var  SchoolData={
         "Total": 49
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 22,
         "EXAM": 30,
         "Total": 52
@@ -8918,15 +9015,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 79,
-      "average": 42.42857142857143,
-      "Position": 20,
+      "TOTAL": 676,
+      "average": 48.285714285714285,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "42",
+    "Roll No": "93",
     "name": "BADMUS AWWAL",
     "subjects": [
       {
@@ -8966,7 +9063,7 @@ var  SchoolData={
         "Total": 49
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 11,
         "EXAM": 26,
         "Total": 37
@@ -9015,15 +9112,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 45,
-      "average": 31.178571428571427,
-      "Position": 32,
+      "TOTAL": 508.5,
+      "average": 36.32142857142857,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "43",
+    "Roll No": "94",
     "name": "DURODOLA A'BASIT",
     "subjects": [
       {
@@ -9063,7 +9160,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 15,
         "EXAM": 24,
         "Total": 39
@@ -9112,15 +9209,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 71,
-      "average": 33.92857142857143,
-      "Position": 30,
+      "TOTAL": 571,
+      "average": 40.785714285714285,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "44",
+    "Roll No": "95",
     "name": "HAMZAH AWWAL",
     "subjects": [
       {
@@ -9160,7 +9257,7 @@ var  SchoolData={
         "Total": 48
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 41,
         "Total": 60
@@ -9209,15 +9306,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 80,
-      "average": 53.607142857142854,
-      "Position": 6,
+      "TOTAL": 847.5,
+      "average": 60.535714285714285,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "45",
+    "Roll No": "96",
     "name": "HASSAN HAMAD",
     "subjects": [
       {
@@ -9257,7 +9354,7 @@ var  SchoolData={
         "Total": 48
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 6,
         "EXAM": 5,
         "Total": 11
@@ -9306,15 +9403,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
-      "average": 36.714285714285715,
-      "Position": 28,
+      "TOTAL": 569,
+      "average": 40.642857142857146,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "46",
+    "Roll No": "97",
     "name": "IBRAHIM AWWAL",
     "subjects": [
       {
@@ -9354,7 +9451,7 @@ var  SchoolData={
         "Total": 47
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 21,
         "Total": 31
@@ -9403,15 +9500,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 50,
-      "average": 29.071428571428573,
-      "Position": 35,
+      "TOTAL": 487,
+      "average": 34.785714285714285,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "47",
+    "Roll No": "98",
     "name": "KELANI TIJANI",
     "subjects": [
       {
@@ -9451,7 +9548,7 @@ var  SchoolData={
         "Total": 48
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 15,
         "Total": 25
@@ -9500,15 +9597,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 40,
-      "average": 29.464285714285715,
-      "Position": 34,
+      "TOTAL": 485.5,
+      "average": 34.67857142857143,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "48",
+    "Roll No": "99",
     "name": "MUSILIU A'SALAM",
     "subjects": [
       {
@@ -9548,7 +9645,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 0,
         "Total": 17
@@ -9597,15 +9694,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 45,
-      "average": 28.178571428571427,
-      "Position": 36,
+      "TOTAL": 442.5,
+      "average": 31.607142857142858,
+      "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "49",
+    "Roll No": "100",
     "name": "MUSTAPHA MUHTAR",
     "subjects": [
       {
@@ -9645,7 +9742,7 @@ var  SchoolData={
         "Total": 56
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 13,
         "Total": 32
@@ -9694,15 +9791,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 52,
-      "average": 38.142857142857146,
+      "TOTAL": 602,
+      "average": 43,
       "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "50",
+    "Roll No": "101",
     "name": "OYEWOLE A'SALAM ",
     "subjects": [
       {
@@ -9742,7 +9839,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 24,
         "Total": 34
@@ -9791,15 +9888,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 38,
-      "average": 29.357142857142858,
-      "Position": "",
+      "TOTAL": 488,
+      "average": 34.857142857142854,
+      "Position": "48th",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "51",
+    "Roll No": "102",
     "name": "YUSUF A'SALAM",
     "subjects": [
       {
@@ -9839,7 +9936,7 @@ var  SchoolData={
         "Total": 47
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 27,
         "Total": 37
@@ -9888,15 +9985,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 64,
-      "average": 42.32142857142857,
+      "TOTAL": 675.5,
+      "average": 48.25,
       "Position": "",
       "Class": "JSS2",
       "Sex": "Male"
     }
   },
   {
-    "Roll No": "52",
+    "Roll No": "103",
     "name": "AKINLABI AISHAH",
     "subjects": [
       {
@@ -9936,7 +10033,7 @@ var  SchoolData={
         "Total": 58
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 18,
         "EXAM": 46,
         "Total": 64
@@ -9985,15 +10082,15 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 64,
-      "average": 47.92857142857143,
+      "TOTAL": 785,
+      "average": 56.07142857142857,
       "Position": "",
       "Class": "JSS2",
-      "Sex": "Male"
+      "Sex": "Female"
     }
   },
   {
-    "Roll No": "1",
+    "Roll No": "104",
     "name": "A'WAHEED A'RAHMAN",
     "subjects": [
       {
@@ -10033,7 +10130,7 @@ var  SchoolData={
         "Total": 71
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 27,
         "EXAM": 31,
         "Total": 58
@@ -10082,7 +10179,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 80,
+      "TOTAL": 1064,
       "average": 76,
       "Position": "2nd",
       "Class": "JSS3",
@@ -10090,7 +10187,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "2",
+    "Roll No": "105",
     "name": "ADESOKAN MUSTOPHA",
     "subjects": [
       {
@@ -10130,7 +10227,7 @@ var  SchoolData={
         "Total": 64
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 24,
         "EXAM": 22,
         "Total": 46
@@ -10179,7 +10276,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 78,
+      "TOTAL": 985,
       "average": 70.21428571428571,
       "Position": "6th",
       "Class": "JSS3",
@@ -10187,7 +10284,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "3",
+    "Roll No": "106",
     "name": "ADEGBOLA A'HADI",
     "subjects": [
       {
@@ -10227,7 +10324,7 @@ var  SchoolData={
         "Total": 57
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 15,
         "EXAM": 17,
         "Total": 32
@@ -10276,7 +10373,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 61,
+      "TOTAL": 759,
       "average": 54.892857142857146,
       "Position": "26th",
       "Class": "JSS3",
@@ -10284,7 +10381,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "4",
+    "Roll No": "107",
     "name": "AJIBADE A'SOMAD",
     "subjects": [
       {
@@ -10324,7 +10421,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 15,
         "Total": 31
@@ -10373,7 +10470,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 58,
+      "TOTAL": 662,
       "average": 48.035714285714285,
       "Position": "30th",
       "Class": "JSS3",
@@ -10381,7 +10478,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "5",
+    "Roll No": "108",
     "name": "A'FATAI UMAR FARUQ",
     "subjects": [
       {
@@ -10421,7 +10518,7 @@ var  SchoolData={
         "Total": 47
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 27,
         "EXAM": 6,
         "Total": 33
@@ -10470,7 +10567,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 19,
+      "TOTAL": 617,
       "average": 46.42857142857143,
       "Position": "32nd",
       "Class": "JSS3",
@@ -10478,7 +10575,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "6",
+    "Roll No": "109",
     "name": "ASIMIYU SHERIFF",
     "subjects": [
       {
@@ -10518,7 +10615,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 12,
         "Total": 20
@@ -10567,7 +10664,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 44,
+      "TOTAL": 453,
       "average": 33.214285714285715,
       "Position": "41st",
       "Class": "JSS3",
@@ -10575,7 +10672,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "7",
+    "Roll No": "110",
     "name": "ALATISE A'QUYYUM",
     "subjects": [
       {
@@ -10615,7 +10712,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 8,
         "Total": 27
@@ -10664,7 +10761,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
+      "TOTAL": 690,
       "average": 50.357142857142854,
       "Position": "29th",
       "Class": "JSS3",
@@ -10672,7 +10769,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "8",
+    "Roll No": "111",
     "name": "BASHIRU A'BASIT",
     "subjects": [
       {
@@ -10712,7 +10809,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 14,
         "EXAM": 29,
         "Total": 43
@@ -10761,7 +10858,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 21,
+      "TOTAL": 335,
       "average": 24,
       "Position": "45th",
       "Class": "JSS3",
@@ -10769,7 +10866,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "9",
+    "Roll No": "112",
     "name": "FOLORUNSO KHALID",
     "subjects": [
       {
@@ -10809,7 +10906,7 @@ var  SchoolData={
         "Total": 50
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 22,
         "EXAM": 16,
         "Total": 38
@@ -10858,7 +10955,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 48,
+      "TOTAL": 599,
       "average": 43.642857142857146,
       "Position": "36th",
       "Class": "JSS3",
@@ -10866,7 +10963,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "10",
+    "Roll No": "113",
     "name": "ISMAIL JAMIU",
     "subjects": [
       {
@@ -10906,7 +11003,7 @@ var  SchoolData={
         "Total": 44
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 10,
         "Total": 27
@@ -10955,7 +11052,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 48,
+      "TOTAL": 473,
       "average": 34.857142857142854,
       "Position": "40th",
       "Class": "JSS3",
@@ -10963,7 +11060,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "11",
+    "Roll No": "114",
     "name": "QOMORUDEEN HABEEBULLAH",
     "subjects": [
       {
@@ -11003,7 +11100,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 0,
         "Total": 8
@@ -11052,7 +11149,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 40,
+      "TOTAL": 507,
       "average": 36.5,
       "Position": "39th",
       "Class": "JSS3",
@@ -11060,7 +11157,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "12",
+    "Roll No": "115",
     "name": "NURUDEEN NURUDEEN",
     "subjects": [
       {
@@ -11100,7 +11197,7 @@ var  SchoolData={
         "Total": 55
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 25,
         "EXAM": 0,
         "Total": 25
@@ -11149,7 +11246,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 48,
+      "TOTAL": 610,
       "average": 44.5,
       "Position": "35th",
       "Class": "JSS3",
@@ -11157,7 +11254,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "13",
+    "Roll No": "116",
     "name": "OLADOKUN A'RAHMAN",
     "subjects": [
       {
@@ -11197,7 +11294,7 @@ var  SchoolData={
         "Total": 52
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 24,
         "EXAM": 30,
         "Total": 54
@@ -11246,7 +11343,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 61,
+      "TOTAL": 923,
       "average": 65.92857142857143,
       "Position": "10th",
       "Class": "JSS3",
@@ -11254,7 +11351,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "14",
+    "Roll No": "117",
     "name": "OLASUPO A'QUDUS",
     "subjects": [
       {
@@ -11294,7 +11391,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 0,
         "Total": 8
@@ -11343,7 +11440,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 0,
+      "TOTAL": 32,
       "average": 2.2857142857142856,
       "Position": "47th",
       "Class": "JSS3",
@@ -11351,7 +11448,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "15",
+    "Roll No": "118",
     "name": "OYEBAMIJI A'ROSHEED",
     "subjects": [
       {
@@ -11391,7 +11488,7 @@ var  SchoolData={
         "Total": 43
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 27,
         "EXAM": 34,
         "Total": 61
@@ -11440,7 +11537,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 64,
+      "TOTAL": 864,
       "average": 62.75,
       "Position": "17th",
       "Class": "JSS3",
@@ -11448,7 +11545,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "16",
+    "Roll No": "119",
     "name": "OKUNLOLA A'QUDUS",
     "subjects": [
       {
@@ -11488,7 +11585,7 @@ var  SchoolData={
         "Total": 54
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 23,
         "EXAM": 17,
         "Total": 40
@@ -11537,7 +11634,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 61,
+      "TOTAL": 820,
       "average": 58.535714285714285,
       "Position": "20th",
       "Class": "JSS3",
@@ -11545,7 +11642,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "17",
+    "Roll No": "120",
     "name": "OLAPADE A'SALAM",
     "subjects": [
       {
@@ -11585,7 +11682,7 @@ var  SchoolData={
         "Total": 55
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 19,
         "Total": 36
@@ -11634,7 +11731,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 48,
+      "TOTAL": 783,
       "average": 53.285714285714285,
       "Position": "23rd",
       "Class": "JSS3",
@@ -11642,7 +11739,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "18",
+    "Roll No": "121",
     "name": "OLAKUNLE A'MUIZ",
     "subjects": [
       {
@@ -11682,7 +11779,7 @@ var  SchoolData={
         "Total": 58
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 27,
         "EXAM": 26,
         "Total": 53
@@ -11731,7 +11828,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 62,
+      "TOTAL": 1015,
       "average": 71.39285714285714,
       "Position": "4th",
       "Class": "JSS3",
@@ -11739,7 +11836,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "19",
+    "Roll No": "122",
     "name": "QOSIM AHMAD",
     "subjects": [
       {
@@ -11779,7 +11876,7 @@ var  SchoolData={
         "Total": 50
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 24,
         "EXAM": 12,
         "Total": 36
@@ -11828,7 +11925,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
+      "TOTAL": 826,
       "average": 59.5,
       "Position": "19th",
       "Class": "JSS3",
@@ -11836,7 +11933,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "20",
+    "Roll No": "123",
     "name": "SAHEED A'BASIT",
     "subjects": [
       {
@@ -11876,7 +11973,7 @@ var  SchoolData={
         "Total": 49
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 27,
         "EXAM": 29,
         "Total": 56
@@ -11925,7 +12022,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 67,
+      "TOTAL": 868,
       "average": 62.392857142857146,
       "Position": "15th",
       "Class": "JSS3",
@@ -11933,7 +12030,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "21",
+    "Roll No": "124",
     "name": "SHARAFDEEN M'AWWAL",
     "subjects": [
       {
@@ -11973,7 +12070,7 @@ var  SchoolData={
         "Total": 50
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 17,
         "EXAM": 14,
         "Total": 31
@@ -12022,7 +12119,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 42,
+      "TOTAL": 583,
       "average": 42.857142857142854,
       "Position": "37th",
       "Class": "JSS3",
@@ -12030,7 +12127,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "22",
+    "Roll No": "125",
     "name": "TIAMIYU HABEEBULLAH",
     "subjects": [
       {
@@ -12070,7 +12167,7 @@ var  SchoolData={
         "Total": 50
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 23,
         "EXAM": 28,
         "Total": 51
@@ -12119,7 +12216,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 60,
+      "TOTAL": 891,
       "average": 64.10714285714286,
       "Position": "13rd",
       "Class": "JSS3",
@@ -12127,7 +12224,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "23",
+    "Roll No": "126",
     "name": "LUQMAN UMAR",
     "subjects": [
       {
@@ -12167,7 +12264,7 @@ var  SchoolData={
         "Total": 51
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 25,
         "EXAM": 22,
         "Total": 47
@@ -12216,7 +12313,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 65,
+      "TOTAL": 888,
       "average": 64.03571428571429,
       "Position": "14th",
       "Class": "JSS3",
@@ -12224,7 +12321,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "24",
+    "Roll No": "127",
     "name": "A'FATAI A'HAMEED",
     "subjects": [
       {
@@ -12264,7 +12361,7 @@ var  SchoolData={
         "Total": 53
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 20,
         "EXAM": 15,
         "Total": 35
@@ -12313,7 +12410,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 61,
+      "TOTAL": 819,
       "average": 58.714285714285715,
       "Position": "21st",
       "Class": "JSS3",
@@ -12321,7 +12418,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "25",
+    "Roll No": "128",
     "name": "ABDULGANIY ZAINAB",
     "subjects": [
       {
@@ -12361,7 +12458,7 @@ var  SchoolData={
         "Total": 49
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 14,
         "EXAM": 11,
         "Total": 25
@@ -12410,7 +12507,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 44,
+      "TOTAL": 778,
       "average": 56.57142857142857,
       "Position": "24th",
       "Class": "JSS3",
@@ -12418,7 +12515,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "26",
+    "Roll No": "129",
     "name": "ABDULJELEEL MARYAM",
     "subjects": [
       {
@@ -12458,7 +12555,7 @@ var  SchoolData={
         "Total": 42
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 12,
         "Total": 28
@@ -12507,7 +12604,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 53,
+      "TOTAL": 703,
       "average": 51.25,
       "Position": "27th",
       "Class": "JSS3",
@@ -12515,7 +12612,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "27",
+    "Roll No": "130",
     "name": "ABDULROSHEED AFSOH",
     "subjects": [
       {
@@ -12555,7 +12652,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -12604,7 +12701,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 0,
+      "TOTAL": 23,
       "average": 1.6428571428571428,
       "Position": "48th",
       "Class": "JSS3",
@@ -12612,7 +12709,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "28",
+    "Roll No": "131",
     "name": "ADETONA YESIROH",
     "subjects": [
       {
@@ -12652,7 +12749,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 15,
         "EXAM": 22,
         "Total": 37
@@ -12701,7 +12798,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 63,
+      "TOTAL": 868,
       "average": 62.42857142857143,
       "Position": "15th",
       "Class": "JSS3",
@@ -12709,7 +12806,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "29",
+    "Roll No": "132",
     "name": "ADESHINA RODIYYAH",
     "subjects": [
       {
@@ -12749,7 +12846,7 @@ var  SchoolData={
         "Total": 57
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 32,
         "Total": 60
@@ -12798,7 +12895,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 68,
+      "TOTAL": 982,
       "average": 71.35714285714286,
       "Position": "7th",
       "Class": "JSS3",
@@ -12806,7 +12903,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "30",
+    "Roll No": "133",
     "name": "ADIATU NIMOTALLAH",
     "subjects": [
       {
@@ -12846,7 +12943,7 @@ var  SchoolData={
         "Total": 51
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 16,
         "EXAM": 7,
         "Total": 23
@@ -12895,7 +12992,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 16,
+      "TOTAL": 646,
       "average": 44.07142857142857,
       "Position": "31st",
       "Class": "JSS3",
@@ -12903,7 +13000,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "31",
+    "Roll No": "134",
     "name": "ADIGUN MUSLIMAH",
     "subjects": [
       {
@@ -12943,7 +13040,7 @@ var  SchoolData={
         "Total": 55
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 24,
         "Total": 52
@@ -12992,7 +13089,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 77,
+      "TOTAL": 947,
       "average": 68.64285714285714,
       "Position": "8th",
       "Class": "JSS3",
@@ -13000,7 +13097,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "32",
+    "Roll No": "135",
     "name": "AGBOOLA SOOLIAH",
     "subjects": [
       {
@@ -13040,7 +13137,7 @@ var  SchoolData={
         "Total": 42
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 26,
         "EXAM": 25,
         "Total": 51
@@ -13089,7 +13186,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 75,
+      "TOTAL": 900,
       "average": 64.85714285714286,
       "Position": "11st",
       "Class": "JSS3",
@@ -13097,7 +13194,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "33",
+    "Roll No": "136",
     "name": "AKINLABI AROFAH",
     "subjects": [
       {
@@ -13137,7 +13234,7 @@ var  SchoolData={
         "Total": 48
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 24,
         "EXAM": 23,
         "Total": 47
@@ -13186,7 +13283,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 54,
+      "TOTAL": 777,
       "average": 55.857142857142854,
       "Position": "25th",
       "Class": "JSS3",
@@ -13194,7 +13291,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "34",
+    "Roll No": "137",
     "name": "AREOYE IKIMOH",
     "subjects": [
       {
@@ -13234,7 +13331,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 8,
         "EXAM": 12,
         "Total": 20
@@ -13283,7 +13380,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 27,
+      "TOTAL": 366,
       "average": 27.107142857142858,
       "Position": "44th",
       "Class": "JSS3",
@@ -13291,7 +13388,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "35",
+    "Roll No": "138",
     "name": "DAUD ISLAMIYYAH",
     "subjects": [
       {
@@ -13331,7 +13428,7 @@ var  SchoolData={
         "Total": 42
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 10,
         "EXAM": 11,
         "Total": 21
@@ -13380,7 +13477,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 34,
+      "TOTAL": 546,
       "average": 40.214285714285715,
       "Position": "38th",
       "Class": "JSS3",
@@ -13388,7 +13485,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "36",
+    "Roll No": "139",
     "name": "KOLAWOLE RAHMATULLAH",
     "subjects": [
       {
@@ -13428,7 +13525,7 @@ var  SchoolData={
         "Total": 62
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 21,
         "EXAM": 19,
         "Total": 40
@@ -13477,7 +13574,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 60,
+      "TOTAL": 798,
       "average": 58.392857142857146,
       "Position": "22nd",
       "Class": "JSS3",
@@ -13485,7 +13582,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "37",
+    "Roll No": "140",
     "name": "OLADELE SOFIYAH",
     "subjects": [
       {
@@ -13525,7 +13622,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -13574,7 +13671,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 10,
+      "TOTAL": 51,
       "average": 3.642857142857143,
       "Position": "46th",
       "Class": "JSS3",
@@ -13582,7 +13679,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "38",
+    "Roll No": "141",
     "name": "OLANIYAN AISHA",
     "subjects": [
       {
@@ -13622,7 +13719,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 21,
         "Total": 49
@@ -13671,7 +13768,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 64,
+      "TOTAL": 899,
       "average": 65.17857142857143,
       "Position": "12nd",
       "Class": "JSS3",
@@ -13679,7 +13776,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "39",
+    "Roll No": "142",
     "name": "QOZEEM MARYAM",
     "subjects": [
       {
@@ -13719,7 +13816,7 @@ var  SchoolData={
         "Total": 60
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 15,
         "EXAM": 18,
         "Total": 33
@@ -13768,7 +13865,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 40,
+      "TOTAL": 612,
       "average": 45.035714285714285,
       "Position": "34th",
       "Class": "JSS3",
@@ -13776,7 +13873,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "40",
+    "Roll No": "143",
     "name": "RAJI MARYAM",
     "subjects": [
       {
@@ -13816,7 +13913,7 @@ var  SchoolData={
         "Total": 64
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 30,
         "Total": 58
@@ -13865,7 +13962,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 80,
+      "TOTAL": 1101,
       "average": 79.5,
       "Position": "1st",
       "Class": "JSS3",
@@ -13873,7 +13970,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "41",
+    "Roll No": "144",
     "name": "SALAWUDEEN RODIAH",
     "subjects": [
       {
@@ -13913,7 +14010,7 @@ var  SchoolData={
         "Total": 43
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 19,
         "EXAM": 16,
         "Total": 35
@@ -13962,7 +14059,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 36,
+      "TOTAL": 615,
       "average": 44.464285714285715,
       "Position": "33rd",
       "Class": "JSS3",
@@ -13970,7 +14067,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "42",
+    "Roll No": "145",
     "name": "SHERIFF AISHA",
     "subjects": [
       {
@@ -14010,7 +14107,7 @@ var  SchoolData={
         "Total": 42
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 15,
         "EXAM": 21,
         "Total": 36
@@ -14059,7 +14156,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 60,
+      "TOTAL": 701,
       "average": 50.5,
       "Position": "28th",
       "Class": "JSS3",
@@ -14067,7 +14164,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "43",
+    "Roll No": "146",
     "name": "TEWOGBADE SOLIAH",
     "subjects": [
       {
@@ -14107,7 +14204,7 @@ var  SchoolData={
         "Total": 48
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 27,
         "EXAM": 25,
         "Total": 52
@@ -14156,7 +14253,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 59,
+      "TOTAL": 942,
       "average": 68.07142857142857,
       "Position": "9th",
       "Class": "JSS3",
@@ -14164,7 +14261,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "44",
+    "Roll No": "147",
     "name": "TIAMIYU HABEEBAH",
     "subjects": [
       {
@@ -14204,7 +14301,7 @@ var  SchoolData={
         "Total": 45
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 28,
         "Total": 56
@@ -14253,7 +14350,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 84,
+      "TOTAL": 1011,
       "average": 73.53571428571429,
       "Position": "5th",
       "Class": "JSS3",
@@ -14261,7 +14358,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "45",
+    "Roll No": "148",
     "name": "YUSSUF AISHAT",
     "subjects": [
       {
@@ -14301,7 +14398,7 @@ var  SchoolData={
         "Total": 65
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 23,
         "EXAM": 14,
         "Total": 37
@@ -14350,7 +14447,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 55,
+      "TOTAL": 836,
       "average": 59.67857142857143,
       "Position": "18th",
       "Class": "JSS3",
@@ -14358,7 +14455,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "46",
+    "Roll No": "149",
     "name": "YUSSUF MARDHIYYAH",
     "subjects": [
       {
@@ -14398,7 +14495,7 @@ var  SchoolData={
         "Total": 70
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 28,
         "EXAM": 33,
         "Total": 61
@@ -14447,7 +14544,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 69,
+      "TOTAL": 1063,
       "average": 76.60714285714286,
       "Position": "3rd",
       "Class": "JSS3",
@@ -14455,7 +14552,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "47",
+    "Roll No": "150",
     "name": "ADAMS MARYAM",
     "subjects": [
       {
@@ -14495,7 +14592,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 13,
         "EXAM": 10,
         "Total": 23
@@ -14544,7 +14641,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 9,
+      "TOTAL": 412,
       "average": 28.285714285714285,
       "Position": "43rd",
       "Class": "JSS3",
@@ -14552,7 +14649,7 @@ var  SchoolData={
     }
   },
   {
-    "Roll No": "48",
+    "Roll No": "151",
     "name": "ABEEB SHERIFAH",
     "subjects": [
       {
@@ -14592,7 +14689,7 @@ var  SchoolData={
         "Total": 0
       },
       {
-        "name": "Civic/History",
+        "name": "Civic Ed.",
         "C.A Test": 0,
         "EXAM": 0,
         "Total": 0
@@ -14641,7 +14738,7 @@ var  SchoolData={
       }
     ],
     "Summary": {
-      "TOTAL": 47,
+      "TOTAL": 432,
       "average": 28.357142857142858,
       "Position": "42nd",
       "Class": "JSS3",

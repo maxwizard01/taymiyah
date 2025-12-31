@@ -51,7 +51,7 @@
       <div class="small">2025</div>
     </footer>
   </div>
-<script src="seniorFirstTerm.js"></script>
+<script src="jssFirstTerm.js"></script>
 
 <script>
 // Fallback sample data (used if data.json cannot be fetched)
@@ -123,10 +123,10 @@ function calcTotals(student){
     s.total = (Number(s["C.A Test"])||0) + (Number(s.EXAM)||0);
     total += s.total;
   });
-  student.total_obtained = student.Summary['TOTAL'];
-   student.total_mark_obtainable=10*100
+  student.total_obtained = total;
+   student.total_mark_obtainable=subs.length*100
    student.session="2025/2026"
-  student.percentage = student.total_mark_obtainable ? (student.total_obtained/ student.total_mark_obtainable * 100) : 0;
+  student.percentage = student.total_mark_obtainable ? (total / student.total_mark_obtainable * 100) : 0;
   // simple grade mapping
   student.session='2025/2026'
   const p = student.percentage;

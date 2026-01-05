@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simultaneous Equation Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.card {
+    background: #fff;
+    max-width: 600px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+}
+h2 { margin-top: 0; }
+#question {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap: 10px;
+}
+button {
+    padding: 12px;
+    background: #203a43;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover {
+    background: #0f2027;
+}
+#feedback {
+    margin-top: 15px;
+    font-weight: bold;
+}
+.correct { color: green; }
+.wrong { color: red; }
+#steps {
+    margin-top: 15px;
+    background: #f4f4f4;
+    padding: 10px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>📘 Solve the Simultaneous Equations</h2>
+
+<p id="question"></p>
+
+<div class="options" id="options"></div>
+
+<p id="feedback"></p>
+<div id="steps"></div>
+</div>
+
+<script>
+let solution = { x: 0, y: 0 };
+
+function rand(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateSimultaneous() {
+    // Step 1: Choose solution
+    let x = rand(-10, 15);
+    let y = rand(-10, 15);
+    if (x === 0) x = 2;
+    if (y === 0) y = -3;
+
+    // Step 2: Coefficients
+    let a1 = rand(1, 5);
+    let b1 = rand(1, 5);
+    let a2 = rand(1, 5);
+    let b2 = rand(1, 5);
+
+    // Ensure equations are not multiples
+    if (a1 * b2 === a2 * b1) {
+        return generateSimultaneous();
+    }
+
+    // Step 3: Constants
+    let c1 = a1 * x + b1 * y;
+    let c2 = a2 * x + b2 * y;
+
+    solution = { x, y };
+
+    let eq1 = `${a1}x ${b1 < 0 ? "- " : "+ "}${Math.abs(b1)}y = ${c1}`;
+    let eq2 = `${a2}x ${b2 < 0 ? "- " : "+ "}${Math.abs(b2)}y = ${c2}`;
+
+    let steps = `
+        <b>Equation (1):</b> ${eq1}<br>
+        <b>Equation (2):</b> ${eq2}<br><br>
+
+        <b>Step 1:</b> Multiply equations to eliminate one variable<br>
+        <b>Step 2:</b> Subtract equations<br>
+        <b>Step 3:</b> Solve for x or y<br>
+        <b>Step 4:</b> Substitute back<br><br>
+
+        <b>Answer:</b> x = ${x}, y = ${y}
+    `;
+
+    return { eq1, eq2, steps };
+}
+
+function generateQuestion() {
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("steps").style.display = "none";
+
+    let data = generateSimultaneous();
+    document.getElementById("question").innerHTML =
+        `${data.eq1}<br>${data.eq2}`;
+
+    let correct = `x = ${solution.x}, y = ${solution.y}`;
+
+    let options = new Set([correct]);
+    while (options.size < 4) {
+        let fx = rand(-5,5);
+        let fy = rand(-5,5);
+        options.add(`x = ${fx}, y = ${fy}`);
+    }
+
+    document.getElementById("options").innerHTML =
+        [...options].sort(()=>Math.random()-0.5)
+        .map(o=>`<button onclick="check('${o}',\`${data.steps}\`)">${o}</button>`)
+        .join("");
+}
+
+function check(choice, steps) {
+    let f = document.getElementById("feedback");
+    let s = document.getElementById("steps");
+
+    let correct = `x = ${solution.x}, y = ${solution.y}`;
+
+    if (choice === correct) {
+        f.textContent = "✅ Correct!";
+        f.className = "correct";
+    } else {
+        f.textContent = "❌ Wrong";
+        f.className = "wrong";
+    }
+
+    s.innerHTML = steps;
+    s.style.display = "block";
+
+    setTimeout(generateQuestion, 3000);
+}
+
+generateQuestion();
+</script>
+
+</body>
+</html>

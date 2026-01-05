@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number & Numeration Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#283048,#859398);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.card {
+    background: #fff;
+    max-width: 750px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+}
+select {
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+#question {
+    font-size: 1.3rem;
+    margin: 15px 0;
+}
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 10px;
+}
+button {
+    padding: 12px;
+    background: #283048;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover {
+    background: #1b1f2b;
+}
+#feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.correct { color: green; }
+.wrong { color: red; }
+#steps {
+    background: #f4f4f4;
+    margin-top: 15px;
+    padding: 10px;
+    display: none;
+    text-align: left;
+}
+#score {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>📘 Number & Numeration Quiz</h2>
+
+<select id="mode" onchange="generateQuestion()">
+    <option value="0">All Patterns (Random)</option>
+    <option value="1">H.C.F / L.C.M</option>
+    <option value="2">Prime Factorization</option>
+    <option value="3">Fraction → Decimal / Percentage</option>
+    <option value="4">Approximation</option>
+</select>
+
+<div id="score">Score: 0 / 0 (0%)</div>
+
+<p id="question"></p>
+<div class="options" id="options"></div>
+<p id="feedback"></p>
+<div id="steps"></div>
+</div>
+
+<script>
+let correctAnswer="";
+let attempts=0, correct=0;
+let lock=false;
+
+function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+
+function updateScore(){
+    let percent = attempts ? Math.round(correct/attempts*100) : 0;
+    document.getElementById("score").textContent =
+        `Score: ${correct} / ${attempts} (${percent}%)`;
+}
+
+function gcd(a,b){ return b===0 ? a : gcd(b,a%b); }
+function lcm(a,b){ return (a*b)/gcd(a,b); }
+
+function generateQuestion(){
+    lock=false;
+    document.getElementById("feedback").textContent="";
+    document.getElementById("steps").style.display="none";
+
+    let mode = Number(document.getElementById("mode").value);
+    if(mode===0) mode = rand(1,4);
+
+    let q="", s="", a="";
+
+    /* 1. HCF / LCM */
+    if(mode===1){
+        let nums = [rand(6,20), rand(6,20), rand(6,20)];
+        let useTwo = Math.random()<0.5;
+        let list = useTwo ? nums.slice(0,2) : nums;
+
+        if(Math.random()<0.5){
+            q=`Find the H.C.F of ${list.join(", ")}`;
+            let h = list.reduce((x,y)=>gcd(x,y));
+            a=h.toString();
+            s=`Prime factorize the numbers<br>Common factors give HCF = ${a}`;
+        }else{
+            q=`Find the L.C.M of ${list.join(", ")}`;
+            let l = list.reduce((x,y)=>lcm(x,y));
+            a=l.toString();
+            s=`Use prime factors<br>LCM = ${a}`;
+        }
+    }
+
+    /* 2. Prime Factorization */
+    /* 2. Prime Factorization */
+if(mode===2){
+    let n = rand(24,96);
+
+    // Get prime factors
+    let temp=n, map={};
+    for(let i=2;i<=temp;i++){
+        while(temp%i===0){
+            map[i]=(map[i]||0)+1;
+            temp/=i;
+        }
+    }
+
+    // Correct answer in index form
+    let correct = Object.keys(map)
+        .map(p => map[p]===1 ? p : `${p}<sup>${map[p]}</sup>`)
+        .join(" × ");
+
+    q = `Express ${n} as a product of its prime factors`;
+    a = correct;
+
+    // Generate realistic wrong options
+    let opts = new Set([correct]);
+
+    while(opts.size < 4){
+        let fake = [];
+
+        Object.keys(map).forEach(p=>{
+            let power = map[p];
+            let change = rand(-1,1);
+            let newPower = Math.max(1, power + change);
+            fake.push(newPower===1 ? p : `${p}<sup>${newPower}</sup>`);
+        });
+
+        opts.add(fake.join(" × "));
+    }
+
+    s = `
+    ${n} is divided by prime numbers<br>
+    Prime factors = ${Object.keys(map).join(", ")}<br>
+    <b>Answer:</b> ${correct}
+    `;
+
+    correctAnswer = a;
+
+    document.getElementById("question").innerHTML = q;
+    document.getElementById("options").innerHTML =
+        [...opts].sort(()=>Math.random()-0.5)
+        .map(o=>`<button onclick="check('${o}',\`${s}\`)">${o}</button>`)
+        .join("");
+    return;
+}
+
+    /* 3. Fraction → Decimal / Percentage */
+    if(mode===3){
+        let num=rand(1,9), den=rand(2,10);
+        let frac=`${num}/${den}`;
+        if(Math.random()<0.5){
+            a=(num/den).toFixed(2);
+            q=`Convert ${frac} to a decimal`;
+            s=`${num} ÷ ${den} = ${a}`;
+        }else{
+            a=((num/den)*100).toFixed(1)+"%";
+            q=`Convert ${frac} to a percentage`;
+            s=`(${num} ÷ ${den}) × 100% = ${a}`;
+        }
+    }
+
+    /* 4. Approximation */
+    if(mode===4){
+        let n=(Math.random()*100).toFixed(4);
+        let type=rand(1,3);
+
+        if(type===1){
+            q=`Round ${n} to 2 decimal places`;
+            a=(Math.round(n*100)/100).toFixed(2);
+            s=`Check 3rd decimal digit → ${a}`;
+        }
+        if(type===2){
+            q=`Round ${n} to 3 significant figures`;
+            a=Number(n).toPrecision(3);
+            s=`Count 3 significant digits → ${a}`;
+        }
+        if(type===3){
+            q=`Round ${n} to the nearest whole number`;
+            a=Math.round(n).toString();
+            s=`Check decimal part → ${a}`;
+        }
+    }
+
+    correctAnswer=a;
+    document.getElementById("question").innerHTML=q;
+
+    let opts=new Set([a]);
+    while(opts.size<4){
+        opts.add((rand(1,200)).toString());
+    }
+
+    document.getElementById("options").innerHTML=
+        [...opts].sort(()=>Math.random()-0.5)
+        .map(o=>`<button onclick="check('${o}',\`${s}\`)">${o}</button>`)
+        .join("");
+}
+
+function check(choice,steps){
+    if(lock) return;
+    lock=true;
+
+    attempts++;
+    let f=document.getElementById("feedback");
+    let st=document.getElementById("steps");
+
+    if(choice===correctAnswer){
+        correct++;
+        f.textContent="✅ Correct!";
+        f.className="correct";
+    }else{
+        f.textContent="❌ Wrong";
+        f.className="wrong";
+    }
+
+    updateScore();
+    st.innerHTML=steps;
+    st.style.display="block";
+
+    setTimeout(generateQuestion, 3000);
+}
+
+generateQuestion();
+</script>
+
+</body>
+</html>

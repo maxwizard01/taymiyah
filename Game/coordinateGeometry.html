@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coordinate Geometry Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#141e30,#243b55);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.card {
+    background: #fff;
+    max-width: 650px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+}
+h2 { margin-top: 0; }
+#question {
+    font-size: 1.3rem;
+    margin: 20px 0;
+}
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+    gap: 10px;
+}
+button {
+    padding: 12px;
+    background: #243b55;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover {
+    background: #141e30;
+}
+#feedback {
+    margin-top: 15px;
+    font-weight: bold;
+}
+.correct { color: green; }
+.wrong { color: red; }
+#steps {
+    margin-top: 15px;
+    background: #f4f4f4;
+    padding: 10px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>📐 Coordinate Geometry Quiz</h2>
+
+<p id="question"></p>
+<div class="options" id="options"></div>
+<p id="feedback"></p>
+<div id="steps"></div>
+</div>
+
+<script>
+let correctAnswer = "";
+
+function rand(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateQuestion() {
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("steps").style.display = "none";
+
+    let type = rand(1,5);
+    let question = "", steps = "", answer = "";
+
+    if (type === 1) {
+        // Equation of line
+        let x1=rand(-5,5), y1=rand(-5,5);
+        let x2=rand(-5,5), y2=rand(-5,5);
+        if (x1===x2) x2+=1;
+
+        let m = (y2-y1)/(x2-x1);
+        let c = y1 - m*x1;
+
+        question = `Find the equation of the line passing through (${x1},${y1}) and (${x2},${y2})`;
+        answer = `y = ${m}x + ${c}`;
+
+        steps = `
+        Slope m = (y₂ - y₁)/(x₂ - x₁)<br>
+        m = (${y2}-${y1})/(${x2}-${x1}) = ${m}<br>
+        Using y = mx + c<br>
+        Substitute (${x1},${y1}) → c = ${c}<br>
+        <b>Equation:</b> ${answer}
+        `;
+    }
+
+    if (type === 2) {
+        // Midpoint
+        let x1=rand(-6,6), y1=rand(-6,6);
+        let x2=rand(-6,6), y2=rand(-6,6);
+
+        let mx=(x1+x2)/2, my=(y1+y2)/2;
+
+        question = `Find the midpoint of (${x1},${y1}) and (${x2},${y2})`;
+        answer = `(${mx}, ${my})`;
+
+        steps = `
+        Midpoint = ((x₁+x₂)/2 , (y₁+y₂)/2)<br>
+        = (${mx}, ${my})
+        `;
+    }
+
+    if (type === 3) {
+        // Distance
+        let x1=rand(-5,5), y1=rand(-5,5);
+        let x2=rand(-5,5), y2=rand(-5,5);
+
+        let d = Math.sqrt((x2-x1)**2 + (y2-y1)**2);
+
+        question = `Find the distance between (${x1},${y1}) and (${x2},${y2})`;
+        answer = d.toFixed(2);
+
+        steps = `
+        Distance = √[(x₂-x₁)² + (y₂-y₁)²]<br>
+        = √[(${x2-x1})² + (${y2-y1})²]<br>
+        = ${answer}
+        `;
+    }
+
+    if (type === 4) {
+        // Find missing coordinate using midpoint
+        let x1=rand(-5,5), y1=rand(-5,5);
+        let mx=rand(-5,5), my=rand(-5,5);
+
+        let x2 = 2*mx - x1;
+        let y2 = 2*my - y1;
+
+        question = `The midpoint of a line joining (${x1},${y1}) and (x,y) is (${mx},${my}). Find (x,y).`;
+        answer = `(${x2}, ${y2})`;
+
+        steps = `
+        Mx = (x₁+x₂)/2 → x₂ = ${x2}<br>
+        My = (y₁+y₂)/2 → y₂ = ${y2}<br>
+        <b>Point:</b> ${answer}
+        `;
+    }
+
+    if (type === 5) {
+        // Distance with unknown coordinate
+        let x1=rand(1,5), y1=rand(1,5);
+        let y2=rand(1,5);
+        let d=rand(5,10);
+
+        let x2 = Math.sqrt(d*d - (y2-y1)**2) + x1;
+        x2 = Math.round(x2);
+
+        question = `The distance between (${x1},${y1}) and (x,${y2}) is ${d}. Find x.`;
+        answer = `${x2}`;
+
+        steps = `
+        d² = (x₂-x₁)² + (y₂-y₁)²<br>
+        ${d}² = (x-${x1})² + (${y2-y1})²<br>
+        x = ${x2}
+        `;
+    }
+
+    correctAnswer = answer;
+    document.getElementById("question").innerHTML = question;
+
+    let options = new Set([answer]);
+    while (options.size < 4) {
+        options.add((rand(-10,10)).toString());
+    }
+
+    document.getElementById("options").innerHTML =
+        [...options].sort(()=>Math.random()-0.5)
+        .map(o=>`<button onclick="check('${o}',\`${steps}\`)">${o}</button>`)
+        .join("");
+}
+
+function check(choice, steps) {
+    let f = document.getElementById("feedback");
+    let s = document.getElementById("steps");
+
+    if (choice === correctAnswer) {
+        f.textContent = "✅ Correct!";
+        f.className = "correct";
+    } else {
+        f.textContent = "❌ Wrong";
+        f.className = "wrong";
+    }
+
+    s.innerHTML = steps;
+    s.style.display = "block";
+
+    setTimeout(generateQuestion, 3500);
+}
+
+generateQuestion();
+</script>
+
+</body>
+</html>

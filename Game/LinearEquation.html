@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Linear Equation Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#141e30,#243b55);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.container {
+    background: #fff;
+    max-width: 700px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 15px;
+}
+h2 { text-align: center; }
+select, button {
+    padding: 14px;
+    font-size: 1rem;
+}
+#question {
+    font-size: 1.4rem;
+    margin: 20px 0;
+}
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+    gap: 10px;
+}
+.options button {
+    background: #243b55;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.options button:hover {
+    background: #141e30;
+}
+#timer {
+    font-weight: bold;
+    text-align: right;
+}
+#steps {
+    margin-top: 15px;
+    background: #f4f4f4;
+    padding: 10px;
+    display: none;
+}
+.correct { color: green; }
+.wrong { color: red; }
+.report {
+    margin-top: 20px;
+    background: #eaeaea;
+    padding: 15px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>📐 Linear Equation CBT</h2>
+<!--
+<label>Difficulty:
+<select id="level">
+<option value="JSS">JSS</option>
+<option value="SS1">SS1</option>
+<option value="SS2">SS2</option>
+<option value="SS3">SS3</option>
+</select>
+</label>-->
+
+<p id="timer">Time: 60</p>
+<p id="question"></p>
+
+<div class="options" id="options"></div>
+
+<p id="feedback"></p>
+<div id="steps"></div>
+
+<div class="report" id="report"></div>
+</div>
+
+<script>
+let score = 0, total = 0;
+let time = 300, timer;
+let correctX = 0;
+
+function startTimer() {
+    clearInterval(timer);
+    time = 300;
+    document.getElementById("timer").textContent = "Time: " + time;
+    timer = setInterval(() => {
+        time--;
+        document.getElementById("timer").textContent = "Time: " + time;
+        if (time <= 0) endTest();
+    },1000);
+}
+
+function rand(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+
+function generateEquation() {
+    //let level = document.getElementById("level").value;
+
+    // numeric coefficients ONLY
+    let A = rand(1, 5);
+    let C = rand(1, 5);
+
+    let b = rand(1, 10);
+    let d = rand(1, 10);
+
+    let displayA = A;
+    let displayC = C;
+
+    
+    // Solve Ax + b = Cx + d
+    correctX = (d - b) / (A - C);
+
+    // Ensure integer solution
+    if (!Number.isInteger(correctX)) {
+        return generateEquation();
+    }
+
+    let eq = `${displayA}x + ${b} = ${displayC}x + ${d}`;
+
+    let steps = `
+        <b>Step 1:</b> ${eq}<br>
+        <b>Step 2:</b> ${displayA}x - ${displayC}x = ${d} - ${b}<br>
+        <b>Step 3:</b> ${(A - C)}x = ${d - b}<br>
+        <b>Answer:</b> x = ${correctX}
+    `;
+
+    return { eq, steps };
+}
+
+function generateQuestion() {
+    document.getElementById("steps").style.display = "none";
+    document.getElementById("feedback").textContent = "";
+
+    let data = generateEquation();
+    document.getElementById("question").textContent =
+        "Solve: " + data.eq;
+
+    let opts = new Set([correctX]);
+    while (opts.size < 4) opts.add(correctX + rand(-5,5));
+
+    document.getElementById("options").innerHTML =
+        [...opts].sort(()=>Math.random()-0.5)
+        .map(v=>`<button onclick="check(${v},\`${data.steps}\`)">x = ${v}</button>`)
+        .join("");
+}
+
+function check(val,steps) {
+    total++;
+    let f = document.getElementById("feedback");
+    let s = document.getElementById("steps");
+
+    if (val === correctX) {
+        score++;
+        f.textContent = "✅ Correct";
+        f.className = "correct";
+    } else {
+        f.textContent = "❌ Wrong";
+        f.className = "wrong";
+    }
+
+    s.innerHTML = steps;
+    s.style.display = "block";
+
+    setTimeout(generateQuestion, 5000);
+}
+
+function endTest() {
+    clearInterval(timer);
+    document.getElementById("report").style.display = "block";
+    document.getElementById("report").innerHTML = `
+    <h3>📊 Auto-Grading Report</h3>
+    Total Questions: ${total}<br>
+    Correct: ${score}<br>
+    Score: ${((score/total)*100||0).toFixed(1)}%<br>
+    Time Used: 60 seconds
+    `;
+}
+
+startTimer();
+generateQuestion();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Quiz Game</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.quiz-card {
+    background: #ffffff;
+    max-width: 420px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.quiz-card h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+#question {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #444;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+button {
+    padding: 14px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background: #667eea;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+    background: #5563d6;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+#result {
+    margin-top: 18px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.correct {
+    color: #28a745;
+}
+
+.wrong {
+    color: #dc3545;
+}
+
+/* Mobile tweaks */
+@media (max-width: 400px) {
+    #question {
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-card">
+    <h2>🧠 Math Quiz</h2>
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="result"></p>
+</div>
+<script>
+let correctAnswer = "";
+
+function randomCoeff() {
+    let n;
+    do {
+        n = Math.floor(Math.random() * 11) - 5; // -5 to +5
+    } while (n === 0);
+    return n;
+}
+
+function generateExpression() {
+    const variables = Math.random() < 0.5 ? ["x"] : ["x", "y"];
+    const termsCount = Math.floor(Math.random() * 3) + 2;
+
+    let terms = [];
+    let sum = { x: 0, y: 0, c: 0 };
+
+    for (let i = 0; i < termsCount; i++) {
+        let coeff = randomCoeff();
+        let type = Math.random() < 0.8 ? variables[Math.floor(Math.random() * variables.length)] : "c";
+
+        if (type === "c") {
+            sum.c += coeff;
+            terms.push(coeff.toString());
+        } else {
+            sum[type] += coeff;
+            terms.push(`${coeff === 1 ? "" : coeff === -1 ? "-" : coeff}${type}`);
+        }
+    }
+
+    return { terms, sum };
+}
+
+function formatAnswer(sum) {
+    let parts = [];
+
+    if (sum.x !== 0) parts.push(`${sum.x === 1 ? "" : sum.x === -1 ? "-" : sum.x}x`);
+    if (sum.y !== 0) parts.push(`${sum.y === 1 ? "" : sum.y === -1 ? "-" : sum.y}y`);
+    if (sum.c !== 0 || parts.length === 0) parts.push(sum.c.toString());
+
+    return parts.join(" + ").replace(/\+\s-/g, "- ");
+}
+
+function generateQuestion() {
+    const resultText = document.getElementById("result");
+    resultText.textContent = "";
+    resultText.className = "";
+
+    const data = generateExpression();
+    correctAnswer = formatAnswer(data.sum);
+
+    document.getElementById("question").textContent =
+        `Simplify: ${data.terms.join(" + ").replace(/\+\s-/g, "- ")}`;
+
+    let options = new Set([correctAnswer]);
+
+    while (options.size < 4) {
+        let fake = formatAnswer({
+            x: data.sum.x + randomCoeff(),
+            y: data.sum.y + randomCoeff(),
+            c: data.sum.c + randomCoeff()
+        });
+        options.add(fake);
+    }
+
+    document.getElementById("options").innerHTML =
+        [...options]
+            .sort(() => Math.random() - 0.5)
+            .map(opt => `<button onclick="checkAnswer('${opt}')">${opt}</button>`)
+            .join("");
+}
+
+function checkAnswer(choice) {
+    const result = document.getElementById("result");
+
+    if (choice === correctAnswer) {
+        result.textContent = "✅ Correct!";
+        result.className = "correct";
+    } else {
+        result.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
+        result.className = "wrong";
+    }
+
+    setTimeout(generateQuestion, 1700);
+}
+
+generateQuestion();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Matrix CBT (2×2 & 3×3)</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:#1e1e2f;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+.card{
+    background:#fff;
+    color:#000;
+    padding:20px;
+    width:900px;
+    border-radius:15px;
+    text-align:center;
+}
+.options{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;
+}
+button{
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#333;
+    color:#fff;
+    cursor:pointer;
+}
+button:hover{background:#000;}
+.correct{color:green;font-weight:bold;}
+.wrong{color:red;font-weight:bold;}
+#steps{
+    background:#f2f2f2;
+    padding:10px;
+    margin-top:10px;
+    display:none;
+    text-align:left;
+}
+</style>
+
+<!-- MathJax configuration -->
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="tex-chtml.js"></script>
+</head>
+
+<body>
+
+<div class="card">
+<h2>📐 Matrix CBT (2×2 & 3×3)</h2>
+
+<select id="mode" onchange="generateQuestion()">
+<option value="0">All Patterns (Random)</option>
+<option value="1">Addition / Subtraction</option>
+<option value="2">Matrix with Unknown</option>
+<option value="3">Multiplication</option>
+<option value="4">Determinant</option>
+<option value="5">Determinant with Unknown</option>
+<option value="6">Inverse (2×2 only)</option>
+</select>
+
+<p id="score">Score: 0 / 0</p>
+<div id="question"></div>
+<div class="options" id="options"></div>
+<p id="feedback"></p>
+<div id="steps"></div>
+</div>
+
+<script>
+/* ---------- MathJax Safe Re-render ---------- */
+function renderMath(){
+    if(window.MathJax){
+        MathJax.typesetClear();
+        MathJax.typesetPromise();
+    }
+}
+
+/* ---------- Utilities ---------- */
+let correctAns="",attempt=0,score=0,lock=false;
+function rand(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+function matrix(n){return Array.from({length:n},()=>Array.from({length:n},()=>rand(1,5)));}
+
+/* ---------- Matrix to LaTeX ---------- */
+function showMatrix(m){
+    let rows=m.map(r=>r.join(" & ")).join(" \\\\ ");
+    return `\\(\\begin{bmatrix} ${rows} \\end{bmatrix}\\)`;
+}
+
+/* ---------- Helpers for options ---------- */
+function isMatrixJSON(s){return s.startsWith("[[");}
+function tweakMatrix(m){
+    return m.map(row=>row.map(v=>v+rand(-1,1)));
+}
+
+/* ---------- Determinants ---------- */
+function det2(m){return m[0][0]*m[1][1]-m[0][1]*m[1][0];}
+function det3(m){
+    return m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1])
+         - m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0])
+         + m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]);
+}
+
+
+function showMatrixSymbolic(m){
+    let rows = m.map(r => r.join(" & ")).join(" \\\\ ");
+    return `\\(\\begin{bmatrix} ${rows} \\end{bmatrix}\\)`;
+}
+
+function updateScore(){
+    document.getElementById("score").innerText=`Score: ${score} / ${attempt}`;
+}
+
+/* ---------- Generate Question ---------- */
+function generateQuestion(){
+    lock=false;
+    document.getElementById("feedback").innerText="";
+    document.getElementById("steps").style.display="none";
+
+    let mode=+document.getElementById("mode").value;
+    if(mode===0) mode=rand(1,6);
+
+    let q="",steps="",ans="",opts=new Set();
+
+    /* ADDITION / SUBTRACTION */
+    if(mode===1){
+        let n=Math.random()<0.5?2:3;
+        let A=matrix(n),B=matrix(n);
+        let add=Math.random()<0.5;
+        let R=A.map((r,i)=>r.map((v,j)=>add?v+B[i][j]:v-B[i][j]));
+        q=`Evaluate ${showMatrix(A)} ${add?'+':'−'} ${showMatrix(B)}`;
+        ans=JSON.stringify(R);
+        steps="Add or subtract corresponding elements.";
+        opts.add(ans);
+    }
+
+    /* MATRIX WITH UNKNOWN */
+    /* MATRIX WITH UNKNOWN (CORRECT) */
+if(mode === 2){
+    let x = rand(1,5);
+
+    // Symbolic matrices (what students see)
+    let A_sym = [["x", 2], [3, 4]];
+    let B_sym = [[1, 1], [1, 1]];
+    let C_sym = [[x+1, 3], [4, 5]];
+
+    q = `If ${showMatrixSymbolic(A_sym)} + ${showMatrixSymbolic(B_sym)} 
+         = ${showMatrixSymbolic(C_sym)}, find \\(x\\)`;
+
+    ans = x.toString();
+    steps = "Compare corresponding entries: x + 1 = given value.";
+    opts.add(ans);
+}
+
+
+    /* MULTIPLICATION */
+    if(mode===3){
+        let n=Math.random()<0.5?2:3;
+        let A=matrix(n),B=matrix(n);
+        let R=Array.from({length:n},()=>Array(n).fill(0));
+        for(let i=0;i<n;i++)
+        for(let j=0;j<n;j++)
+        for(let k=0;k<n;k++)
+            R[i][j]+=A[i][k]*B[k][j];
+
+        q=`Evaluate ${showMatrix(A)} \\(\\times\\) ${showMatrix(B)}`;
+        ans=JSON.stringify(R);
+        steps="Multiply rows of the first matrix by columns of the second.";
+        opts.add(ans);
+    }
+
+    /* DETERMINANT */
+    if(mode===4){
+        let n=Math.random()<0.5?2:3;
+        let A=matrix(n);
+        let d=n===2?det2(A):det3(A);
+        q=`Find \\(\\det\\) ${showMatrix(A)}`;
+        ans=d.toString();
+        steps=n===2?"Use \\(ad-bc\\).":"Expand along the first row.";
+        opts.add(ans);
+    }
+
+    /* DETERMINANT WITH UNKNOWN */
+  /* DETERMINANT WITH UNKNOWN */
+if(mode === 5){
+    let x = rand(1,5);
+
+    // Symbolic matrix (student sees this)
+    let A_sym = [["x",1,2],[0,1,3],[2,0,1]];
+
+    // Numeric matrix (internal calculation)
+    let A_num = [[x,1,2],[0,1,3],[2,0,1]];
+
+    // Compute determinant
+    let d = det3(A_num);
+
+    // Question
+    q = `If determinant of  ${showMatrixSymbolic(A_sym)} = ${d}, find \\(x\\)`;
+
+    // Answer
+    ans = x.toString();
+
+    // Steps
+    steps = "Expand determinant and solve the resulting linear equation.";
+
+    opts.add(ans);
+}
+
+
+    /* INVERSE */
+    let currentInverseDet = 1;
+
+    if(mode===6){
+        let A=matrix(2),d=det2(A);
+        if(d===0) return generateQuestion();
+        q=`Find the inverse of ${showMatrix(A)}`;
+        if(mode===6){
+    let A = matrix(2),
+        d = det2(A);
+    if(d === 0) return generateQuestion();
+
+    // Internal answer (JSON, NOT LaTeX)
+    let inv = [
+        [ A[1][1], -A[0][1] ],
+        [ -A[1][0], A[0][0] ]
+    ];
+
+    ans = JSON.stringify(inv);
+    steps = "Inverse = (1/det) × adjoint matrix";
+    opts.add(ans);
+
+    // Store determinant separately for display
+    currentInverseDet = d;
+}
+
+        steps="Swap diagonal elements and change signs of off-diagonals.";
+        opts.add(ans);
+    }
+
+    correctAns=ans;
+
+    /* SMART DISTRACTORS */
+    if(ans.startsWith("[[")){
+        let base=JSON.parse(ans);
+        while(opts.size<4)
+            opts.add(JSON.stringify(tweakMatrix(base)));
+    }else{
+        let v=Number(ans);
+        while(opts.size<4)
+            opts.add((v+rand(-4,4)).toString());
+    }
+
+    document.getElementById("question").innerHTML=q;
+    document.getElementById("options").innerHTML=
+        [...opts].sort(()=>Math.random()-0.5).map(o=>{
+            let display;
+if(isMatrixJSON(o)){
+    if(mode === 6){
+        display = `\\(\\frac{1}{${currentInverseDet}}\\)` +
+                  showMatrix(JSON.parse(o));
+    }else{
+        display = showMatrix(JSON.parse(o));
+    }
+}else{
+    display = `\\(${o}\\)`;
+}
+
+            return `<button onclick="check('${o}',\`${steps}\`)">${display}</button>`;
+        }).join("");
+
+    renderMath();
+}
+
+/* ---------- Answer Check ---------- */
+function check(c,st){
+    if(lock) return;
+    lock=true;
+    attempt++;
+
+    let f=document.getElementById("feedback");
+    if(c===correctAns){
+        score++;
+        f.innerText="✅ Correct";
+        f.className="correct";
+    }else{
+        f.innerText="❌ Wrong";
+        f.className="wrong";
+    }
+
+    updateScore();
+    let s=document.getElementById("steps");
+    s.innerText=st;
+    s.style.display="block";
+
+    setTimeout(generateQuestion,3000);
+}
+
+generateQuestion();
+</script>
+
+</body>
+</html>

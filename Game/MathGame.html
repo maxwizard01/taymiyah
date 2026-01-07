@@ -23,7 +23,7 @@ body {
 
 .quiz-card {
     background: #ffffff;
-    max-width: 420px;
+    max-width: 440px;
     width: 100%;
     padding: 25px;
     border-radius: 16px;
@@ -35,6 +35,14 @@ body {
     margin-top: 0;
     color: #333;
     font-size: 1.8rem;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
 }
 
 #question {
@@ -65,35 +73,15 @@ button:hover {
     transform: scale(1.05);
 }
 
-button:active {
-    transform: scale(0.97);
-}
-
 #result {
     margin-top: 18px;
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.correct {
-    color: #28a745;
-}
-
-.wrong {
-    color: #dc3545;
-}
-
-/* Mobile tweaks */
-@media (max-width: 400px) {
-    #question {
-        font-size: 1.3rem;
-    }
-
-    button {
-        font-size: 1rem;
-        padding: 12px;
-    }
-}
+.correct { color: #28a745; }
+.wrong { color: #dc3545; }
+.timeup { color: #ff9800; }
 </style>
 </head>
 
@@ -101,19 +89,54 @@ button:active {
 
 <div class="quiz-card">
     <h2>🧠 Math Quiz</h2>
+
+    <div class="status">
+        <span>⏱ <span id="timer">10</span>s</span>
+        <span>⭐ <span id="score">0</span></span>
+        <span>🏆 <span id="highScore">0</span></span>
+    </div>
+
     <p id="question"></p>
     <div id="options"></div>
     <p id="result"></p>
 </div>
+
 <script>
 let correctAnswer = 0;
+let score = 0;
+let timeLeft = 10;
+let interval;
+let TotalScore=0
 
+// ===== LOAD HIGH SCORE =====
+let highScore = localStorage.getItem("mathHighScore") || 0;
+document.getElementById("highScore").textContent = highScore;
+
+// ===== UTIL =====
 function randomInt() {
-    return Math.floor(Math.random() * 41) - 20; // -20 to +20
+    return Math.floor(Math.random() * 41) - 20;
 }
 
+// ===== TIMER =====
+function startTimer() {
+    clearInterval(interval);
+    timeLeft = 15;
+    document.getElementById("timer").textContent = timeLeft;
+
+    interval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(interval);
+            timeUp();
+        }
+    }, 1000);
+}
+
+// ===== GENERATE EXPRESSION =====
 function generateExpression() {
-    let termsCount = Math.floor(Math.random() * 3) + 2; // 2–4 terms
+    let termsCount = Math.floor(Math.random() * 3) + 2;
     let expression = "";
     let result = 0;
 
@@ -129,14 +152,15 @@ function generateExpression() {
             result = operator === "+" ? result + Math.abs(num) : result - Math.abs(num);
         }
     }
-
     return { expression, result };
 }
 
+// ===== QUESTION =====
 function generateQuestion() {
-    const resultText = document.getElementById("result");
-    resultText.textContent = "";
-    resultText.className = "";
+    document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
+
+    startTimer();
 
     const data = generateExpression();
     correctAnswer = data.result;
@@ -156,23 +180,49 @@ function generateQuestion() {
             .join("");
 }
 
+// ===== ANSWER CHECK =====
 function checkAnswer(choice) {
+    clearInterval(interval);
     const result = document.getElementById("result");
 
     if (choice === correctAnswer) {
+        score++;
+        TotalScore++;
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
         result.textContent = "✅ Correct!";
         result.className = "correct";
+
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("mathHighScore", highScore);
+            document.getElementById("highScore").textContent = highScore;
+
+        }
     } else {
         result.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
         result.className = "wrong";
+         TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore};`
     }
 
-    setTimeout(generateQuestion, 1600);
+    setTimeout(generateQuestion, 1500);
 }
 
+// ===== TIME UP =====
+function timeUp() {
+    const result = document.getElementById("result");
+    result.textContent = `⏰ Time up! Answer: ${correctAnswer}`;
+    result.className = "timeup";
+    setTimeout(generateQuestion, 1500);
+     TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+
+}
+
+// ===== START =====
 generateQuestion();
 </script>
-
 
 </body>
 </html>

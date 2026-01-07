@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.quiz-card {
+    background: white;
+    width: 460px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#question {
+    font-size: 1.3rem;
+    margin: 20px 0;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+button {
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #2a5298;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.correct { color: green; }
+.wrong { color: red; }
+.timeup { color: orange; }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-card">
+    <h2>🧪 Chemistry Quiz</h2>
+
+    <div class="status">
+        <span>⏱ Time: <span id="timer">10</span>s</span>
+        <span>⭐ Score: <span id="score">0</span></span>
+        <span>🏆 High: <span id="highScore">0</span></span>
+    </div>
+
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="result"></p>
+</div>
+
+<script>
+// ===== ELEMENT DATA =====
+const elements = [
+ {name:"Hydrogen",symbol:"H",group:1,period:1,config:"1"},
+ {name:"Helium",symbol:"He",group:18,period:1,config:"2"},
+ {name:"Lithium",symbol:"Li",group:1,period:2,config:"2,1"},
+ {name:"Beryllium",symbol:"Be",group:2,period:2,config:"2,2"},
+ {name:"Boron",symbol:"B",group:13,period:2,config:"2,3"},
+ {name:"Carbon",symbol:"C",group:4,period:2,config:"2,4"},
+ {name:"Nitrogen",symbol:"N",group:5,period:2,config:"2,5"},
+ {name:"Oxygen",symbol:"O",group:6,period:2,config:"2,6"},
+ {name:"Fluorine",symbol:"F",group:7,period:2,config:"2,7"},
+ {name:"Neon",symbol:"Ne",group:8,period:2,config:"2,8"},
+ {name:"Sodium",symbol:"Na",group:1,period:3,config:"2,8,1"},
+ {name:"Magnesium",symbol:"Mg",group:2,period:3,config:"2,8,2"},
+ {name:"Aluminium",symbol:"Al",group:3,period:3,config:"2,8,3"},
+ {name:"Silicon",symbol:"Si",group:4,period:3,config:"2,8,4"},
+ {name:"Phosphorus",symbol:"P",group:5,period:3,config:"2,8,5"},
+ {name:"Sulfur",symbol:"S",group:6,period:3,config:"2,8,6"},
+ {name:"Chlorine",symbol:"Cl",group:7,period:3,config:"2,8,7"},
+ {name:"Argon",symbol:"Ar",group:8,period:3,config:"2,8,8"},
+ {name:"Potassium",symbol:"K",group:1,period:4,config:"2,8,8,1"},
+ {name:"Calcium",symbol:"Ca",group:2,period:4,config:"2,8,8,2"},
+ {name:"Chromium",symbol:"Cr",group:6,period:4,config:"2,8,13,1"},
+ {name:"Manganese",symbol:"Mn",group:7,period:4,config:"2,8,13,2"},
+ {name:"Iron",symbol:"Fe",group:8,period:4,config:"2,8,14,2"},
+ {name:"Cobalt",symbol:"Co",group:8,period:4,config:"2,8,15,2"},
+ {name:"Nickel",symbol:"Ni",group:8,period:4,config:"2,8,16,2"},
+ {name:"Copper",symbol:"Cu",group:1,period:4,config:"2,8,18,1"},
+ {name:"Zinc",symbol:"Zn",group:2,period:4,config:"2,8,18,2"},
+ {name:"Bromine",symbol:"Br",group:7,period:4,config:"2,8,18,7"},
+ {name:"Krypton",symbol:"Kr",group:8,period:4,config:"2,8,18,8"},
+ {name:"Silver",symbol:"Ag",group:1,period:5,config:"2,8,18,18,1"},
+ {name:"Tin",symbol:"Sn",group:4,period:5,config:"2,8,18,18,4"},
+ {name:"Iodine",symbol:"I",group:7,period:5,config:"2,8,18,18,7"},
+ {name:"Xenon",symbol:"Xe",group:8,period:5,config:"2,8,18,18,8"},
+ {name:"Barium",symbol:"Ba",group:2,period:6,config:"2,8,18,18,8,2"},
+ {name:"Mercury",symbol:"Hg",group:2,period:6,config:"2,8,18,32,18,2"},
+ {name:"Gold",symbol:"Au",group:1,period:6,config:"2,8,18,32,18,1"},
+ {name:"Lead",symbol:"Pb",group:4,period:6,config:"2,8,18,32,18,4"},
+ {name:"Sulfur",symbol:"S",group:6,period:3,config:"2,8,6"},  // often referenced in reactions
+ {name:"Phosphorus",symbol:"P",group:5,period:3,config:"2,8,5"}, // commonly revisited
+ {name:"Chlorine",symbol:"Cl",group:7,period:3,config:"2,8,7"}   // heavily used
+];
+
+let correctAnswer = "";
+let score = 0;
+let timer = 10;
+let interval;
+let TotalScore=0
+// ===== LOAD HIGH SCORE =====
+let highScore = localStorage.getItem("chemHighScore") || 0;
+document.getElementById("highScore").textContent = highScore;
+
+// ===== UTIL =====
+
+function randomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ===== TIMER =====
+function startTimer() {
+    clearInterval(interval);
+    timer = 10;
+    document.getElementById("timer").textContent = timer;
+
+    interval = setInterval(() => {
+        timer--;
+        document.getElementById("timer").textContent = timer;
+
+        if (timer === 0) {
+            clearInterval(interval);
+            timeUp();
+        }
+    }, 1000);
+}
+
+// ===== QUESTION =====
+function generateQuestion() {
+    
+    document.getElementById("result").textContent = "";
+    
+    document.getElementById("result").className = "";
+
+    startTimer();
+    
+    const element = randomItem(elements);
+    
+    const type = Math.floor(Math.random() * 4);
+    
+    let question = "";
+    
+    let correct = "";
+
+    if (type === 0) {
+        question = `What is the name of the element with symbol <b>${element.symbol}</b>?`;
+        correct = element.name;
+    } else if (type === 1) {
+    
+        question = `What is the symbol of <b>${element.name}</b>?`;
+        correct = element.symbol;
+    } else if (type === 2) {
+        const askGroup = Math.random() < 0.5;
+        question = askGroup
+            ? `Which group does <b>${element.name}</b> belong to?`
+            : `Which period does <b>${element.name}</b> belong to?`;
+        correct = askGroup ? element.group.toString() : element.period.toString();
+    }
+
+    else {
+        question = `What is the electronic configuration of <b>${element.name}</b>?`;
+        correct = element.config;
+    }
+
+    correctAnswer = correct;
+    document.getElementById("question").innerHTML = question;
+
+    let options = new Set([correct]);
+    while (options.size < 4) {
+        const rand = randomItem(elements);
+        options.add(
+            type === 0 ? rand.name :
+            type === 1 ? rand.symbol :
+            type === 2 ? Math.floor(Math.random() * 18 + 1).toString() :
+            rand.config
+        );
+    }
+
+    document.getElementById("options").innerHTML =
+        [...options].sort(() => Math.random() - 0.5)
+        .map(o => `<button onclick="checkAnswer('${o}')">${o}</button>`)
+        .join("");
+}
+
+// ===== ANSWER CHECK =====
+
+function checkAnswer(choice) {
+    clearInterval(interval);
+    const result = document.getElementById("result");
+
+    if (choice === correctAnswer) {
+        score++;
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+        result.textContent = "✅ Correct!";
+        result.className = "correct";
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("chemHighScore", highScore);
+            document.getElementById("highScore").textContent = highScore;
+
+        }
+    }
+
+     else {
+        result.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
+        result.className = "wrong";
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+    }
+
+    setTimeout(generateQuestion, 1500);
+}
+
+// ===== TIME UP =====
+
+function timeUp() {
+    const result = document.getElementById("result");
+    result.textContent = `⏰ Time up! Correct answer: ${correctAnswer}`;
+    result.className = "timeup";
+TotalScore++
+document.getElementById("score").textContent = `${score}/${TotalScore}`;
+    setTimeout(generateQuestion, 1500);
+
+}
+
+generateQuestion();
+
+</script>
+
+</body>
+</html>

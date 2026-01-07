@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Reactions Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-card {
+    background: #fff;
+    width: 480px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+#question {
+    font-size: 1.3rem;
+    margin: 20px 0;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+button {
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #2a5298;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.correct { color: green; }
+.wrong { color: red; }
+.timeup { color: orange; }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-card">
+    <h2>⚗ Chemistry Quiz</h2>
+
+    <div class="status">
+        <span>⏱ <span id="timer">12</span>s</span>
+        <span>⭐ <span id="score">0</span></span>
+        <span>🏆 <span id="highScore">0</span></span>
+    </div>
+
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="result"></p>
+</div>
+
+<script>
+// ================= DATA =================
+
+// Balancing equations
+const balanceQuestions = [
+ {
+   question: "Balance: H₂ + O₂ → H₂O",
+   correct: "2H₂ + O₂ → 2H₂O",
+   options: [
+     "H₂ + O₂ → H₂O",
+     "2H₂ + O₂ → 2H₂O",
+     "H₂ + 2O₂ → 2H₂O",
+     "2H₂ + 2O₂ → H₂O"
+   ]
+ },
+ {
+   question: "Balance: Na + Cl₂ → NaCl",
+   correct: "2Na + Cl₂ → 2NaCl",
+   options: [
+     "Na + Cl₂ → NaCl",
+     "2Na + Cl₂ → 2NaCl",
+     "Na + 2Cl₂ → NaCl₂",
+     "2Na + 2Cl₂ → NaCl"
+   ]
+ },
+ {
+   question: "Balance: Mg + O₂ → MgO",
+   correct: "2Mg + O₂ → 2MgO",
+   options: [
+     "Mg + O₂ → MgO",
+     "2Mg + O₂ → 2MgO",
+     "Mg + 2O₂ → MgO",
+     "2Mg + O₂ → MgO"
+   ]
+ },
+ {
+   question: "Balance: Fe + S → FeS",
+   correct: "Fe + S → FeS",
+   options: [
+     "Fe + S → FeS",
+     "2Fe + S → Fe₂S",
+     "Fe + 2S → FeS₂",
+     "2Fe + 2S → FeS"
+   ]
+ },
+ {
+   question: "Balance: Ca + H₂O → Ca(OH)₂ + H₂",
+   correct: "Ca + 2H₂O → Ca(OH)₂ + H₂",
+   options: [
+     "Ca + H₂O → Ca(OH)₂ + H₂",
+     "Ca + 2H₂O → Ca(OH)₂ + H₂",
+     "2Ca + H₂O → Ca(OH)₂ + H₂",
+     "Ca + H₂O → CaOH + H₂"
+   ]
+ },
+ {
+   question: "Balance: Al + O₂ → Al₂O₃",
+   correct: "4Al + 3O₂ → 2Al₂O₃",
+   options: [
+     "2Al + O₂ → Al₂O₃",
+     "4Al + 3O₂ → 2Al₂O₃",
+     "Al + O₂ → Al₂O₃",
+     "3Al + O₂ → Al₂O₃"
+   ]
+ },
+ {
+   question: "Balance: H₂ + Cl₂ → HCl",
+   correct: "H₂ + Cl₂ → 2HCl",
+   options: [
+     "H₂ + Cl₂ → HCl",
+     "H₂ + Cl₂ → 2HCl",
+     "2H₂ + Cl₂ → HCl",
+     "H₂ + 2Cl₂ → HCl"
+   ]
+ },
+ {
+   question: "Balance: K + H₂O → KOH + H₂",
+   correct: "2K + 2H₂O → 2KOH + H₂",
+   options: [
+     "K + H₂O → KOH + H₂",
+     "2K + 2H₂O → 2KOH + H₂",
+     "2K + H₂O → KOH + H₂",
+     "K + 2H₂O → 2KOH + H₂"
+   ]
+ },
+ {
+   question: "Balance: Cu + O₂ → CuO",
+   correct: "2Cu + O₂ → 2CuO",
+   options: [
+     "Cu + O₂ → CuO",
+     "2Cu + O₂ → 2CuO",
+     "Cu + 2O₂ → CuO",
+     "2Cu + 2O₂ → CuO"
+   ]
+ },
+ {
+   question: "Balance: NH₃ + HCl → NH₄Cl",
+   correct: "NH₃ + HCl → NH₄Cl",
+   options: [
+     "NH₃ + HCl → NH₄Cl",
+     "2NH₃ + HCl → NH₄Cl",
+     "NH₃ + 2HCl → NH₄Cl",
+     "NH₄ + Cl → NH₄Cl"
+   ]
+ },
+ {
+   question: "Balance: Pb(NO₃)₂ → PbO + NO₂ + O₂",
+   correct: "2Pb(NO₃)₂ → 2PbO + 4NO₂ + O₂",
+   options: [
+     "Pb(NO₃)₂ → PbO + NO₂ + O₂",
+     "2Pb(NO₃)₂ → 2PbO + 4NO₂ + O₂",
+     "Pb(NO₃)₂ → PbO + 2NO₂ + O₂",
+     "2Pb(NO₃)₂ → PbO + NO₂ + O₂"
+   ]
+ },
+ {
+   question: "Balance: Zn + HCl → ZnCl₂ + H₂",
+   correct: "Zn + 2HCl → ZnCl₂ + H₂",
+   options: [
+     "Zn + HCl → ZnCl₂ + H₂",
+     "2Zn + HCl → ZnCl₂ + H₂",
+     "Zn + 2HCl → ZnCl₂ + H₂",
+     "Zn + HCl → ZnCl + H₂"
+   ]
+ }
+];
+
+// Reaction types
+const reactionTypes = [
+ {
+   question: "What type of reaction is: Acid + Base → Salt + Water?",
+   correct: "Neutralization",
+   options: ["Combustion", "Neutralization", "Decomposition", "Oxidation"]
+ },
+
+ {
+   question: "What type of reaction is: 2Mg + O₂ → 2MgO?",
+   correct: "Combination",
+   options: ["Combination", "Displacement", "Decomposition", "Neutralization"]
+ },
+ {
+   question: "What type of reaction is: NaOH + HCl → NaCl + H₂O?",
+   correct: "Neutralization",
+   options: ["Oxidation", "Combination", "Neutralization", "Decomposition"]
+ },
+ {
+   question: "What type of reaction is: 2KClO₃ → 2KCl + 3O₂?",
+   correct: "Decomposition",
+   options: ["Combination", "Decomposition", "Displacement", "Combustion"]
+ },
+ {
+   question: "What type of reaction is: Fe + CuSO₄ → FeSO₄ + Cu?",
+   correct: "Displacement",
+   options: ["Combination", "Displacement", "Neutralization", "Oxidation"]
+ },
+ {
+   question: "What type of reaction is: CH₄ + 2O₂ → CO₂ + 2H₂O?",
+   correct: "Combustion",
+   options: ["Neutralization", "Decomposition", "Combustion", "Combination"]
+ },
+ {
+   question: "What type of reaction is: AgNO₃ + NaCl → AgCl + NaNO₃?",
+   correct: "Double displacement",
+   options: ["Combination", "Double displacement", "Combustion", "Oxidation"]
+ },
+ {
+   question: "What type of reaction is: CaO + H₂O → Ca(OH)₂?",
+   correct: "Combination",
+   options: ["Combination", "Decomposition", "Neutralization", "Displacement"]
+ },
+ {
+   question: "What type of reaction is: ZnCO₃ → ZnO + CO₂?",
+   correct: "Decomposition",
+   options: ["Neutralization", "Displacement", "Decomposition", "Combination"]
+ },
+ {
+   question: "What type of reaction is: Na + H₂O → NaOH + H₂?",
+   correct: "Displacement",
+   options: ["Combination", "Displacement", "Neutralization", "Decomposition"]
+ },
+ {
+   question: "What type of reaction is: Zn + CuSO₄ → ZnSO₄ + Cu?",
+   correct: "Displacement",
+   options: ["Combination", "Decomposition", "Displacement", "Neutralization"]
+ },
+ {
+   question: "What type of reaction is: CaCO₃ → CaO + CO₂?",
+   correct: "Decomposition",
+   options: ["Combination", "Displacement", "Decomposition", "Neutralization"]
+ }
+];
+
+// Reactants / Products
+const reactantProduct = [
+ {
+   question: "Identify the reactants in: 2H₂ + O₂ → 2H₂O",
+   correct: "H₂ and O₂",
+   options: ["H₂O only", "H₂ and O₂", "O₂ and H₂O", "H₂ only"]
+ },
+ {
+   question: "Identify the product in: NaOH + HCl → NaCl + H₂O",
+   correct: "NaCl and H₂O",
+   options: ["NaOH", "HCl", "NaCl and H₂O", "NaOH and HCl"]
+ },
+ {
+   question: "Identify the reactants in: Na + Cl₂ → NaCl",
+   correct: "Na and Cl₂",
+   options: ["NaCl", "Na and Cl₂", "Cl₂ only", "Na only"]
+ },
+ {
+   question: "Identify the product in: Mg + O₂ → MgO",
+   correct: "MgO",
+   options: ["Mg", "O₂", "MgO", "MgO₂"]
+ },
+ {
+   question: "Identify the reactants in: H₂ + S → H₂S",
+   correct: "H₂ and S",
+   options: ["H₂S", "H₂ only", "H₂ and S", "S only"]
+ },
+ {
+   question: "Identify the product in: CaCO₃ → CaO + CO₂",
+   correct: "CaO and CO₂",
+   options: ["CaCO₃", "CaO only", "CO₂ only", "CaO and CO₂"]
+ },
+ {
+   question: "Identify the reactants in: NH₃ + HCl → NH₄Cl",
+   correct: "NH₃ and HCl",
+   options: ["NH₄Cl", "NH₃ only", "NH₃ and HCl", "HCl only"]
+ },
+ {
+   question: "Identify the product in: Zn + CuSO₄ → ZnSO₄ + Cu",
+   correct: "ZnSO₄ and Cu",
+   options: ["Zn and CuSO₄", "ZnSO₄ only", "ZnSO₄ and Cu", "CuSO₄ only"]
+ },
+ {
+   question: "Identify the reactants in: CH₄ + O₂ → CO₂ + H₂O",
+   correct: "CH₄ and O₂",
+   options: ["CO₂ and H₂O", "CH₄ only", "O₂ only", "CH₄ and O₂"]
+ },
+ {
+   question: "Identify the product in: AgNO₃ + NaCl → AgCl + NaNO₃",
+   correct: "AgCl and NaNO₃",
+   options: ["AgNO₃", "NaCl", "AgCl and NaNO₃", "Ag only"]
+ },
+ {
+   question: "Identify the reactants in: Fe + S → FeS",
+   correct: "Fe and S",
+   options: ["FeS", "Fe only", "S only", "Fe and S"]
+ }
+
+];
+let TotalScore=0
+let correctAnswer = "";
+let score = 0;
+let timeLeft = 12;
+let timerInterval;
+
+// ===== LOAD HIGH SCORE =====
+let highScore = localStorage.getItem("chemReactionHighScore") || 0;
+document.getElementById("highScore").textContent = highScore;
+
+// ================= UTIL =================
+function randomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ================= TIMER =================
+function startTimer() {
+    clearInterval(timerInterval);
+    timeLeft = 30;
+    document.getElementById("timer").textContent = timeLeft;
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            timeUp();
+        }
+    }, 1000);
+}
+
+// ================= GENERATOR =================
+function generateQuestion() {
+    document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
+
+    startTimer();
+
+    const category = Math.floor(Math.random() * 3);
+    let data;
+
+    if (category === 0) data = randomItem(balanceQuestions);
+    else if (category === 1) data = randomItem(reactionTypes);
+    else data = randomItem(reactantProduct);
+
+    correctAnswer = data.correct;
+    document.getElementById("question").textContent = data.question;
+
+    document.getElementById("options").innerHTML =
+        data.options
+            .sort(() => Math.random() - 0.5)
+            .map(o => `<button onclick="checkAnswer('${o}')">${o}</button>`)
+            .join("");
+}
+
+// ================= CHECK =================
+function checkAnswer(choice) {
+    clearInterval(timerInterval);
+    const result = document.getElementById("result");
+
+    if (choice === correctAnswer) {
+        score++;
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+        result.textContent = "✅ Correct!";
+        result.className = "correct";
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("chemReactionHighScore", highScore);
+            document.getElementById("highScore").textContent = highScore;
+        }
+    } else {
+        result.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
+        result.className = "wrong";
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`
+    }
+
+    setTimeout(generateQuestion, 1500);
+}
+
+// ================= TIME UP =================
+function timeUp() {
+    const result = document.getElementById("result");
+    result.textContent = `⏰ Time up! Answer: ${correctAnswer}`;
+    result.className = "timeup";
+    TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`
+    setTimeout(generateQuestion, 1500);
+}
+
+// ================= START =================
+generateQuestion();
+</script>
+
+</body>
+</html>

@@ -28,6 +28,15 @@ select {
     border-radius: 6px;
     margin-bottom: 10px;
 }
+.status {
+    display: flex;
+    justify-content: space-between;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 #question {
     font-size: 1.3rem;
     margin: 15px 0;
@@ -61,10 +70,6 @@ button:hover {
     display: none;
     text-align: left;
 }
-#score {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
 </style>
 </head>
 
@@ -73,6 +78,12 @@ button:hover {
 <div class="card">
 <h2>📘 Number & Numeration Quiz</h2>
 
+<div class="status">
+    <span>⏱ Time: <span id="time">20</span>s</span>
+    <span>⭐ Score: <span id="score">0</span></span>
+    <span>🏆 High: <span id="high">0</span></span>
+</div>
+
 <select id="mode" onchange="generateQuestion()">
     <option value="0">All Patterns (Random)</option>
     <option value="1">H.C.F / L.C.M</option>
@@ -80,8 +91,6 @@ button:hover {
     <option value="3">Fraction → Decimal / Percentage</option>
     <option value="4">Approximation</option>
 </select>
-
-<div id="score">Score: 0 / 0 (0%)</div>
 
 <p id="question"></p>
 <div class="options" id="options"></div>
@@ -93,6 +102,13 @@ button:hover {
 let correctAnswer="";
 let attempts=0, correct=0;
 let lock=false;
+let TotalScore=0 
+let timeLeft = 20, timer;
+let highScore = localStorage.getItem("numHighScore") || 0;
+
+document.getElementById("high").textContent = highScore;
+document.getElementById("score").textContent = correct;
+
 
 function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
 
@@ -113,97 +129,88 @@ function generateQuestion(){
     let mode = Number(document.getElementById("mode").value);
     if(mode===0) mode = rand(1,4);
 
-    let q="", s="", a="";
+    let q="", s="", a="", opts=new Set();
 
-    /* 1. HCF / LCM */
+    /* ================= 1. HCF / LCM ================= */
     if(mode===1){
-        let nums = [rand(6,20), rand(6,20), rand(6,20)];
-        let useTwo = Math.random()<0.5;
-        let list = useTwo ? nums.slice(0,2) : nums;
+        let nums=[rand(6,24),rand(6,24),rand(6,24)];
+        let list=Math.random()<0.5 ? nums.slice(0,2) : nums;
 
         if(Math.random()<0.5){
             q=`Find the H.C.F of ${list.join(", ")}`;
-            let h = list.reduce((x,y)=>gcd(x,y));
-            a=h.toString();
-            s=`Prime factorize the numbers<br>Common factors give HCF = ${a}`;
+            a=list.reduce((x,y)=>gcd(x,y)).toString();
+            let base=Number(a);
+            opts=new Set([base,base+1,base-1,base+2].filter(x=>x>0).map(String));
+            s=`Find common prime factors → HCF = ${a}`;
         }else{
             q=`Find the L.C.M of ${list.join(", ")}`;
-            let l = list.reduce((x,y)=>lcm(x,y));
-            a=l.toString();
-            s=`Use prime factors<br>LCM = ${a}`;
+            a=list.reduce((x,y)=>lcm(x,y)).toString();
+            let base=Number(a);
+            opts=new Set([base,base/2,base*2,base+base/2].map(x=>Math.round(x)).map(String));
+            s=`Use highest powers of primes → LCM = ${a}`;
         }
     }
 
-    /* 2. Prime Factorization */
-    /* 2. Prime Factorization */
-if(mode===2){
-    let n = rand(24,96);
+    /* ================= 2. PRIME FACTORIZATION ================= */
+    if(mode===2){
+        let n=rand(24,96);
+        let temp=n, map={};
 
-    // Get prime factors
-    let temp=n, map={};
-    for(let i=2;i<=temp;i++){
-        while(temp%i===0){
-            map[i]=(map[i]||0)+1;
-            temp/=i;
+        for(let i=2;i<=temp;i++){
+            while(temp%i===0){
+                map[i]=(map[i]||0)+1;
+                temp/=i;
+            }
         }
+
+        a=Object.keys(map)
+          .map(p=>map[p]===1?p:`${p}<sup>${map[p]}</sup>`)
+          .join(" × ");
+
+        q=`Express ${n} as a product of its prime factors`;
+
+        opts.add(a);
+        while(opts.size<4){
+            let fake=[];
+            Object.keys(map).forEach(p=>{
+                let power=Math.max(1,map[p]+[-1,0,1][rand(0,2)]);
+                fake.push(power===1?p:`${p}<sup>${power}</sup>`);
+            });
+            opts.add(fake.join(" × "));
+        }
+
+        s=`Prime factorization of ${n}<br><b>Answer:</b> ${a}`;
     }
 
-    // Correct answer in index form
-    let correct = Object.keys(map)
-        .map(p => map[p]===1 ? p : `${p}<sup>${map[p]}</sup>`)
-        .join(" × ");
-
-    q = `Express ${n} as a product of its prime factors`;
-    a = correct;
-
-    // Generate realistic wrong options
-    let opts = new Set([correct]);
-
-    while(opts.size < 4){
-        let fake = [];
-
-        Object.keys(map).forEach(p=>{
-            let power = map[p];
-            let change = rand(-1,1);
-            let newPower = Math.max(1, power + change);
-            fake.push(newPower===1 ? p : `${p}<sup>${newPower}</sup>`);
-        });
-
-        opts.add(fake.join(" × "));
-    }
-
-    s = `
-    ${n} is divided by prime numbers<br>
-    Prime factors = ${Object.keys(map).join(", ")}<br>
-    <b>Answer:</b> ${correct}
-    `;
-
-    correctAnswer = a;
-
-    document.getElementById("question").innerHTML = q;
-    document.getElementById("options").innerHTML =
-        [...opts].sort(()=>Math.random()-0.5)
-        .map(o=>`<button onclick="check('${o}',\`${s}\`)">${o}</button>`)
-        .join("");
-    return;
-}
-
-    /* 3. Fraction → Decimal / Percentage */
+    /* ================= 3. FRACTION ================= */
     if(mode===3){
         let num=rand(1,9), den=rand(2,10);
-        let frac=`${num}/${den}`;
+        let value=num/den;
+
         if(Math.random()<0.5){
-            a=(num/den).toFixed(2);
-            q=`Convert ${frac} to a decimal`;
+            q=`Convert ${num}/${den} to a decimal`;
+            a=value.toFixed(2);
+            opts=new Set([
+                a,
+                (Math.floor(value*100)/100).toFixed(2),
+                (Math.ceil(value*100)/100).toFixed(2),
+                value.toFixed(1)
+            ]);
             s=`${num} ÷ ${den} = ${a}`;
         }else{
-            a=((num/den)*100).toFixed(1)+"%";
-            q=`Convert ${frac} to a percentage`;
+            q=`Convert ${num}/${den} to a percentage`;
+            a=(value*100).toFixed(1)+"%";
+            opts=new Set([
+                a,
+                (value*100).toFixed(0)+"%",
+                (value*10).toFixed(1)+"%",
+                (value*100).toFixed(2)+"%"
+            ]);
             s=`(${num} ÷ ${den}) × 100% = ${a}`;
         }
     }
 
-    /* 4. Approximation */
+    /* ================= 4. APPROXIMATION ================= */
     if(mode===4){
         let n=(Math.random()*100).toFixed(4);
         let type=rand(1,3);
@@ -211,37 +218,41 @@ if(mode===2){
         if(type===1){
             q=`Round ${n} to 2 decimal places`;
             a=(Math.round(n*100)/100).toFixed(2);
-            s=`Check 3rd decimal digit → ${a}`;
         }
         if(type===2){
             q=`Round ${n} to 3 significant figures`;
             a=Number(n).toPrecision(3);
-            s=`Count 3 significant digits → ${a}`;
         }
         if(type===3){
             q=`Round ${n} to the nearest whole number`;
             a=Math.round(n).toString();
-            s=`Check decimal part → ${a}`;
         }
+
+        let base=Number(a);
+        opts=new Set([
+            a,
+            (base+0.01).toFixed(2),
+            (base-0.01).toFixed(2),
+            Math.floor(Number(n)).toString()
+        ]);
+
+        s=`Apply rounding rule → ${a}`;
     }
 
     correctAnswer=a;
+
     document.getElementById("question").innerHTML=q;
-
-    let opts=new Set([a]);
-    while(opts.size<4){
-        opts.add((rand(1,200)).toString());
-    }
-
     document.getElementById("options").innerHTML=
         [...opts].sort(()=>Math.random()-0.5)
         .map(o=>`<button onclick="check('${o}',\`${s}\`)">${o}</button>`)
         .join("");
 }
 
+// ================= CHECK =================
 function check(choice,steps){
     if(lock) return;
     lock=true;
+    clearInterval(timer);
 
     attempts++;
     let f=document.getElementById("feedback");
@@ -249,18 +260,27 @@ function check(choice,steps){
 
     if(choice===correctAnswer){
         correct++;
+        TotalScore++
         f.textContent="✅ Correct!";
         f.className="correct";
     }else{
+        TotalScore++
         f.textContent="❌ Wrong";
         f.className="wrong";
     }
 
-    updateScore();
+    document.getElementById("score").textContent=`${correct}/${TotalScore}`;
+
+    if(correct>highScore){
+        highScore=correct;
+        localStorage.setItem("numHighScore",highScore);
+        document.getElementById("high").textContent=highScore;
+    }
+
     st.innerHTML=steps;
     st.style.display="block";
 
-    setTimeout(generateQuestion, 3000);
+    setTimeout(generateQuestion,3000);
 }
 
 generateQuestion();

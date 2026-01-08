@@ -6,9 +6,7 @@
 <title>Math Quiz Game</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -35,6 +33,13 @@ body {
     margin-top: 0;
     color: #333;
     font-size: 1.8rem;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 #question {
@@ -75,24 +80,12 @@ button:active {
     font-weight: bold;
 }
 
-.correct {
-    color: #28a745;
-}
+.correct { color: #28a745; }
+.wrong { color: #dc3545; }
 
-.wrong {
-    color: #dc3545;
-}
-
-/* Mobile tweaks */
 @media (max-width: 400px) {
-    #question {
-        font-size: 1.3rem;
-    }
-
-    button {
-        font-size: 1rem;
-        padding: 12px;
-    }
+    #question { font-size: 1.3rem; }
+    button { font-size: 1rem; padding: 12px; }
 }
 </style>
 </head>
@@ -101,21 +94,47 @@ button:active {
 
 <div class="quiz-card">
     <h2>🧠 Math Quiz</h2>
+
+    <div class="top-bar">
+        <span id="score">Score: 0</span>
+        <span id="timer">⏱ 10s</span>
+          <span>🏆 High: <span id="highScore">0</span></span>
+    </div>
+
     <p id="question"></p>
     <div id="options"></div>
     <p id="result"></p>
 </div>
+
 <script>
 let correctAnswer = "";
+let score = 0;
+let TotalScore=0
+let timeLeft = 10;
+let timerInterval = null;
+let highScore = localStorage.getItem("algebraHighScore") || 0;
+document.getElementById("highScore").textContent = highScore;
 
-function randomCoeff() {
+/* ---------- UTILITIES ---------- */
+function randomCoeff(range = 5) {
     let n;
     do {
-        n = Math.floor(Math.random() * 11) - 5; // -5 to +5
+        n = Math.floor(Math.random() * (range * 2 + 1)) - range;
     } while (n === 0);
     return n;
 }
 
+function formatAnswer(sum) {
+    let parts = [];
+
+    if (sum.x) parts.push(`${sum.x === 1 ? "" : sum.x === -1 ? "-" : sum.x}x`);
+    if (sum.y) parts.push(`${sum.y === 1 ? "" : sum.y === -1 ? "-" : sum.y}y`);
+    if (sum.c || parts.length === 0) parts.push(sum.c.toString());
+
+    return parts.join(" + ").replace(/\+\s-/g, "- ");
+}
+
+/* ---------- QUESTION GENERATION ---------- */
 function generateExpression() {
     const variables = Math.random() < 0.5 ? ["x"] : ["x", "y"];
     const termsCount = Math.floor(Math.random() * 3) + 2;
@@ -125,7 +144,9 @@ function generateExpression() {
 
     for (let i = 0; i < termsCount; i++) {
         let coeff = randomCoeff();
-        let type = Math.random() < 0.8 ? variables[Math.floor(Math.random() * variables.length)] : "c";
+        let type = Math.random() < 0.8
+            ? variables[Math.floor(Math.random() * variables.length)]
+            : "c";
 
         if (type === "c") {
             sum.c += coeff;
@@ -135,24 +156,37 @@ function generateExpression() {
             terms.push(`${coeff === 1 ? "" : coeff === -1 ? "-" : coeff}${type}`);
         }
     }
-
     return { terms, sum };
 }
 
-function formatAnswer(sum) {
-    let parts = [];
+/* ---------- TIMER ---------- */
+function startTimer() {
+    clearInterval(timerInterval);
+    timeLeft = 30;
+    document.getElementById("timer").textContent = `⏱ ${timeLeft}s`;
 
-    if (sum.x !== 0) parts.push(`${sum.x === 1 ? "" : sum.x === -1 ? "-" : sum.x}x`);
-    if (sum.y !== 0) parts.push(`${sum.y === 1 ? "" : sum.y === -1 ? "-" : sum.y}y`);
-    if (sum.c !== 0 || parts.length === 0) parts.push(sum.c.toString());
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = `⏱ ${timeLeft}s`;
 
-    return parts.join(" + ").replace(/\+\s-/g, "- ");
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            timeout();
+        }
+    }, 1000);
 }
 
+function timeout() {
+    document.getElementById("result").textContent =
+        `⏰ Time up! Answer: ${correctAnswer}`;
+    document.getElementById("result").className = "wrong";
+    setTimeout(generateQuestion, 1500);
+}
+
+/* ---------- MAIN ---------- */
 function generateQuestion() {
-    const resultText = document.getElementById("result");
-    resultText.textContent = "";
-    resultText.className = "";
+    document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
 
     const data = generateExpression();
     correctAnswer = formatAnswer(data.sum);
@@ -164,37 +198,57 @@ function generateQuestion() {
 
     while (options.size < 4) {
         let fake = formatAnswer({
-            x: data.sum.x + randomCoeff(),
-            y: data.sum.y + randomCoeff(),
-            c: data.sum.c + randomCoeff()
+            x: data.sum.x + Math.floor(Math.random() * 3) - 1,
+            y: data.sum.y + Math.floor(Math.random() * 3) - 1,
+            c: data.sum.c + Math.floor(Math.random() * 3) - 1
         });
-        options.add(fake);
+        if (fake !== correctAnswer) options.add(fake);
     }
 
-    document.getElementById("options").innerHTML =
-        [...options]
-            .sort(() => Math.random() - 0.5)
-            .map(opt => `<button onclick="checkAnswer('${opt}')">${opt}</button>`)
-            .join("");
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    [...options]
+        .sort(() => Math.random() - 0.5)
+        .forEach(opt => {
+            const btn = document.createElement("button");
+            btn.textContent = opt;
+            btn.onclick = () => checkAnswer(opt);
+            optionsDiv.appendChild(btn);
+        });
+
+    startTimer();
 }
 
 function checkAnswer(choice) {
+    clearInterval(timerInterval);
+
     const result = document.getElementById("result");
 
     if (choice === correctAnswer) {
+        score++;
+        TotalScore++
         result.textContent = "✅ Correct!";
         result.className = "correct";
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("algebraHighScore", highScore);
+            document.getElementById("highScore").textContent = highScore;
+        }
     } else {
+        score=score-1<0?0:score-1;
         result.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
         result.className = "wrong";
+        TotalScore++
     }
 
-    setTimeout(generateQuestion, 1700);
+    document.getElementById("score").textContent = `Score: ${score}/${TotalScore}`;
+    setTimeout(generateQuestion, 1500);
 }
 
 generateQuestion();
 </script>
-
 
 </body>
 </html>

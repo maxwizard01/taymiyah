@@ -24,6 +24,17 @@ body {
     text-align: center;
 }
 h2 { margin-top: 0; }
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
 #question {
     font-size: 1.3rem;
     margin: 20px 0;
@@ -64,6 +75,12 @@ button:hover {
 <div class="card">
 <h2>📐 Coordinate Geometry Quiz</h2>
 
+<div class="status">
+    <span>⏱ Time: <span id="time">15</span>s</span>
+    <span>⭐ Score: <span id="score">0</span></span>
+    <span>🏆 High: <span id="high">0</span></span>
+</div>
+
 <p id="question"></p>
 <div class="options" id="options"></div>
 <p id="feedback"></p>
@@ -72,12 +89,42 @@ button:hover {
 
 <script>
 let correctAnswer = "";
+let score = 0;
+let timeLeft = 60;
+let timer;
+let TotalScore=0
+// Load high score
+let highScore = localStorage.getItem("geoHighScore") || 0;
+document.getElementById("high").textContent = highScore;
 
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// ================= TIMER =================
+function startTimer() {
+    clearInterval(timer);
+    timeLeft = 60;
+    document.getElementById("time").textContent = timeLeft;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("time").textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            document.getElementById("feedback").textContent = "⏰ Time up!";
+            document.getElementById("feedback").className = "wrong";
+            setTimeout(generateQuestion, 1500);
+            TotalScore++
+        }
+    }, 1000);
+}
+
+// ================= QUESTION GENERATOR =================
 function generateQuestion() {
+    clearInterval(timer);
+
     document.getElementById("feedback").textContent = "";
     document.getElementById("steps").style.display = "none";
 
@@ -85,7 +132,6 @@ function generateQuestion() {
     let question = "", steps = "", answer = "";
 
     if (type === 1) {
-        // Equation of line
         let x1=rand(-5,5), y1=rand(-5,5);
         let x2=rand(-5,5), y2=rand(-5,5);
         if (x1===x2) x2+=1;
@@ -95,84 +141,49 @@ function generateQuestion() {
 
         question = `Find the equation of the line passing through (${x1},${y1}) and (${x2},${y2})`;
         answer = `y = ${m}x + ${c}`;
-
-        steps = `
-        Slope m = (y₂ - y₁)/(x₂ - x₁)<br>
-        m = (${y2}-${y1})/(${x2}-${x1}) = ${m}<br>
-        Using y = mx + c<br>
-        Substitute (${x1},${y1}) → c = ${c}<br>
-        <b>Equation:</b> ${answer}
-        `;
+        steps = `Slope = ${m}<br>Intercept = ${c}`;
     }
 
     if (type === 2) {
-        // Midpoint
         let x1=rand(-6,6), y1=rand(-6,6);
         let x2=rand(-6,6), y2=rand(-6,6);
-
         let mx=(x1+x2)/2, my=(y1+y2)/2;
 
         question = `Find the midpoint of (${x1},${y1}) and (${x2},${y2})`;
         answer = `(${mx}, ${my})`;
-
-        steps = `
-        Midpoint = ((x₁+x₂)/2 , (y₁+y₂)/2)<br>
-        = (${mx}, ${my})
-        `;
+        steps = `Midpoint = (${mx}, ${my})`;
     }
 
     if (type === 3) {
-        // Distance
         let x1=rand(-5,5), y1=rand(-5,5);
         let x2=rand(-5,5), y2=rand(-5,5);
-
         let d = Math.sqrt((x2-x1)**2 + (y2-y1)**2);
 
         question = `Find the distance between (${x1},${y1}) and (${x2},${y2})`;
         answer = d.toFixed(2);
-
-        steps = `
-        Distance = √[(x₂-x₁)² + (y₂-y₁)²]<br>
-        = √[(${x2-x1})² + (${y2-y1})²]<br>
-        = ${answer}
-        `;
+        steps = `Distance = ${answer}`;
     }
 
     if (type === 4) {
-        // Find missing coordinate using midpoint
         let x1=rand(-5,5), y1=rand(-5,5);
         let mx=rand(-5,5), my=rand(-5,5);
-
         let x2 = 2*mx - x1;
         let y2 = 2*my - y1;
 
-        question = `The midpoint of a line joining (${x1},${y1}) and (x,y) is (${mx},${my}). Find (x,y).`;
+        question = `Midpoint of (${x1},${y1}) and (x,y) is (${mx},${my}). Find (x,y).`;
         answer = `(${x2}, ${y2})`;
-
-        steps = `
-        Mx = (x₁+x₂)/2 → x₂ = ${x2}<br>
-        My = (y₁+y₂)/2 → y₂ = ${y2}<br>
-        <b>Point:</b> ${answer}
-        `;
+        steps = `Point = (${x2}, ${y2})`;
     }
 
     if (type === 5) {
-        // Distance with unknown coordinate
         let x1=rand(1,5), y1=rand(1,5);
         let y2=rand(1,5);
         let d=rand(5,10);
 
-        let x2 = Math.sqrt(d*d - (y2-y1)**2) + x1;
-        x2 = Math.round(x2);
-
-        question = `The distance between (${x1},${y1}) and (x,${y2}) is ${d}. Find x.`;
+        let x2 = Math.round(Math.sqrt(d*d - (y2-y1)**2) + x1);
+        question = `Distance between (${x1},${y1}) and (x,${y2}) is ${d}. Find x.`;
         answer = `${x2}`;
-
-        steps = `
-        d² = (x₂-x₁)² + (y₂-y₁)²<br>
-        ${d}² = (x-${x1})² + (${y2-y1})²<br>
-        x = ${x2}
-        `;
+        steps = `x = ${x2}`;
     }
 
     correctAnswer = answer;
@@ -180,33 +191,50 @@ function generateQuestion() {
 
     let options = new Set([answer]);
     while (options.size < 4) {
-        options.add((rand(-10,10)).toString());
+        options.add(rand(-10,10).toString());
     }
 
     document.getElementById("options").innerHTML =
         [...options].sort(()=>Math.random()-0.5)
         .map(o=>`<button onclick="check('${o}',\`${steps}\`)">${o}</button>`)
         .join("");
+
+    startTimer();
 }
 
+// ================= CHECK ANSWER =================
 function check(choice, steps) {
+    clearInterval(timer);
+
     let f = document.getElementById("feedback");
     let s = document.getElementById("steps");
 
     if (choice === correctAnswer) {
+        score++;
         f.textContent = "✅ Correct!";
         f.className = "correct";
+        TotalScore++
     } else {
         f.textContent = "❌ Wrong";
         f.className = "wrong";
+        TotalScore++
+    }
+
+    document.getElementById("score").textContent = `${score}/${TotalScore}`;
+
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem("geoHighScore", highScore);
+        document.getElementById("high").textContent = highScore;
     }
 
     s.innerHTML = steps;
     s.style.display = "block";
 
-    setTimeout(generateQuestion, 3500);
+    setTimeout(generateQuestion, 3000);
 }
 
+// ================= START =================
 generateQuestion();
 </script>
 

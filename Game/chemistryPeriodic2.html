@@ -139,7 +139,7 @@ let timer = 10;
 let interval;
 let TotalScore=0
 // ===== LOAD HIGH SCORE =====
-let highScore = localStorage.getItem("chemHighScore") || 0;
+let highScore = localStorage.getItem("chemHighScore2") || 0;
 document.getElementById("highScore").textContent = highScore;
 
 // ===== UTIL =====
@@ -237,7 +237,7 @@ function checkAnswer(choice) {
 
         if (score > highScore) {
             highScore = score;
-            localStorage.setItem("chemHighScore", highScore);
+            localStorage.setItem("chemHighScore2", highScore);
             document.getElementById("highScore").textContent = highScore;
 
         }
@@ -261,7 +261,7 @@ function timeUp() {
     result.className = "timeup";
 TotalScore++
 document.getElementById("score").textContent = `${score}/${TotalScore}`;
-    setTimeout(generateQuestion, 1500);
+    setTimeout(generateQuestion, 4000);
 
 }
 

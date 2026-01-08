@@ -9,7 +9,6 @@
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg,#141e30,#243b55);
-    color: #333;
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -22,10 +21,17 @@ body {
     border-radius: 15px;
 }
 h2 { text-align: center; }
-select, button {
-    padding: 14px;
-    font-size: 1rem;
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
+
 #question {
     font-size: 1.4rem;
     margin: 20px 0;
@@ -36,6 +42,7 @@ select, button {
     gap: 10px;
 }
 .options button {
+    padding: 14px;
     background: #243b55;
     color: #fff;
     border: none;
@@ -45,9 +52,9 @@ select, button {
 .options button:hover {
     background: #141e30;
 }
-#timer {
+#feedback {
     font-weight: bold;
-    text-align: right;
+    margin-top: 10px;
 }
 #steps {
     margin-top: 15px;
@@ -57,12 +64,6 @@ select, button {
 }
 .correct { color: green; }
 .wrong { color: red; }
-.report {
-    margin-top: 20px;
-    background: #eaeaea;
-    padding: 15px;
-    display: none;
-}
 </style>
 </head>
 
@@ -70,72 +71,66 @@ select, button {
 
 <div class="container">
 <h2>📐 Linear Equation CBT</h2>
-<!--
-<label>Difficulty:
-<select id="level">
-<option value="JSS">JSS</option>
-<option value="SS1">SS1</option>
-<option value="SS2">SS2</option>
-<option value="SS3">SS3</option>
-</select>
-</label>-->
 
-<p id="timer">Time: 60</p>
+<div class="status">
+    <span>⏱ Time: <span id="time">20</span>s</span>
+    <span>⭐ Score: <span id="score">0</span></span>
+    <span>🏆 High: <span id="high">0</span></span>
+</div>
+
 <p id="question"></p>
-
 <div class="options" id="options"></div>
-
 <p id="feedback"></p>
 <div id="steps"></div>
-
-<div class="report" id="report"></div>
 </div>
 
 <script>
-let score = 0, total = 0;
-let time = 300, timer;
 let correctX = 0;
-
-function startTimer() {
-    clearInterval(timer);
-    time = 300;
-    document.getElementById("timer").textContent = "Time: " + time;
-    timer = setInterval(() => {
-        time--;
-        document.getElementById("timer").textContent = "Time: " + time;
-        if (time <= 0) endTest();
-    },1000);
-}
+let score = 0;
+let timeLeft = 20;
+let timer;
+let TotalScore =0
+// Load high score
+let highScore = localStorage.getItem("linearHighScore") || 0;
+document.getElementById("high").textContent = highScore;
 
 function rand(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
 
-function generateEquation() {
-    //let level = document.getElementById("level").value;
+// ================= TIMER =================
+function startTimer() {
+    clearInterval(timer);
+    timeLeft = 20;
+    document.getElementById("time").textContent = timeLeft;
 
-    // numeric coefficients ONLY
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("time").textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            document.getElementById("feedback").textContent = "⏰ Time up!";
+            document.getElementById("feedback").className = "wrong";
+            setTimeout(generateQuestion, 1500);
+            TotalScore++
+        }
+    }, 1000);
+}
+
+// ================= EQUATION GENERATOR =================
+function generateEquation() {
     let A = rand(1, 5);
     let C = rand(1, 5);
-
     let b = rand(1, 10);
     let d = rand(1, 10);
 
-    let displayA = A;
-    let displayC = C;
-
-    
-    // Solve Ax + b = Cx + d
     correctX = (d - b) / (A - C);
+    if (!Number.isInteger(correctX)) return generateEquation();
 
-    // Ensure integer solution
-    if (!Number.isInteger(correctX)) {
-        return generateEquation();
-    }
-
-    let eq = `${displayA}x + ${b} = ${displayC}x + ${d}`;
+    let eq = `${A}x + ${b} = ${C}x + ${d}`;
 
     let steps = `
         <b>Step 1:</b> ${eq}<br>
-        <b>Step 2:</b> ${displayA}x - ${displayC}x = ${d} - ${b}<br>
+        <b>Step 2:</b> ${A}x - ${C}x = ${d} - ${b}<br>
         <b>Step 3:</b> ${(A - C)}x = ${d - b}<br>
         <b>Answer:</b> x = ${correctX}
     `;
@@ -143,9 +138,12 @@ function generateEquation() {
     return { eq, steps };
 }
 
+// ================= QUESTION =================
 function generateQuestion() {
-    document.getElementById("steps").style.display = "none";
+    clearInterval(timer);
+
     document.getElementById("feedback").textContent = "";
+    document.getElementById("steps").style.display = "none";
 
     let data = generateEquation();
     document.getElementById("question").textContent =
@@ -158,41 +156,43 @@ function generateQuestion() {
         [...opts].sort(()=>Math.random()-0.5)
         .map(v=>`<button onclick="check(${v},\`${data.steps}\`)">x = ${v}</button>`)
         .join("");
+
+    startTimer();
 }
 
-function check(val,steps) {
-    total++;
+// ================= CHECK ANSWER =================
+function check(val, steps) {
+    clearInterval(timer);
+
     let f = document.getElementById("feedback");
     let s = document.getElementById("steps");
 
     if (val === correctX) {
         score++;
+        TotalScore++
         f.textContent = "✅ Correct";
         f.className = "correct";
     } else {
         f.textContent = "❌ Wrong";
         f.className = "wrong";
+        TotalScore++
+    }
+
+    document.getElementById("score").textContent = `${score}/${TotalScore}`;
+
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem("linearHighScore", highScore);
+        document.getElementById("high").textContent = highScore;
     }
 
     s.innerHTML = steps;
     s.style.display = "block";
 
-    setTimeout(generateQuestion, 5000);
+    setTimeout(generateQuestion, 3000);
 }
 
-function endTest() {
-    clearInterval(timer);
-    document.getElementById("report").style.display = "block";
-    document.getElementById("report").innerHTML = `
-    <h3>📊 Auto-Grading Report</h3>
-    Total Questions: ${total}<br>
-    Correct: ${score}<br>
-    Score: ${((score/total)*100||0).toFixed(1)}%<br>
-    Time Used: 60 seconds
-    `;
-}
-
-startTimer();
+// ================= START =================
 generateQuestion();
 </script>
 

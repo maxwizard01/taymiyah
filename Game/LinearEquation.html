@@ -73,7 +73,7 @@ h2 { text-align: center; }
 <h2>📐 Linear Equation CBT</h2>
 
 <div class="status">
-    <span>⏱ Time: <span id="time">20</span>s</span>
+    <span>⏱ Time: <span id="time">300</span>s</span>
     <span>⭐ Score: <span id="score">0</span></span>
     <span>🏆 High: <span id="high">0</span></span>
 </div>
@@ -87,7 +87,7 @@ h2 { text-align: center; }
 <script>
 let correctX = 0;
 let score = 0;
-let timeLeft = 20;
+let timeLeft = 300;
 let timer;
 let TotalScore =0
 // Load high score
@@ -99,7 +99,7 @@ function rand(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
 // ================= TIMER =================
 function startTimer() {
     clearInterval(timer);
-    timeLeft = 20;
+    timeLeft = 300;
     document.getElementById("time").textContent = timeLeft;
 
     timer = setInterval(() => {
@@ -198,3 +198,4 @@ generateQuestion();
 
 </body>
 </html>
+

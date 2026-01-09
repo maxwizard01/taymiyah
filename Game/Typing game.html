@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Typing Speed Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #121212;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .game-container {
+        background: #1e1e1e;
+        padding: 25px;
+        border-radius: 10px;
+        width: 320px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    .word {
+        font-size: 24px;
+        margin: 15px 0;
+        color: #00eaff;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+    }
+
+    .stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+    .message {
+        margin-top: 10px;
+        height: 20px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        background: #00eaff;
+        cursor: pointer;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="game-container">
+    <h1>Typing Game</h1>
+    <p>Type the word before time runs out!</p>
+
+    <div class="word" id="word">start</div>
+
+    <input type="text" id="input" placeholder="Start typing..." autofocus>
+
+    <div class="stats">
+        <div>⏱ Time: <span id="time">30</span></div>
+        <div>⭐ Score: <span id="score">0</span></div>
+    </div>
+
+    <div class="message" id="message"></div>
+
+    <button id="restart">Restart Game</button>
+</div>
+
+<script>
+const words = [
+    "javascript", "typing", "keyboard", "function", "variable",
+    "browser", "developer", "coding", "program", "internet"
+];
+
+const wordDisplay = document.getElementById("word");
+const input = document.getElementById("input");
+const timeDisplay = document.getElementById("time");
+const scoreDisplay = document.getElementById("score");
+const message = document.getElementById("message");
+const restartBtn = document.getElementById("restart");
+
+let score = 0;
+let time = 30;
+let currentWord = "";
+let timer;
+
+// Generate random word
+function getRandomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
+
+// Display new word
+function showWord() {
+    currentWord = getRandomWord();
+    wordDisplay.textContent = currentWord;
+}
+
+// Start countdown
+function startTimer() {
+    timer = setInterval(() => {
+        time--;
+        timeDisplay.textContent = time;
+
+        if (time === 0) {
+            clearInterval(timer);
+            endGame();
+        }
+    }, 1000);
+}
+
+// Check input
+input.addEventListener("input", () => {
+    if (input.value.trim() === currentWord) {
+        score++;
+        scoreDisplay.textContent = score;
+        message.textContent = "✔ Correct!";
+        message.style.color = "lime";
+
+        input.value = "";
+        showWord();
+    }
+});
+
+// End game
+function endGame() {
+    wordDisplay.textContent = "Game Over!";
+    message.textContent = `Final Score: ${score}`;
+    message.style.color = "orange";
+    input.disabled = true;
+    restartBtn.style.display = "block";
+}
+
+// Restart
+restartBtn.addEventListener("click", () => {
+    score = 0;
+    time = 30;
+    input.disabled = false;
+    input.value = "";
+    scoreDisplay.textContent = score;
+    timeDisplay.textContent = time;
+    message.textContent = "";
+    restartBtn.style.display = "none";
+    showWord();
+    startTimer();
+});
+
+// Start game
+showWord();
+startTimer();
+</script>
+
+</body>
+</html>

@@ -83,7 +83,8 @@ input {
 
     <div class="message" id="message"></div>
 </div>
-
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 <script src="word.js"></script>
 <script>
 let currentWord = "";
@@ -94,6 +95,8 @@ let timer;
 let highScoreEl=document.getElementById('highScore')
 let timeEl = document.getElementById('time')
 let scoreEl=document.getElementById('score')
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -142,6 +145,7 @@ async function newWord(showCorrect=false) {
     
     input.value = "";
     if (showCorrect) {
+        gameOverSound.play()
         TotalScore++
         message.textContent = `✖ Time's up! Correct: ${currentWord}`;
         message.style.color = "orange";
@@ -174,6 +178,7 @@ function startTimer() {
 // Check spelling
 input.addEventListener("input", () => {
     if (input.value.trim().toLowerCase() === currentWord) {
+        correctSound.play()
         score++;
         TotalScore++
         scoreEl.textContent =`${score}/${TotalScore}`;

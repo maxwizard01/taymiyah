@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Typing Speed Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game-container {
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 10px;
+    width: 340px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,255,255,0.3);
+}
+
+.word {
+    font-size: 26px;
+    margin: 15px 0;
+    color: #00eaff;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.message {
+    margin-top: 10px;
+    height: 22px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #00eaff;
+    cursor: pointer;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="game-container">
+    <h2>Typing Speed Game</h2>
+
+    <div class="word" id="word"></div>
+
+    <input type="text" id="input" placeholder="Type here..." autocomplete="off">
+
+    <div class="stats">
+        <div>⏱ <span id="time">5</span>s</div>
+        <div>⭐ <span id="score">0</span></div>
+        <div>🏆 <span id="highScore">0</span></div>
+    </div>
+
+    <div class="stats">
+        <div>⌨️ WPM: <span id="wpm">0</span></div>
+    </div>
+
+    <div class="message" id="message"></div>
+    <button id="restart">Restart</button>
+</div>
+
+<!-- SOUND EFFECTS -->
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+
+<script>
+const EASY_WORDS = [
+  "the","and","for","you","are","but","not","all","can","had","her","was","one","out","day",
+  "get","has","him","his","how","man","new","now","old","see","two","way","who","did","let",
+  "put","say","she","too","use","big","end","far","few","got","job","law","lot","may","off",
+  "run","set","try","ask","buy","cut","eye","fall","hit","kid","lie","low","met","pay","red",
+  "sit","ten","top","yes","yet","air","arm","bed","box","car","cat","dog","ear","egg","fan",
+  "hat","ice","jam","key","leg","map","net","pen","rat","sun","toy","war","win"
+];
+
+const MEDIUM_WORDS = [
+  "about","after","again","below","could","every","first","found","great","house","large",
+  "learn","never","other","place","plant","point","right","small","sound","spell","still",
+  "study","their","there","these","thing","think","three","water","where","which","world",
+  "write","young","bring","build","carry","cause","check","child","clean","close","cover",
+  "cross","drive","early","earth","field","force","front","group","guide","heart","heavy",
+  "hotel","human","image","judge","light","local","model","money","month","music","night",
+  "north","order","paper","peace","phone","power","price","prove","quick","radio","raise",
+  "reach","ready","round","score","sense","serve","shape","share","short","skill","sleep",
+  "smile","solid","space","speed","spend","split","stand","start","state","store","table",
+  "teach","thank","throw","touch","train","trust","truth","under","value","video","voice",
+  "waste","watch","wheel","white","whole","woman","worry","worth","wrong","youth"
+];
+
+const HARD_WORDS = [
+  "account","action","address","advance","balance","benefit","between","brother","business",
+  "capital","central","century","certain","chapter","college","company","control","country",
+  "culture","current","customer","decision","describe","develop","discuss","economy",
+  "election","employee","energy","engine","example","exercise","explain","feature","feeling",
+  "finance","freedom","function","general","history","hospital","identify","imagine","improve",
+  "include","industry","interest","internet","involve","language","location","material",
+  "measure","message","natural","network","nothing","official","operation","opinion",
+  "organize","patient","pattern","perform","personal","physical","picture","policy",
+  "popular","position","possible","practice","prepare","present","pressure","process",
+  "produce","product","program","project","property","purpose","quality","reaction",
+  "reality","receive","recover","reflect","region","release","require","research","resource",
+  "respond","science","section","service","society","special","standard","strategy","student",
+  "success","support","surface","system","teacher","technology","thought","together",
+  "tradition","training","transfer","treatment","universal","valuable","version","village",
+  "violence","weather","website","welcome","writing","yourself"
+];
+
+
+const wordEl = document.getElementById("word");
+const input = document.getElementById("input");
+const timeEl = document.getElementById("time");
+const scoreEl = document.getElementById("score");
+const highScoreEl = document.getElementById("highScore");
+const message = document.getElementById("message");
+const restartBtn = document.getElementById("restart");
+const wpmEl = document.getElementById("wpm");
+
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+
+let score = 0;
+let time = 5;
+let currentWord = "";
+let timer;
+let startTime = Date.now();
+
+// Load high score
+let highScore = localStorage.getItem("typingHighScore") || 0;
+highScoreEl.textContent = highScore;
+
+// Random word
+function randomWord() {
+	let wpm=Number(wpmEl.textContent)
+	console.log(wpm)
+	if(wpm>40){return HARD_WORDS[Math.floor(Math.random() * HARD_WORDS.length)];}
+	if(wpm>30){return MEDIUM_WORDS[Math.floor(Math.random() * MEDIUM_WORDS.length)]}
+	else{return EASY_WORDS[Math.floor(Math.random() * EASY_WORDS.length)]}
+    
+}
+
+// Show word
+function showWord() {
+    currentWord = randomWord();
+    wordEl.textContent = currentWord;
+    input.value = "";
+    time = 15;
+    timeEl.textContent = time;
+}
+
+// Timer per word
+function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+        time--;
+        timeEl.textContent = time;
+
+        if (time === 0) {
+            showWord(); // auto-next on time lapse
+            gameOverSound.play()
+        }
+    }, 1000);
+}
+
+// WPM calculation
+function updateWPM() {
+    const elapsedMinutes = (Date.now() - startTime) / 60000;
+    const wpm = Math.round(score / elapsedMinutes || 0);
+    wpmEl.textContent = wpm;
+}
+
+// Input handling (mobile friendly)
+input.addEventListener("input", () => {
+    if (input.value.trim().toLowerCase() === currentWord) {
+        correctSound.play();
+        score++;
+        scoreEl.textContent = score;
+        message.textContent = "✔ Correct!";
+        message.style.color = "lime";
+
+        updateWPM();
+        showWord();
+        startTimer();
+    }
+});
+
+// End game
+function endGame() {
+    clearInterval(timer);
+    gameOverSound.play();
+    input.disabled = true;
+    restartBtn.style.display = "block";
+    wordEl.textContent = "Game Over!";
+    message.textContent = `Final Score: ${score}`;
+
+    if (score > highScore) {
+        localStorage.setItem("typingHighScore", score);
+        highScoreEl.textContent = score;
+    }
+}
+
+// Restart
+restartBtn.addEventListener("click", () => {
+    score = 0;
+    scoreEl.textContent = score;
+    input.disabled = false;
+    message.textContent = "";
+    restartBtn.style.display = "none";
+    startTime = Date.now();
+    updateWPM();
+    showWord();
+    startTimer();
+});
+
+// Auto focus for mobile
+window.onload = () => {
+    input.focus();
+    showWord();
+    startTimer();
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spelling Bee Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #22d3ee;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.message {
+    margin-top: 10px;
+    height: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+    <h1>🐝 Spelling Bee</h1>
+    <p>Listen carefully and type the word</p>
+
+    <button id="speakBtn">🔊 Hear Word</button>
+
+    <input type="text" id="input" placeholder="Type spelling here"
+           autocomplete="off" autocorrect="off"
+           autocapitalize="none" spellcheck="false">
+
+    <div class="stats">
+        <div>⏱ <span id="time">8</span>s</div>
+        <div>⭐ Score: <span id="score">0</span></div>
+        <div>🏆 High Score: <span id="highScore">0</span></div>
+    </div>
+
+    <div class="message" id="message"></div>
+</div>
+
+<script src="word.js"></script>
+<script>
+let currentWord = "";
+let score = 0;
+let time = 8;
+let timer;
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function delay(n){await sleep(n)}
+// DOM
+const input = document.getElementById("input");
+const speakBtn = document.getElementById("speakBtn");
+const timeEl = document.getElementById("time");
+const scoreEl = document.getElementById("score");
+const highScoreEl = document.getElementById("highScore");
+const message = document.getElementById("message");
+
+// Load high score from localStorage
+let highScore = localStorage.getItem("highScore") || 0;
+highScoreEl.textContent = highScore;
+
+// Pick random word
+function randomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
+
+// Speak word
+function speakWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-US";
+    utterance.rate = 0.8;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
+}
+
+// Start new round
+
+async function newWord(showCorrect=false) {
+    clearInterval(timer);
+    
+    input.value = "";
+    if (showCorrect) {
+        message.textContent = `✖ Time's up! Correct: ${currentWord}`;
+        message.style.color = "orange";
+        await sleep(4000);
+    } else {
+        message.textContent = "";
+    }
+    time = 8;
+    timeEl.textContent = time;
+    currentWord = randomWord();
+    speakWord(currentWord);
+    startTimer();
+}
+
+// Timer
+function startTimer() {
+    timer = setInterval(() => {
+        time--;
+        timeEl.textContent = time;
+
+        if (time === 0) {
+            clearInterval(timer);
+            // Show correct spelling before moving to next word
+            setTimeout(() =>newWord(true), 500);
+            
+        }
+    }, 1000);
+}
+
+// Check spelling
+input.addEventListener("input", () => {
+    if (input.value.trim().toLowerCase() === currentWord) {
+        score++;
+        scoreEl.textContent = score;
+
+        // Update high score
+        if (score > highScore) {
+            highScore = score;
+            highScoreEl.textContent = highScore;
+            localStorage.setItem("highScore", highScore);
+        }
+
+        message.textContent = "✔ Correct!";
+        message.style.color = "lime";
+        setTimeout(() => newWord(false), 700);
+    }
+});
+
+// Replay word
+speakBtn.addEventListener("click", () => {
+    speakWord(currentWord);
+});
+
+// Start game
+window.onload = () => {
+    input.focus();
+    newWord();
+};
+</script>
+
+</body>
+</html>

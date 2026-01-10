@@ -91,8 +91,12 @@ button:hover {
 <p id="feedback"></p>
 <div id="steps"></div>
 </div>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 
 <script>
+    const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 let correctRoots = [];
 let score = 0;
 let highScore = localStorage.getItem("quadHigh") || 0;
@@ -183,11 +187,12 @@ function check(choice,steps){
     let correct=`x = ${correctRoots[0]}, ${correctRoots[1]}`;
 
     if(choice===correct){
+        correctSound.play()
         score++;
         f.textContent="✅ Correct!";
         f.className="correct";
         TotalScore++
-    }else{
+    }else{gameOverSound.play()
         f.textContent="❌ Wrong";
         f.className="wrong";
         TotalScore++
@@ -209,6 +214,7 @@ function check(choice,steps){
 
 /* ================= AUTO NEXT ================= */
 function autoNext(){
+    gameOverSound.play()
     if(lock) return;
     lock=true;
     document.getElementById("feedback").textContent="⏰ Time up!";

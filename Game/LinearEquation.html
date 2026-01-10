@@ -83,6 +83,8 @@ h2 { text-align: center; }
 <p id="feedback"></p>
 <div id="steps"></div>
 </div>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 
 <script>
 let correctX = 0;
@@ -90,6 +92,8 @@ let score = 0;
 let timeLeft = 300;
 let timer;
 let TotalScore =0
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 // Load high score
 let highScore = localStorage.getItem("linearHighScore") || 0;
 document.getElementById("high").textContent = highScore;
@@ -107,6 +111,7 @@ function startTimer() {
         document.getElementById("time").textContent = timeLeft;
 
         if (timeLeft <= 0) {
+            gameOverSound.play()
             clearInterval(timer);
             document.getElementById("feedback").textContent = "⏰ Time up!";
             document.getElementById("feedback").className = "wrong";
@@ -168,11 +173,13 @@ function check(val, steps) {
     let s = document.getElementById("steps");
 
     if (val === correctX) {
+       correctSound.play()
         score++;
         TotalScore++
         f.textContent = "✅ Correct";
         f.className = "correct";
     } else {
+        gameOverSound.play()
         f.textContent = "❌ Wrong";
         f.className = "wrong";
         TotalScore++

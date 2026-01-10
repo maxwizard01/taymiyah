@@ -96,9 +96,13 @@ button:hover {
 <div class="options" id="options"></div>
 <p id="feedback"></p>
 <div id="steps"></div>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 </div>
 
 <script>
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 let correctAnswer="";
 let attempts=0, correct=0;
 let lock=false;
@@ -223,6 +227,7 @@ function generateQuestion(){
             q=`Round ${n} to 3 significant figures`;
             a=Number(n).toPrecision(3);
         }
+        
         if(type===3){
             q=`Round ${n} to the nearest whole number`;
             a=Math.round(n).toString();
@@ -259,11 +264,13 @@ function check(choice,steps){
     let st=document.getElementById("steps");
 
     if(choice===correctAnswer){
+        correctSound.play()
         correct++;
         TotalScore++
         f.textContent="✅ Correct!";
         f.className="correct";
     }else{
+        gameOverSound.play()
         TotalScore++
         f.textContent="❌ Wrong";
         f.className="wrong";

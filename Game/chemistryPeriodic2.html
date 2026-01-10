@@ -86,6 +86,9 @@ button:hover {
     <p id="question"></p>
     <div id="options"></div>
     <p id="result"></p>
+       <audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+
 </div>
 
 <script>
@@ -133,6 +136,8 @@ const elements = [
  {name:"Chlorine",symbol:"Cl",group:7,period:3,config:"2,8,7"}   // heavily used
 ];
 
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 let correctAnswer = "";
 let score = 0;
 let timer = 10;
@@ -156,6 +161,7 @@ function startTimer() {
 
     interval = setInterval(() => {
         timer--;
+        gameOverSound.play()
         document.getElementById("timer").textContent = timer;
 
         if (timer === 0) {
@@ -167,22 +173,15 @@ function startTimer() {
 
 // ===== QUESTION =====
 function generateQuestion() {
-    
     document.getElementById("result").textContent = "";
-    
     document.getElementById("result").className = "";
-
     startTimer();
-    
     const element = randomItem(elements);
-    
     const type = Math.floor(Math.random() * 4);
-    
     let question = "";
-    
     let correct = "";
-
     if (type === 0) {
+
         question = `What is the name of the element with symbol <b>${element.symbol}</b>?`;
         correct = element.name;
     } else if (type === 1) {
@@ -234,6 +233,7 @@ function checkAnswer(choice) {
         document.getElementById("score").textContent = `${score}/${TotalScore}`;
         result.textContent = "✅ Correct!";
         result.className = "correct";
+        correctSound.play()
 
         if (score > highScore) {
             highScore = score;
@@ -244,6 +244,7 @@ function checkAnswer(choice) {
     }
 
      else {
+        gameOverSound.play()
         result.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
         result.className = "wrong";
         TotalScore++

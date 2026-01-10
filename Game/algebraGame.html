@@ -115,7 +115,9 @@ let timeLeft = 10;
 let timerInterval = null;
 let highScore = localStorage.getItem("algebraHighScore") || 0;
 document.getElementById("highScore").textContent = highScore;
-
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+  
 /* ---------- UTILITIES ---------- */
 function randomCoeff(range = 5) {
     let n;
@@ -163,7 +165,7 @@ function generateExpression() {
 /* ---------- TIMER ---------- */
 function startTimer() {
     clearInterval(timerInterval);
-    timeLeft = 30;
+    timeLeft = 20;
     document.getElementById("timer").textContent = `⏱ ${timeLeft}s`;
 
     timerInterval = setInterval(() => {
@@ -173,6 +175,8 @@ function startTimer() {
         if (timeLeft === 0) {
             clearInterval(timerInterval);
             timeout();
+             gameOverSound.play()
+  
         }
     }, 1000);
 }
@@ -227,6 +231,7 @@ function checkAnswer(choice) {
     const result = document.getElementById("result");
 
     if (choice === correctAnswer) {
+         correctSound.play();
         score++;
         TotalScore++
         result.textContent = "✅ Correct!";
@@ -238,10 +243,12 @@ function checkAnswer(choice) {
             document.getElementById("highScore").textContent = highScore;
         }
     } else {
+        gameOverSound.play();
         score=score-1<0?0:score-1;
         result.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
         result.className = "wrong";
         TotalScore++
+
     }
 
     document.getElementById("score").textContent = `Score: ${score}/${TotalScore}`;

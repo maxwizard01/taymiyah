@@ -6,9 +6,7 @@
 <title>Math Quiz Game</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -31,20 +29,24 @@ body {
     text-align: center;
 }
 
-h2 {
+.quiz-card h2 {
     margin-top: 0;
+    color: #333;
+    font-size: 1.8rem;
 }
 
-.stats {
+.status {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
     font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
 }
 
 #question {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin: 20px 0;
+    color: #444;
 }
 
 #options {
@@ -70,13 +72,14 @@ button:hover {
 }
 
 #result {
-    margin-top: 15px;
+    margin-top: 18px;
     font-size: 1.2rem;
     font-weight: bold;
 }
 
 .correct { color: #28a745; }
 .wrong { color: #dc3545; }
+.timeup { color: #ff9800; }
 </style>
 </head>
 
@@ -85,89 +88,84 @@ button:hover {
 <div class="quiz-card">
     <h2>🧠 Math Quiz</h2>
 
-    <div class="stats">
-        <span>⏱ Time: <span id="time">15</span>s</span>
-        <span>🏆 Score: <span id="score">0</span></span>
-        <span>🎚 Level: <span id="level">1</span></span>
+    <div class="status">
+        <span>⏱ <span id="timer">10</span>s</span>
+        <span>⭐ <span id="score">0</span></span>
+        <span>🏆 <span id="highScore">0</span></span>
     </div>
 
     <p id="question"></p>
     <div id="options"></div>
     <p id="result"></p>
 </div>
-
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 <script>
-let timeSpent = prompt('How many seconds per question')
-document.getElementById('time').innerHTML=timeSpent
-let correctAnswer;
+let correctAnswer = 0;
 let score = 0;
-let TotalScore=0
-let level = 1;
-let correctCount = 0;
-let timeLeft = timeSpent;
-let timer;
+let timeLeft = 10;
+let interval;
+let TotalScore = 0;
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+// ===== LOAD HIGH SCORE =====
+let highScore = localStorage.getItem("mathHighScore2") || 0;
+document.getElementById("highScore").textContent = highScore;
 
-function randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+// ===== RANDOM INTEGER (-20 to 20, excluding 0 when needed) =====
+function randomInt(excludeZero = false) {
+    let n;
+    do {
+        n = Math.floor(Math.random() * 31) - 15;
+    } while (excludeZero && n === 0);
+    return n;
 }
 
-function getOperators() {
-    if (level < 2) return ["÷", "×"];
-    if (level < 4) return ["×", "÷", "×"];
-    return ["×", "÷", "×", "÷"];
-}
-
-function generateExpression() {
-    let maxNum = 10 + level * 5;
-    let terms = Math.min(2 + level, 4);
-    let operators = getOperators();
-
-    let expression = "";
-    let result;
-
-    let num = randomInt(1, maxNum);
-    result = num;
-    expression += num;
-
-    for (let i = 1; i < terms; i++) {
-        let op = operators[randomInt(0, operators.length - 1)];
-        let next;
-
-        if (op === "÷") {
-            next = randomInt(1, 10);
-            result = result * next;
-            expression += ` ÷ ${next}`;
-            result /= next;
-        } else {
-            next = randomInt(1, maxNum);
-            expression += ` ${op} ${next}`;
-            if (op === "+") result += next;
-            if (op === "-") result -= next;
-            if (op === "×") result *= next;
-        }
-    }
-
-    return { expression, result: Math.round(result) };
-}
-
+// ===== TIMER =====
 function startTimer() {
-    clearInterval(timer);
-    timeLeft =timeSpent;
-    document.getElementById("time").textContent = timeLeft;
+    clearInterval(interval);
+    timeLeft = 20;
+    document.getElementById("timer").textContent = timeLeft;
 
-    timer = setInterval(() => {
+    interval = setInterval(() => {
         timeLeft--;
-        document.getElementById("time").textContent = timeLeft;
-
+        document.getElementById("timer").textContent = timeLeft;
         if (timeLeft === 0) {
-            clearInterval(timer);
-            showResult(false);
+            gameOverSound.play()
+            clearInterval(interval);
+            timeUp();
         }
     }, 1000);
 }
 
+// ===== GENERATE MULTIPLICATION / DIVISION ONLY =====
+function generateExpression() {
+    let operator = Math.random() < 0.5 ? "*" : "/";
+
+    let a, b, result, expression;
+
+    if (operator === "*") {
+        a = randomInt();
+        b = randomInt();
+        result = a * b;
+        expression = `${a} × ${b}`;
+    } else {
+        // Ensure clean division
+        result = randomInt();
+        b = randomInt(true); // no zero
+        a = result * b;
+        expression = `${a} ÷ ${b}`;
+    }
+
+    return { expression, result };
+}
+
+// ===== QUESTION =====
 function generateQuestion() {
     document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
+
+    startTimer();
 
     const data = generateExpression();
     correctAnswer = data.result;
@@ -177,7 +175,7 @@ function generateQuestion() {
 
     let options = new Set([correctAnswer]);
     while (options.size < 4) {
-        options.add(correctAnswer + randomInt(-10, 10));
+        options.add(correctAnswer + randomInt());
     }
 
     document.getElementById("options").innerHTML =
@@ -185,40 +183,46 @@ function generateQuestion() {
             .sort(() => Math.random() - 0.5)
             .map(opt => `<button onclick="checkAnswer(${opt})">${opt}</button>`)
             .join("");
-
-    startTimer();
 }
 
+// ===== ANSWER CHECK =====
 function checkAnswer(choice) {
-    clearInterval(timer);
-    showResult(choice === correctAnswer);
-}
+    clearInterval(interval);
+    const result = document.getElementById("result");
 
-function showResult(isCorrect) {
-    const resultEl = document.getElementById("result");
+    TotalScore++;
 
-    if (isCorrect) {
-        resultEl.textContent = "✅ Correct!";
-        resultEl.className = "correct";
-        score += 1;
-        TotalScore+=1
-        correctCount++;
+    if (choice === correctAnswer) {
+        score++;
+        result.textContent = "✅ Correct!";
+        result.className = "correct";
+        correctSound.play()
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("mathHighScore2", highScore);
+            document.getElementById("highScore").textContent = highScore;
+        }
     } else {
-        resultEl.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
-        resultEl.className = "wrong";
-        TotalScore+=1
-    }
-
-    if (correctCount > 0 && correctCount % 5 === 0) {
-        level++;
-        document.getElementById("level").textContent = level;
+        result.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
+        result.className = "wrong";
+        gameOverSound.play()
     }
 
     document.getElementById("score").textContent = `${score}/${TotalScore}`;
-
     setTimeout(generateQuestion, 1500);
 }
 
+// ===== TIME UP =====
+function timeUp() {
+    const result = document.getElementById("result");
+    TotalScore++;
+    result.textContent = `⏰ Time up! Answer: ${correctAnswer}`;
+    result.className = "timeup";
+    document.getElementById("score").textContent = `${score}/${TotalScore}`;
+    setTimeout(generateQuestion, 1500);
+}
+
+// ===== START =====
 generateQuestion();
 </script>
 

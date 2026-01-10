@@ -89,21 +89,17 @@ input {
 let currentWord = "";
 let score = 0;
 let time = 8;
+let TotalScore=0
 let timer;
-
+let highScoreEl=document.getElementById('highScore')
+let timeEl = document.getElementById('time')
+let scoreEl=document.getElementById('score')
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function delay(n){await sleep(n)}
 // DOM
-const input = document.getElementById("input");
-const speakBtn = document.getElementById("speakBtn");
-const timeEl = document.getElementById("time");
-const scoreEl = document.getElementById("score");
-const highScoreEl = document.getElementById("highScore");
-const message = document.getElementById("message");
-
 // Load high score from localStorage
 let highScore = localStorage.getItem("highScore") || 0;
 highScoreEl.textContent = highScore;
@@ -114,13 +110,30 @@ function randomWord() {
 }
 
 // Speak word
-function speakWord(word) {
-    const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = "en-US";
-    utterance.rate = 0.8;
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance);
+function speakWord(text) {
+     
+    speechSynthesis.cancel(); // stop any ongoing speech
+
+    let count = 0;
+
+    function speakOnce() {
+        if (count >= 3) return;
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.rate = 0.8;
+
+        utterance.onend = () => {
+            count++;
+            speakOnce(); // speak again after finishing
+        };
+
+        speechSynthesis.speak(utterance);
+    }
+
+    speakOnce();
 }
+
 
 // Start new round
 
@@ -129,13 +142,14 @@ async function newWord(showCorrect=false) {
     
     input.value = "";
     if (showCorrect) {
+        TotalScore++
         message.textContent = `✖ Time's up! Correct: ${currentWord}`;
         message.style.color = "orange";
         await sleep(4000);
     } else {
         message.textContent = "";
     }
-    time = 8;
+    time = 20;
     timeEl.textContent = time;
     currentWord = randomWord();
     speakWord(currentWord);
@@ -161,7 +175,8 @@ function startTimer() {
 input.addEventListener("input", () => {
     if (input.value.trim().toLowerCase() === currentWord) {
         score++;
-        scoreEl.textContent = score;
+        TotalScore++
+        scoreEl.textContent =`${score}/${TotalScore}`;
 
         // Update high score
         if (score > highScore) {
@@ -185,6 +200,7 @@ speakBtn.addEventListener("click", () => {
 window.onload = () => {
     input.focus();
     newWord();
+
 };
 </script>
 

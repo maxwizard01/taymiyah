@@ -31,6 +31,16 @@ select {
     border-radius: 6px;
 }
 
+.status {
+    display: flex;
+    justify-content: space-between;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 #question {
     font-size: 1.3rem;
     margin: 15px 0;
@@ -50,9 +60,7 @@ button {
     border-radius: 8px;
     cursor: pointer;
 }
-button:hover {
-    background: #145a32;
-}
+button:hover { background: #145a32; }
 
 #feedback { margin-top: 10px; font-weight: bold; }
 .correct { color: green; }
@@ -64,11 +72,6 @@ button:hover {
     padding: 10px;
     display: none;
     text-align: left;
-}
-
-#score {
-    margin-top: 10px;
-    font-weight: bold;
 }
 </style>
 </head>
@@ -88,7 +91,11 @@ button:hover {
     <option value="6">Binary Multiplication</option>
 </select>
 
-<div id="score">Score: 0 / 0 (0%)</div>
+<div class="status">
+    <span>⏱ Time: <span id="time">20</span>s</span>
+    <span>⭐ Score: <span id="score">0/0</span></span>
+    <span>🏆 High: <span id="high">0</span></span>
+</div>
 
 <p id="question"></p>
 <div class="options" id="options"></div>
@@ -96,137 +103,202 @@ button:hover {
 <div id="steps"></div>
 </div>
 
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+
 <script>
-let correctAnswer="";
-let attempts=0, correct=0;
-let lock=false;
+let correctAnswer = "";
+let attempts = 0, correct = 0;
+let lock = false;
+let timeLeft = 20;
+let timer;
+
+let highScore = localStorage.getItem("baseHighScore") || 0;
+document.getElementById("high").textContent = highScore;
 
 function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
 function toBase(n,b){ return n.toString(b); }
 
+function startTimer(){
+    clearInterval(timer);
+    timeLeft = 20;
+    document.getElementById("time").textContent = timeLeft;
+
+    timer = setInterval(()=>{
+        timeLeft--;
+        document.getElementById("time").textContent = timeLeft;
+        if(timeLeft<=0){
+            gameOverSound.play();
+            clearInterval(timer);
+            lock = true;
+            attempts++;
+            document.getElementById("feedback").textContent = "⏰ Time Up!";
+            document.getElementById("feedback").className = "wrong";
+            updateScore();
+            setTimeout(generateQuestion,1500);
+        }
+    },1000);
+}
+
 function updateScore(){
-    let percent = attempts ? Math.round(correct/attempts*100) : 0;
-    document.getElementById("score").textContent =
-        `Score: ${correct} / ${attempts} (${percent}%)`;
+    document.getElementById("score").textContent = `${correct}/${attempts}`;
+    if(correct > highScore){
+        highScore = correct;
+        localStorage.setItem("baseHighScore", highScore);
+        document.getElementById("high").textContent = highScore;
+    }
 }
 
 function generateQuestion(){
-    lock=false;
-    document.getElementById("feedback").textContent="";
-    document.getElementById("steps").style.display="none";
+    clearInterval(timer);
+    lock = false;
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("steps").style.display = "none";
 
     let mode = Number(document.getElementById("mode").value);
-    if(mode===0) mode = rand(1,6); // RANDOM MODE
+    if(mode===0) mode = rand(1,6);
 
     let q="", s="", a="";
+    let x, y, n, base;
 
-    /* 1. Base 2 → Base 10 */
+    // ===== BASE 2 → BASE 10 (FIXED) =====
     if(mode===1){
-        let n=rand(8,300);
-        let b=toBase(n,2);
-        q=`Convert ${b}₂ to base 10`;
-        a=n.toString();
-        s=`${b}₂ = Σ(d × 2ⁿ)<br>= ${a}₁₀`;
+        n = rand(20,300);
+        let b = toBase(n,2);
+        q = `Convert ${b}₂ to base 10`;
+        a = n.toString();
+        s = `${b}₂ = ${a}₁₀`;
     }
 
-    /* 2. Base 10 → Base 2 */
     if(mode===2){
-        let n=rand(10,550);
-        a=toBase(n,2);
-        q=`Convert ${n}₁₀ to base 2`;
-        let temp=n, steps="";
-        while(temp>0){
-            steps+=`${temp} ÷ 2 = ${Math.floor(temp/2)} r ${temp%2}<br>`;
-            temp=Math.floor(temp/2);
-        }
-        s=steps+`<b>Answer:</b> ${a}₂`;
+        n = rand(10,550);
+        a = toBase(n,2);
+        q = `Convert ${n}₁₀ to base 2`;
+        s = `Answer: ${a}₂`;
     }
 
-    /* 3. Base 10 → Base (3–9) */
     if(mode===3){
-        let base=rand(3,9), n=rand(15,70);
-        a=toBase(n,base);
-        q=`Convert ${n}₁₀ to base ${base}`;
-        let temp=n, steps="";
-        while(temp>0){
-            steps+=`${temp} ÷ ${base} = ${Math.floor(temp/base)} r ${temp%base}<br>`;
-            temp=Math.floor(temp/base);
-        }
-        s=steps+`<b>Answer:</b> ${a}<sub>${base}</sub>`;
+        base = rand(3,9);
+        n = rand(15,70);
+        a = toBase(n,base);
+        q = `Convert ${n}₁₀ to base ${base}`;
+        s = `Answer: ${a}<sub>${base}</sub>`;
     }
 
-    /* 4. Base n → Base 10 */
+    // ===== BASE (3–9) → BASE 10 (FIXED) =====
     if(mode===4){
-        let base=rand(3,9);
-        let n=rand(15,60);
-        let rep=toBase(n,base);
-        q=`Convert ${rep}<sub>${base}</sub> to base 10`;
-        let exp="";
-        rep.split("").reverse().forEach((d,i)=>{
-            exp+=`${d}×${base}<sup>${i}</sup> + `;
-        });
-        s=exp.slice(0,-3)+` = ${n}`;
-        a=n.toString();
+        base = rand(3,9);
+        n = rand(20,120);
+        let rep = toBase(n,base);
+        q = `Convert ${rep}<sub>${base}</sub> to base 10`;
+        a = n.toString();
+        s = `Answer: ${a}`;
     }
 
-    /* 5. Binary addition/subtraction */
     if(mode===5){
-        let x=rand(5,60), y=rand(3,x);
-        let bx=toBase(x,2), by=toBase(y,2);
+        x = rand(5,60); y = rand(3,x);
+        let bx = toBase(x,2), by = toBase(y,2);
         if(Math.random()<0.5){
-            q=`Add ${bx}₂ + ${by}₂`;
-            a=toBase(x+y,2);
-            s=`${bx}<br>+ ${by}<br>= ${a}`;
-        }else{
-            q=`Subtract ${by}₂ from ${bx}₂`;
-            a=toBase(x-y,2);
-            s=`${bx}<br>− ${by}<br>= ${a}`;
+            q = `Add ${bx}₂ + ${by}₂`;
+            a = toBase(x+y,2);
+        } else {
+            q = `Subtract ${by}₂ from ${bx}₂`;
+            a = toBase(x-y,2);
+        }
+        s = `Answer: ${a}`;
+    }
+
+    if(mode===6){
+        x = rand(3,14); y = rand(2,5);
+        let bx = toBase(x,2), by = toBase(y,2);
+        q = `Multiply ${bx}₂ × ${by}₂`;
+        a = toBase(x*y,2);
+        s = `Answer: ${a}`;
+    }
+
+    correctAnswer = a;
+    document.getElementById("question").innerHTML = q;
+
+    // ===== SMART OPTIONS =====
+    let opts = new Set([a]);
+
+    // Decimal answer modes
+    if(mode===1 || mode===4){
+        let correctDec = Number(a);
+        let wrongs = [
+            correctDec + rand(1,4),
+            correctDec - rand(1,4),
+            Math.round(correctDec * 1.1),
+            Math.round(correctDec * 0.9)
+        ];
+
+        for(let w of wrongs){
+            if(w > 0 && opts.size < 4) opts.add(w.toString());
+        }
+
+        while(opts.size < 4){
+            let near = correctDec + rand(-6,6);
+            if(near > 0) opts.add(near.toString());
         }
     }
 
-    /* 6. Binary multiplication */
-    if(mode===6){
-        let x=rand(3,14), y=rand(2,5);
-        let bx=toBase(x,2), by=toBase(y,2);
-        q=`Multiply ${bx}₂ × ${by}₂`;
-        a=toBase(x*y,2);
-        s=`${bx} × ${by}<br>= ${a}`;
+    // Binary multiplication handled separately
+    else if(mode===6){
+        let correctDec = x * y;
+        let wrongs = [
+            x + y,
+            (x+1)*y,
+            x*(y+1),
+            Math.max(1,(x-1)*y)
+        ];
+        for(let w of wrongs){
+            if(opts.size < 4) opts.add(toBase(w,2));
+        }
+        while(opts.size < 4){
+            let near = correctDec + rand(-3,3);
+            if(near > 0) opts.add(toBase(near,2));
+        }
     }
 
-    correctAnswer=a;
-    document.getElementById("question").innerHTML=q;
+    // Other modes
+    else {
+        while(opts.size < 4){
+            opts.add(toBase(rand(1,70),2));
+        }
+    }
 
-    let opts=new Set([a]);
-    while(opts.size<4) opts.add(toBase(rand(1,70),rand(2,9)));
-
-    document.getElementById("options").innerHTML=
+    document.getElementById("options").innerHTML =
         [...opts].sort(()=>Math.random()-0.5)
-        .map(o=>`<button onclick="check('${o}',\`${s}\`)">${o}</button>`).join("");
+        .map(o=>`<button onclick="check('${o}',\`${s}\`)">${o}</button>`)
+        .join("");
+
+    startTimer();
 }
 
-function check(choice,steps){
+function check(choice, steps){
     if(lock) return;
-    lock=true;
-
+    lock = true;
+    clearInterval(timer);
     attempts++;
-    let f=document.getElementById("feedback");
-    let st=document.getElementById("steps");
 
-    if(choice===correctAnswer){
+    let f = document.getElementById("feedback");
+    let st = document.getElementById("steps");
+
+    if(choice === correctAnswer){
+        correctSound.play();
         correct++;
-        f.textContent="✅ Correct!";
-        f.className="correct";
-    }else{
-        f.textContent="❌ Wrong";
-        f.className="wrong";
+        f.textContent = "✅ Correct!";
+        f.className = "correct";
+    } else {
+        gameOverSound.play();
+        f.textContent = "❌ Wrong";
+        f.className = "wrong";
     }
 
     updateScore();
-    st.innerHTML=steps;
-    st.style.display="block";
-
-    // AUTO NEXT QUESTION
-    setTimeout(generateQuestion, 3000);
+    st.innerHTML = steps;
+    st.style.display = "block";
+    setTimeout(generateQuestion,3000);
 }
 
 generateQuestion();

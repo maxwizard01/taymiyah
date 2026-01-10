@@ -89,9 +89,12 @@ button:hover {
     <p id="result"></p>
 </div>
 
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 <script>
 // ================= DATA =================
-
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 // Balancing equations
 const balanceQuestions = [
  {
@@ -366,6 +369,7 @@ function startTimer() {
         document.getElementById("timer").textContent = timeLeft;
 
         if (timeLeft === 0) {
+          gameOverSound.play()
             clearInterval(timerInterval);
             timeUp();
         }
@@ -402,6 +406,7 @@ function checkAnswer(choice) {
     const result = document.getElementById("result");
 
     if (choice === correctAnswer) {
+        correctSound.play()
         score++;
         TotalScore++
         document.getElementById("score").textContent = `${score}/${TotalScore}`;
@@ -414,6 +419,7 @@ function checkAnswer(choice) {
             document.getElementById("highScore").textContent = highScore;
         }
     } else {
+      gameOverSound.play()
         result.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
         result.className = "wrong";
         TotalScore++
@@ -425,6 +431,7 @@ function checkAnswer(choice) {
 
 // ================= TIME UP =================
 function timeUp() {
+    
     const result = document.getElementById("result");
     result.textContent = `⏰ Time up! Answer: ${correctAnswer}`;
     result.className = "timeup";

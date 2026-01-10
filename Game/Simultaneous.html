@@ -17,20 +17,31 @@ body {
 }
 .card {
     background: #fff;
-    max-width: 600px;
+    max-width: 650px;
     width: 100%;
     padding: 25px;
     border-radius: 16px;
     text-align: center;
 }
 h2 { margin-top: 0; }
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
 #question {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 20px 0;
 }
 .options {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
     gap: 10px;
 }
 button {
@@ -41,20 +52,21 @@ button {
     border-radius: 8px;
     cursor: pointer;
 }
-button:hover {
-    background: #0f2027;
-}
+button:hover { background: #0f2027; }
+
 #feedback {
     margin-top: 15px;
     font-weight: bold;
 }
 .correct { color: green; }
 .wrong { color: red; }
+
 #steps {
     margin-top: 15px;
     background: #f4f4f4;
     padding: 10px;
     display: none;
+    text-align: left;
 }
 </style>
 </head>
@@ -64,64 +76,110 @@ button:hover {
 <div class="card">
 <h2>📘 Solve the Simultaneous Equations</h2>
 
+<div class="status">
+    <span>⏱ Time: <span id="time">20</span>s</span>
+    <span>⭐ Score: <span id="score">0/0</span></span>
+    <span>🏆 High: <span id="high">0</span></span>
+</div>
+
 <p id="question"></p>
-
 <div class="options" id="options"></div>
-
 <p id="feedback"></p>
 <div id="steps"></div>
 </div>
 
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 <script>
+// ================= DATA =================
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+
 let solution = { x: 0, y: 0 };
+let attempts = 0;
+let correctCount = 0;
+let timeLeft = 20;
+let timer;
+let locked = false;
+
+// LOAD HIGH SCORE
+let highScore = localStorage.getItem("simHighScore") || 0;
+document.getElementById("high").textContent = highScore;
 
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// ================= TIMER =================
+function startTimer() {
+    clearInterval(timer);
+    timeLeft = 20;
+    document.getElementById("time").textContent = timeLeft;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("time").textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            gameOverSound.play()
+            clearInterval(timer);
+            locked = true;
+            attempts++;
+            document.getElementById("feedback").textContent = "⏰ Time up!";
+            document.getElementById("feedback").className = "wrong";
+            updateScore();
+            setTimeout(generateQuestion, 1500);
+        }
+    }, 1000);
+}
+
+// ================= SCORE =================
+function updateScore() {
+    document.getElementById("score").textContent =
+        `${correctCount}/${attempts}`;
+
+    if (correctCount > highScore) {
+        highScore = correctCount;
+        localStorage.setItem("simHighScore", highScore);
+        document.getElementById("high").textContent = highScore;
+    }
+}
+
+// ================= QUESTION GENERATION =================
 function generateSimultaneous() {
-    // Step 1: Choose solution
     let x = rand(-10, 15);
     let y = rand(-10, 15);
     if (x === 0) x = 2;
     if (y === 0) y = -3;
 
-    // Step 2: Coefficients
-    let a1 = rand(1, 5);
-    let b1 = rand(1, 5);
-    let a2 = rand(1, 5);
-    let b2 = rand(1, 5);
+    let a1 = rand(1, 5), b1 = rand(1, 5);
+    let a2 = rand(1, 5), b2 = rand(1, 5);
 
-    // Ensure equations are not multiples
-    if (a1 * b2 === a2 * b1) {
-        return generateSimultaneous();
-    }
+    if (a1 * b2 === a2 * b1) return generateSimultaneous();
 
-    // Step 3: Constants
     let c1 = a1 * x + b1 * y;
     let c2 = a2 * x + b2 * y;
 
     solution = { x, y };
 
-    let eq1 = `${a1}x ${b1 < 0 ? "- " : "+ "}${Math.abs(b1)}y = ${c1}`;
-    let eq2 = `${a2}x ${b2 < 0 ? "- " : "+ "}${Math.abs(b2)}y = ${c2}`;
+    let eq1 = `${a1}x + ${b1}y = ${c1}`;
+    let eq2 = `${a2}x + ${b2}y = ${c2}`;
 
     let steps = `
         <b>Equation (1):</b> ${eq1}<br>
         <b>Equation (2):</b> ${eq2}<br><br>
-
-        <b>Step 1:</b> Multiply equations to eliminate one variable<br>
-        <b>Step 2:</b> Subtract equations<br>
-        <b>Step 3:</b> Solve for x or y<br>
-        <b>Step 4:</b> Substitute back<br><br>
-
-        <b>Answer:</b> x = ${x}, y = ${y}
+        <b>Solution:</b><br>
+        x = ${x}<br>
+        y = ${y}
     `;
 
     return { eq1, eq2, steps };
 }
 
 function generateQuestion() {
+    clearInterval(timer);
+    locked = false;
+
     document.getElementById("feedback").textContent = "";
     document.getElementById("steps").style.display = "none";
 
@@ -130,40 +188,48 @@ function generateQuestion() {
         `${data.eq1}<br>${data.eq2}`;
 
     let correct = `x = ${solution.x}, y = ${solution.y}`;
-
     let options = new Set([correct]);
+
     while (options.size < 4) {
-        let fx = rand(-5,5);
-        let fy = rand(-5,5);
-        options.add(`x = ${fx}, y = ${fy}`);
+        options.add(`x = ${rand(-6,6)}, y = ${rand(-6,6)}`);
     }
 
     document.getElementById("options").innerHTML =
-        [...options].sort(()=>Math.random()-0.5)
-        .map(o=>`<button onclick="check('${o}',\`${data.steps}\`)">${o}</button>`)
+        [...options].sort(() => Math.random() - 0.5)
+        .map(o => `<button onclick="check('${o}',\`${data.steps}\`)">${o}</button>`)
         .join("");
+
+    startTimer();
 }
 
+// ================= CHECK ANSWER =================
 function check(choice, steps) {
+    if (locked) return;
+    locked = true;
+    clearInterval(timer);
+    attempts++;
+    let correctAns = `x = ${solution.x}, y = ${solution.y}`;
     let f = document.getElementById("feedback");
     let s = document.getElementById("steps");
 
-    let correct = `x = ${solution.x}, y = ${solution.y}`;
-
-    if (choice === correct) {
+    if (choice === correctAns) {
+        correctSound.play()
+        correctCount++;
         f.textContent = "✅ Correct!";
         f.className = "correct";
-    } else {
+    } else {gameOverSound.play()
         f.textContent = "❌ Wrong";
         f.className = "wrong";
     }
 
+    updateScore();
     s.innerHTML = steps;
     s.style.display = "block";
 
     setTimeout(generateQuestion, 3000);
 }
 
+// ================= START =================
 generateQuestion();
 </script>
 

@@ -86,13 +86,18 @@ button:hover {
 <p id="feedback"></p>
 <div id="steps"></div>
 </div>
+ <audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+
 
 <script>
 let correctAnswer = "";
 let score = 0;
 let timeLeft = 60;
 let timer;
-let TotalScore=0
+let TotalScore = 0;
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 // Load high score
 let highScore = localStorage.getItem("geoHighScore") || 0;
 document.getElementById("high").textContent = highScore;
@@ -108,17 +113,32 @@ function startTimer() {
     document.getElementById("time").textContent = timeLeft;
 
     timer = setInterval(() => {
+        
         timeLeft--;
         document.getElementById("time").textContent = timeLeft;
 
         if (timeLeft <= 0) {
+            gameOverSound.play()
             clearInterval(timer);
             document.getElementById("feedback").textContent = "⏰ Time up!";
             document.getElementById("feedback").className = "wrong";
+            TotalScore++;
             setTimeout(generateQuestion, 1500);
-            TotalScore++
         }
     }, 1000);
+}
+
+// ================= FAKE MIDPOINT OPTIONS =================
+function fakeMidpoints(mx, my) {
+    let set = new Set();
+    set.add(`(${mx}, ${my})`);
+
+    while (set.size < 4) {
+        let fx = mx + rand(-3, 3);
+        let fy = my + rand(-3, 3);
+        set.add(`(${fx}, ${fy})`);
+    }
+    return [...set].sort(() => Math.random() - 0.5);
 }
 
 // ================= QUESTION GENERATOR =================
@@ -128,76 +148,103 @@ function generateQuestion() {
     document.getElementById("feedback").textContent = "";
     document.getElementById("steps").style.display = "none";
 
-    let type = rand(1,5);
-    let question = "", steps = "", answer = "";
+    let type = rand(1, 5);
+    let question = "", steps = "", answer = "", options = [];
 
+    // ================= LINE EQUATION =================
     if (type === 1) {
-        let x1=rand(-5,5), y1=rand(-5,5);
-        let x2=rand(-5,5), y2=rand(-5,5);
-        if (x1===x2) x2+=1;
+        let x1 = rand(-5,5), y1 = rand(-5,5);
+        let x2 = rand(-5,5), y2 = rand(-5,5);
+        if (x1 === x2) x2++;
 
-        let m = (y2-y1)/(x2-x1);
-        let c = y1 - m*x1;
+        let m = (y2 - y1) / (x2 - x1);
+        let c = y1 - m * x1;
 
         question = `Find the equation of the line passing through (${x1},${y1}) and (${x2},${y2})`;
         answer = `y = ${m}x + ${c}`;
         steps = `Slope = ${m}<br>Intercept = ${c}`;
+
+        options = new Set([answer]);
+        while (options.size < 4) {
+            options.add(`y = ${rand(-3,3)}x + ${rand(-5,5)}`);
+        }
+        options = [...options];
     }
 
+    // ================= MIDPOINT (PAIR OPTIONS) =================
     if (type === 2) {
-        let x1=rand(-6,6), y1=rand(-6,6);
-        let x2=rand(-6,6), y2=rand(-6,6);
-        let mx=(x1+x2)/2, my=(y1+y2)/2;
+        let x1 = rand(-6,6), y1 = rand(-6,6);
+        let x2 = rand(-6,6), y2 = rand(-6,6);
+
+        let mx = (x1 + x2) / 2;
+        let my = (y1 + y2) / 2;
 
         question = `Find the midpoint of (${x1},${y1}) and (${x2},${y2})`;
         answer = `(${mx}, ${my})`;
         steps = `Midpoint = (${mx}, ${my})`;
+
+        options = fakeMidpoints(mx, my);
     }
 
+    // ================= DISTANCE =================
     if (type === 3) {
-        let x1=rand(-5,5), y1=rand(-5,5);
-        let x2=rand(-5,5), y2=rand(-5,5);
-        let d = Math.sqrt((x2-x1)**2 + (y2-y1)**2);
+        let x1 = rand(-5,5), y1 = rand(-5,5);
+        let x2 = rand(-5,5), y2 = rand(-5,5);
 
+        let d = Math.sqrt((x2-x1)**2 + (y2-y1)**2).toFixed(2);
         question = `Find the distance between (${x1},${y1}) and (${x2},${y2})`;
-        answer = d.toFixed(2);
-        steps = `Distance = ${answer}`;
+        answer = d;
+        steps = `Distance = ${d}`;
+
+        options = new Set([d]);
+        while (options.size < 4) {
+            options.add((rand(1,15) + Math.random()).toFixed(2));
+        }
+        options = [...options];
     }
 
+    // ================= REVERSE MIDPOINT =================
     if (type === 4) {
-        let x1=rand(-5,5), y1=rand(-5,5);
-        let mx=rand(-5,5), my=rand(-5,5);
-        let x2 = 2*mx - x1;
-        let y2 = 2*my - y1;
+        let x1 = rand(-5,5), y1 = rand(-5,5);
+        let mx = rand(-5,5), my = rand(-5,5);
+
+        let x2 = 2 * mx - x1;
+        let y2 = 2 * my - y1;
 
         question = `Midpoint of (${x1},${y1}) and (x,y) is (${mx},${my}). Find (x,y).`;
         answer = `(${x2}, ${y2})`;
         steps = `Point = (${x2}, ${y2})`;
+
+        options = fakeMidpoints(x2, y2);
     }
 
+    // ================= HORIZONTAL DISTANCE =================
     if (type === 5) {
-        let x1=rand(1,5), y1=rand(1,5);
-        let y2=rand(1,5);
-        let d=rand(5,10);
+        let x1 = rand(1,5), y1 = rand(1,5);
+        let y2 = rand(1,5);
+        let d = rand(5,10);
 
-        let x2 = Math.round(Math.sqrt(d*d - (y2-y1)**2) + x1);
+        let dx = Math.sqrt(d*d - (y2-y1)**2);
+        let x2 = Math.round(x1 + dx);
+
         question = `Distance between (${x1},${y1}) and (x,${y2}) is ${d}. Find x.`;
         answer = `${x2}`;
         steps = `x = ${x2}`;
+
+        options = new Set([answer]);
+        while (options.size < 4) {
+            options.add(rand(-10,10).toString());
+        }
+        options = [...options];
     }
 
     correctAnswer = answer;
     document.getElementById("question").innerHTML = question;
 
-    let options = new Set([answer]);
-    while (options.size < 4) {
-        options.add(rand(-10,10).toString());
-    }
-
     document.getElementById("options").innerHTML =
-        [...options].sort(()=>Math.random()-0.5)
-        .map(o=>`<button onclick="check('${o}',\`${steps}\`)">${o}</button>`)
-        .join("");
+        options.map(o =>
+            `<button onclick="check('${o}', \`${steps}\`)">${o}</button>`
+        ).join("");
 
     startTimer();
 }
@@ -210,16 +257,17 @@ function check(choice, steps) {
     let s = document.getElementById("steps");
 
     if (choice === correctAnswer) {
+        correctSound.play()
         score++;
         f.textContent = "✅ Correct!";
         f.className = "correct";
-        TotalScore++
     } else {
+        gameOverSound.play()
         f.textContent = "❌ Wrong";
         f.className = "wrong";
-        TotalScore++
     }
 
+    TotalScore++;
     document.getElementById("score").textContent = `${score}/${TotalScore}`;
 
     if (score > highScore) {

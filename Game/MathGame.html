@@ -99,6 +99,8 @@ button:hover {
     <p id="question"></p>
     <div id="options"></div>
     <p id="result"></p>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
 </div>
 
 <script>
@@ -107,7 +109,8 @@ let score = 0;
 let timeLeft = 10;
 let interval;
 let TotalScore=0
-
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
 // ===== LOAD HIGH SCORE =====
 let highScore = localStorage.getItem("mathHighScore") || 0;
 document.getElementById("highScore").textContent = highScore;
@@ -120,7 +123,7 @@ function randomInt() {
 // ===== TIMER =====
 function startTimer() {
     clearInterval(interval);
-    timeLeft = 15;
+    timeLeft = 20;
     document.getElementById("timer").textContent = timeLeft;
 
     interval = setInterval(() => {
@@ -128,6 +131,7 @@ function startTimer() {
         document.getElementById("timer").textContent = timeLeft;
 
         if (timeLeft === 0) {
+            gameOverSound.play()
             clearInterval(interval);
             timeUp();
         }
@@ -191,7 +195,7 @@ function checkAnswer(choice) {
         document.getElementById("score").textContent = `${score}/${TotalScore}`;
         result.textContent = "✅ Correct!";
         result.className = "correct";
-
+        correctSound.play()
 
         if (score > highScore) {
             highScore = score;
@@ -202,6 +206,7 @@ function checkAnswer(choice) {
     } else {
         result.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
         result.className = "wrong";
+        gameOverSound.play()
          TotalScore++
         document.getElementById("score").textContent = `${score}/${TotalScore};`
     }

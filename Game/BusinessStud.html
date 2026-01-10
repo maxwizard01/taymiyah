@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Business Studies CBT Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#1f4037,#99f2c8);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card{
+    background:#fff;
+    max-width:700px;
+    width:95%;
+    padding:25px;
+    border-radius:15px;
+}
+h2{text-align:center;}
+.status{
+    display:flex;
+    justify-content:space-between;
+    background:#f1f1f1;
+    padding:10px;
+    border-radius:10px;
+    font-weight:bold;
+}
+#question{
+    font-size:1.2rem;
+    margin:15px 0;
+}
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+button{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#1f4037;
+    color:#fff;
+}
+button:hover{background:#145a32;}
+.correct{color:green;font-weight:bold;}
+.wrong{color:red;font-weight:bold;}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>📘 Business Studies CBT Quiz</h2>
+
+<div class="status">
+<span>⏱ Time: <span id="time">20</span>s</span>
+<span>📊 Score: <span id="score">0/0</span></span>
+<span>🏆 High: <span id="high">0</span></span>
+</div>
+
+<p id="question"></p>
+<div class="options" id="options"></div>
+<p id="feedback"></p>
+</div>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+<script>
+    const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+const questions = [
+{q:"The legal means by which people earn their living is called", o:["Business","Goods","Services","Trade"], a:0},
+{q:"The exchange of goods for goods is known as", o:["Trade by barter","Retail trade","Import trade","Wholesale trade"], a:0},
+{q:"Activities people engage in to earn a living are called", o:["Commercial occupation","Commercial services","Art and service","Social work"], a:0},
+{q:"The subject that teaches commercial activities is", o:["Social studies","School studies","Business studies","Financial studies"], a:2},
+{q:"The following are subjects under business studies except", o:["Commerce","Book-keeping","Shorthand","Biology"], a:3},
+
+{q:"A place where clerical work is done is called", o:["Office","Department","Firm","Organization"], a:0},
+{q:"A single room with office equipment is a", o:["Small office","Large office","Complex office","Big office"], a:0},
+{q:"A building divided into many offices is a", o:["Large office","Partitioned office","Small office","Store"], a:1},
+{q:"Information is received in an office through the following except", o:["Letter","Fax","E-mail","Running"], a:3},
+{q:"The following are functions of an office except", o:["Receiving information","Recording information","Arranging information","Scattering information"], a:3},
+
+{q:"Buying and selling of goods is called", o:["Trade","Aid","Service","Occupation"], a:0},
+{q:"Trade between two countries is called", o:["Internal trade","Foreign trade","Retail trade","Local trade"], a:1},
+{q:"Trade carried out within a country is known as", o:["Foreign trade","External trade","Internal trade","Import trade"], a:2},
+{q:"The person who buys goods from producers and sells to retailers is a", o:["Retailer","Wholesaler","Consumer","Agent"], a:1},
+{q:"The final user of goods is the", o:["Producer","Wholesaler","Retailer","Consumer"], a:3},
+
+{q:"Services that help trade are called", o:["Commercial services","Social services","Personal services","Office services"], a:0},
+{q:"Which of the following is a commercial service?", o:["Teaching","Transport","Farming","Fishing"], a:1},
+{q:"Buying goods from another country is called", o:["Export","Import","Wholesale","Barter"], a:1},
+{q:"Selling goods to another country is known as", o:["Import","Export","Retail","Trade by barter"], a:1},
+{q:"An occupation that involves producing goods is", o:["Commerce","Industry","Trade","Service"], a:1},
+
+{q:"Which of the following is an industrial occupation?", o:["Teaching","Farming","Banking","Trading"], a:1},
+{q:"Business activities concerned with distribution are called", o:["Industry","Commerce","Production","Extraction"], a:1},
+{q:"Which of the following is NOT an office equipment?", o:["Computer","Stapler","Fax machine","Hoe"], a:3},
+{q:"The person who keeps financial records is a", o:["Secretary","Accountant","Manager","Clerk"], a:1},
+{q:"The written message sent in an office is called", o:["Letter","Memo","Notice","All of the above"], a:3},
+
+{q:"A short internal message in an office is a", o:["Letter","Fax","Memo","Circular"], a:2},
+{q:"The act of keeping business records is", o:["Trading","Book-keeping","Marketing","Advertising"], a:1},
+{q:"Which of the following is NOT a type of trade?", o:["Retail","Wholesale","Barter","Manufacturing"], a:3},
+{q:"Office work is mainly", o:["Manual","Clerical","Agricultural","Industrial"], a:1},
+{q:"The head of an office is the", o:["Clerk","Secretary","Manager","Messenger"], a:2},
+
+{q:"Goods bought in large quantities are sold by a", o:["Retailer","Wholesaler","Consumer","Agent"], a:1},
+{q:"An office where only one person works is a", o:["Large office","Open office","Small office","Public office"], a:2},
+{q:"The buying and selling of goods within a country is", o:["Foreign trade","External trade","Internal trade","Import"], a:2},
+{q:"Which of the following helps in office communication?", o:["Telephone","Radio","Hoe","Cutlass"], a:0},
+{q:"The main aim of business is to", o:["Make profit","Waste money","Lose customers","Give free goods"], a:0}
+];
+
+let index = 0, score = 0, attempts = 0;
+let timeLeft = 20, timer;
+
+// HIGH SCORE
+let highScore = localStorage.getItem("bizHighScore") || 0;
+document.getElementById("high").textContent = highScore;
+
+// SHUFFLE
+questions.sort(()=>Math.random()-0.5);
+
+function startTimer(){
+    clearInterval(timer);
+    timeLeft = 20;
+    document.getElementById("time").textContent = timeLeft;
+
+    timer = setInterval(()=>{
+        timeLeft--;
+        document.getElementById("time").textContent = timeLeft;
+
+        if(timeLeft<=0){
+            gameOverSound.play()
+            clearInterval(timer);
+            attempts++;
+            showCorrect("⏰ Time Up!");
+        }
+    },1000);
+}
+
+function loadQuestion(){
+    if(index >= questions.length){
+        if(score > highScore){
+            highScore = score;
+            localStorage.setItem("bizHighScore", highScore);
+        }
+        document.body.innerHTML =
+        `<h2>Quiz Completed</h2>
+         <p>Your Score: ${score}/${attempts}</p>
+         <p>🏆 High Score: ${highScore}</p>`;
+        return;
+    }
+
+    startTimer();
+    let q = questions[index];
+    document.getElementById("question").textContent = q.q;
+
+    let opts = [...q.o].sort(()=>Math.random()-0.5);
+    document.getElementById("options").innerHTML = opts.map(o =>
+        `<button onclick="check('${o}')">${o}</button>`
+    ).join("");
+
+    document.getElementById("feedback").textContent = "";
+}
+
+function showCorrect(message){
+    let q = questions[index];
+    document.getElementById("feedback").innerHTML =
+        `${message}<br>✅ Correct Answer: <b>${q.o[q.a]}</b>`;
+    document.getElementById("feedback").className = "wrong";
+
+    document.getElementById("score").textContent = `${score}/${attempts}`;
+    index++;
+    setTimeout(loadQuestion, 2500);
+}
+
+function check(choice){
+    clearInterval(timer);
+    attempts++;
+
+    let q = questions[index];
+    let correct = q.o[q.a];
+
+    if(choice === correct){
+        score++;
+        correctSound.play()
+        document.getElementById("feedback").textContent = "✅ Correct";
+        document.getElementById("feedback").className = "correct";
+    } else {
+        gameOverSound.play()
+        showCorrect("❌ Wrong");
+        return;
+    }
+
+    document.getElementById("score").textContent = `${score}/${attempts}`;
+    index++;
+    setTimeout(loadQuestion,1500);
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Reactions Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-card {
+    background: #fff;
+    width: 480px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+#question {
+    font-size: 1.3rem;
+    margin: 20px 0;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+button {
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #2a5298;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.correct { color: green; }
+.wrong { color: red; }
+.timeup { color: orange; }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-card">
+    <h2>⚗ Chemistry Quiz</h2>
+
+    <div class="status">
+        <span>⏱ <span id="timer">12</span>s</span>
+        <span>⭐ <span id="score">0</span></span>
+        <span>🏆 <span id="highScore">0</span></span>
+    </div>
+
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="result"></p>
+</div>
+
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+<script>
+// ================= DATA =================
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+// Balancing equations
+
+let TotalScore=0
+let correctAnswer = "";
+let score = 0;
+let timeLeft = 12;
+let timerInterval;
+
+const homologousSeries = [
+ { question: "Which of the following best defines a homologous series?", correct: "A family of organic compounds with similar chemical properties", options: ["Compounds with the same molecular formula","A family of organic compounds with similar chemical properties","Organic compounds with different functional groups","Compounds with the same physical properties only"] },
+ { question: "Members of a homologous series differ from one another by:", correct: "–CH₂– unit", options: ["–CH–","–CH₂– unit","–CH₃–","–OH"] },
+ { question: "Which of the following is a homologous series?", correct: "Alkanes", options: ["Alcohols","Alkanes","Aldehydes","Esters"] },
+ { question: "All members of a homologous series have the same:", correct: "Functional group", options: ["Molecular mass","Boiling point","Functional group","Empirical formula"] },
+ { question: "Which property changes gradually along a homologous series?", correct: "Boiling point", options: ["Chemical properties","Functional group","General formula","Boiling point"] },
+ { question: "The general formula of alkanes is:", correct: "CnH₂n+₂", options: ["CnH₂n","CnH₂n+₂","CnH₂n−₂","CnHn"] },
+ { question: "Successive members of a homologous series show:", correct: "Gradual change in physical properties", options: ["Sudden change","No change","Gradual change in physical properties","Same melting point"] },
+ { question: "Which series contains ethane, propane and butane?", correct: "Alkanes", options: ["Alkenes","Alkynes","Alkanes","Alcohols"] },
+ { question: "Which unit is repeated in a homologous series?", correct: "–CH₂–", options: ["–OH","–COOH","–CH₂–","–NH₂"] },
+ { question: "Which of the following is NOT a homologous series?", correct: "Mixture of alcohols and acids", options: ["Alkanes","Alkenes","Alcohols","Mixture of alcohols and acids"] },
+ { question: "Members of a homologous series have similar:", correct: "Chemical reactions", options: ["Physical properties","Molecular masses","Chemical reactions","Melting points"] },
+ { question: "Which homologous series has C=C bond?", correct: "Alkenes", options: ["Alkanes","Alkenes","Alkynes","Alcohols"] },
+ { question: "What is the first member of alkane series?", correct: "Methane", options: ["Ethane","Methane","Propane","Butane"] },
+ { question: "Which is the first member of alkene series?", correct: "Ethene", options: ["Methene","Ethene","Propene","Butene"] },
+ { question: "Which homologous series contains –OH?", correct: "Alcohols", options: ["Acids","Esters","Alcohols","Alkanes"] },
+ { question: "Which series shows complete combustion?", correct: "Hydrocarbons", options: ["Alcohols","Hydrocarbons","Acids","Esters"] },
+ { question: "Which increases down a homologous series?", correct: "Molecular mass", options: ["Chemical properties","Functional group","General formula","Molecular mass"] },
+ { question: "Which series contains ethanoic acid?", correct: "Carboxylic acids", options: ["Alcohols","Esters","Carboxylic acids","Alkanes"] },
+ { question: "Which homologous series contains C≡C bond?", correct: "Alkynes", options: ["Alkanes","Alkenes","Alkynes","Alcohols"] },
+ { question: "Which property remains the same in a homologous series?", correct: "Chemical properties", options: ["Boiling point","Density","Chemical properties","Molecular mass"] }
+];
+
+const functionalGroups = [
+ { question: "Which functional group is present in alcohols?", correct: "–OH", options: ["–COOH","–OH","–CO–","–NH₂"] },
+ { question: "The functional group –COOH is found in:", correct: "Carboxylic acids", options: ["Esters","Alcohols","Carboxylic acids","Alkenes"] },
+ { question: "Which functional group is characteristic of alkenes?", correct: "C=C", options: ["C–C","C≡C","C=C","–OH"] },
+ { question: "Which group is present in alkynes?", correct: "C≡C", options: ["C=C","C≡C","C–C","–COOH"] },
+ { question: "The –CHO group indicates:", correct: "Aldehydes", options: ["Ketones","Alcohols","Aldehydes","Esters"] },
+ { question: "Which group is present in esters?", correct: "–COO–", options: ["–COOH","–CHO","–COO–","–OH"] },
+ { question: "Which functional group makes acids acidic?", correct: "–COOH", options: ["–OH","–COOH","–NH₂","–CO–"] },
+ { question: "Which compound contains –NH₂?", correct: "Amines", options: ["Alcohols","Amines","Esters","Alkanes"] },
+ { question: "Which group reacts with sodium metal vigorously?", correct: "–OH", options: ["–COOH","–OH","C=C","C≡C"] },
+ { question: "Which functional group decolourises bromine water?", correct: "C=C", options: ["–OH","C=C","–COOH","C–C"] },
+ { question: "Which functional group forms soap?", correct: "–COOH", options: ["–COOH","–OH","–CHO","–NH₂"] },
+ { question: "Which group is responsible for fruity smell?", correct: "–COO–", options: ["–OH","–COOH","–COO–","–NH₂"] },
+ { question: "Which group undergoes esterification?", correct: "–OH", options: ["C=C","–OH","C≡C","C–C"] },
+ { question: "Which group is found in ketones?", correct: "–CO–", options: ["–CO–","–CHO","–COOH","–OH"] },
+ { question: "Which functional group defines alcohols?", correct: "–OH", options: ["–OH","–COOH","–NH₂","–COO–"] },
+ { question: "Which group undergoes oxidation easily?", correct: "–OH", options: ["C–C","–OH","C≡C","–COO–"] },
+ { question: "Which group makes compounds unsaturated?", correct: "C=C", options: ["C–C","C=C","–OH","–COOH"] },
+ { question: "Which functional group forms hydrogen bonds?", correct: "–OH", options: ["C=C","C≡C","–OH","C–C"] },
+ { question: "Which group is present in carboxylic acids?", correct: "–COOH", options: ["–CO–","–CHO","–COOH","–COO–"] },
+ { question: "Which group is absent in hydrocarbons?", correct: "–OH", options: ["C–C","C=C","C≡C","–OH"] }
+];
+
+const hydrocarbons = [
+ { question: "Which general formula represents alkanes?", correct: "CnH₂n+₂", options: ["CnH₂n","CnH₂n+₂","CnH₂n−₂","CnHn"] },
+ { question: "Ethene belongs to which homologous series?", correct: "Alkenes", options: ["Alkanes","Alkenes","Alkynes","Alcohols"] },
+ { question: "Which hydrocarbon contains a triple bond?", correct: "Alkynes", options: ["Alkanes","Alkenes","Alkynes","Cycloalkanes"] },
+ { question: "Which hydrocarbon is saturated?", correct: "Alkanes", options: ["Alkenes","Alkynes","Alkanes","Arenes"] },
+ { question: "What type of bond is present in alkanes?", correct: "Single bond", options: ["Double bond","Triple bond","Single bond","Ionic bond"] },
+ { question: "Which hydrocarbon decolourises bromine water?", correct: "Alkenes", options: ["Alkanes","Alkenes","Alkynes","Paraffins"] },
+ { question: "What is the general formula of alkynes?", correct: "CnH₂n−₂", options: ["CnH₂n","CnH₂n+₂","CnH₂n−₂","CnHn"] },
+ { question: "Which is the first member of alkyne series?", correct: "Ethyne", options: ["Methyne","Ethyne","Propyne","Butyne"] },
+ { question: "Which hydrocarbon undergoes substitution reaction?", correct: "Alkanes", options: ["Alkenes","Alkynes","Alkanes","Arenes"] },
+ { question: "Which hydrocarbon undergoes addition reaction?", correct: "Alkenes", options: ["Alkanes","Alkenes","Alkanols","Alkanoic acids"] },
+ { question: "Which of the following is an alkane?", correct: "Propane", options: ["Propene","Propyne","Propane","Propanol"] },
+ { question: "Which of the following is an alkyne?", correct: "Butyne", options: ["Butane","Butene","Butyne","Butanol"] },
+ { question: "Which hydrocarbon burns with a smoky flame?", correct: "Alkynes", options: ["Alkanes","Alkenes","Alkynes","Cycloalkanes"] },
+ { question: "Which hydrocarbon has the highest hydrogen content?", correct: "Alkanes", options: ["Alkenes","Alkynes","Alkanes","Aromatics"] },
+ { question: "Which is unsaturated?", correct: "Ethene", options: ["Methane","Ethane","Ethene","Propane"] },
+ { question: "What is the IUPAC name of C₂H₂?", correct: "Ethyne", options: ["Ethane","Ethene","Ethyne","Ethyl"] },
+ { question: "Which hydrocarbon reacts with KMnO₄?", correct: "Alkenes", options: ["Alkanes","Alkenes","Cycloalkanes","Paraffins"] },
+ { question: "Which hydrocarbon forms homologous series?", correct: "All hydrocarbons", options: ["Alkanes only","Alkenes only","Alkynes only","All hydrocarbons"] },
+ { question: "Which hydrocarbon is used as fuel gas?", correct: "Methane", options: ["Ethene","Ethyne","Methane","Propene"] },
+ { question: "Which hydrocarbon has the formula C₃H₆?", correct: "Propene", options: ["Propane","Propene","Propyne","Propanol"] }
+];
+const isomerism = [
+ { question: "Isomerism is best described as compounds having:", correct: "Same molecular formula but different structural formulae", options: ["Same structural formula","Same molecular formula but different structural formulae","Different molecular and structural formulae","Same empirical formula only"] },
+ { question: "Which type of isomerism occurs in butane?", correct: "Structural isomerism", options: ["Geometrical","Optical","Structural","Functional"] },
+ { question: "Compounds that exhibit isomerism must have:", correct: "Same molecular formula", options: ["Same functional group","Same molecular formula","Same boiling point","Same melting point"] },
+ { question: "Which compound shows structural isomerism?", correct: "C₄H₁₀", options: ["CH₄","C₂H₆","C₃H₈","C₄H₁₀"] },
+ { question: "Isomers have different:", correct: "Structural arrangement", options: ["Molecular formula","Empirical formula","Structural arrangement","Atomic number"] },
+ { question: "Which type of isomerism involves different functional groups?", correct: "Functional isomerism", options: ["Structural","Geometrical","Optical","Functional"] },
+ { question: "Which compound shows geometrical isomerism?", correct: "But-2-ene", options: ["Ethene","But-2-ene","Propane","Ethyne"] },
+ { question: "Which is a pair of isomers?", correct: "Butane and isobutane", options: ["Ethane and propane","Methane and ethane","Butane and isobutane","Ethene and ethyne"] },
+ { question: "Which condition is required for geometrical isomerism?", correct: "Restricted rotation", options: ["Free rotation","Restricted rotation","Single bond","Ionic bond"] },
+ { question: "Isomers usually have:", correct: "Different physical properties", options: ["Same physical properties","Different physical properties","Same reactivity","Same boiling point"] },
+ { question: "Functional isomers belong to:", correct: "Different homologous series", options: ["Same series","Different homologous series","Same family","Same group"] },
+ { question: "Which formula has the highest number of isomers?", correct: "C₆H₁₄", options: ["C₂H₆","C₃H₈","C₄H₁₀","C₆H₁₄"] },
+ { question: "Isomerism begins from which alkane?", correct: "Butane", options: ["Ethane","Propane","Butane","Pentane"] },
+ { question: "Which compound does NOT show isomerism?", correct: "Methane", options: ["Methane","Butane","Pentane","Hexane"] },
+ { question: "What remains constant in isomers?", correct: "Molecular formula", options: ["Boiling point","Structure","Molecular formula","Density"] },
+ { question: "Which isomerism occurs in alkenes?", correct: "Geometrical", options: ["Optical","Structural","Geometrical","Chain"] },
+ { question: "C₂H₆ shows isomerism?", correct: "No", options: ["Yes","No","Partially","Sometimes"] },
+ { question: "Which pair are functional isomers?", correct: "Ethanol and dimethyl ether", options: ["Ethane and ethene","Ethanol and ethene","Ethanol and dimethyl ether","Ethene and ethyne"] },
+ { question: "Isomers differ in:", correct: "Arrangement of atoms", options: ["Number of atoms","Type of atoms","Arrangement of atoms","Empirical formula"] },
+ { question: "Which is NOT a type of isomerism?", correct: "Nuclear isomerism", options: ["Structural","Geometrical","Optical","Nuclear"] }
+];
+const iupacNaming = [
+ { question: "What is the IUPAC name of CH₄?", correct: "Methane", options: ["Ethane","Methene","Methane","Methyl"] },
+ { question: "What is the IUPAC name of C₂H₆?", correct: "Ethane", options: ["Ethene","Ethyne","Ethane","Ethanol"] },
+ { question: "What is the IUPAC name of C₂H₄?", correct: "Ethene", options: ["Ethane","Ethene","Ethyne","Ethyl"] },
+ { question: "What is the IUPAC name of C₂H₂?", correct: "Ethyne", options: ["Ethane","Ethene","Ethyne","Ethyl"] },
+ { question: "What is the IUPAC name of CH₃OH?", correct: "Methanol", options: ["Methanal","Methanol","Methanoic acid","Methane"] },
+ { question: "What is the IUPAC name of C₂H₅OH?", correct: "Ethanol", options: ["Methanol","Ethanol","Propanol","Ethanoic acid"] },
+ { question: "CH₃COOH is called:", correct: "Ethanoic acid", options: ["Methanoic acid","Ethanoic acid","Propanoic acid","Butanoic acid"] },
+ { question: "What is the IUPAC name of C₃H₈?", correct: "Propane", options: ["Propene","Propane","Propyne","Propyl"] },
+ { question: "What is the IUPAC name of C₃H₆?", correct: "Propene", options: ["Propane","Propene","Propyne","Propanol"] },
+ { question: "Which name is correct?", correct: "But-1-ene", options: ["Butene-1","1-Butene","But-1-ene","Butylene"] },
+ { question: "What is the suffix for alcohols?", correct: "-ol", options: ["-ane","-ene","-ol","-oic"] },
+ { question: "What is the prefix for five carbon atoms?", correct: "Pent-", options: ["But-","Hex-","Pent-","Prop-"] },
+ { question: "Which is correctly named?", correct: "Hexane", options: ["Hexene","Hexyne","Hexane","Hexanol"] },
+ { question: "Suffix for carboxylic acids is:", correct: "-oic acid", options: ["-ol","-one","-al","-oic acid"] },
+ { question: "What is the IUPAC name of HCOOH?", correct: "Methanoic acid", options: ["Ethanoic acid","Methanoic acid","Formic acid","Acetic acid"] },
+ { question: "Which is an ester?", correct: "Ethyl ethanoate", options: ["Ethanoic acid","Ethanol","Ethyl ethanoate","Ethane"] },
+ { question: "What is the name of CH₃COCH₃?", correct: "Propanone", options: ["Propanal","Propanone","Propanoic acid","Propanol"] },
+ { question: "Suffix for aldehydes is:", correct: "-al", options: ["-ol","-al","-one","-oic"] },
+ { question: "Which compound is correctly named?", correct: "Butanoic acid", options: ["Butanic acid","Butenoic acid","Butanoic acid","Butanol acid"] },
+ { question: "What is the IUPAC name of C₄H₁₀?", correct: "Butane", options: ["Butene","Butyne","Butane","Butanol"] }
+];
+const hydrocarbonReactions = [
+ { question: "Which reaction is common to alkanes?", correct: "Substitution", options: ["Addition","Substitution","Elimination","Hydrolysis"] },
+ { question: "The reaction of alkenes with bromine water is:", correct: "Addition", options: ["Substitution","Addition","Combustion","Oxidation"] },
+ { question: "Complete combustion of hydrocarbons produces:", correct: "CO₂ and H₂O", options: ["CO and H₂O","CO₂ and H₂","CO₂ and H₂O","C and H₂O"] },
+ { question: "Which hydrocarbon undergoes cracking?", correct: "Alkanes", options: ["Alkenes","Alkynes","Alkanes","Alcohols"] },
+ { question: "Which reaction converts alkenes to alkanes?", correct: "Hydrogenation", options: ["Oxidation","Hydrogenation","Cracking","Polymerisation"] },
+ { question: "Which reaction forms polymers?", correct: "Addition", options: ["Substitution","Addition","Neutralisation","Elimination"] },
+ { question: "Which reaction occurs in presence of UV light?", correct: "Substitution", options: ["Addition","Substitution","Hydrolysis","Oxidation"] },
+ { question: "Alkynes react with hydrogen by:", correct: "Addition", options: ["Substitution","Addition","Neutralisation","Combustion"] },
+ { question: "Incomplete combustion produces:", correct: "CO", options: ["CO₂","CO","H₂","O₂"] },
+ { question: "Which reagent tests unsaturation?", correct: "Bromine water", options: ["Litmus","Bromine water","Water","NaOH"] },
+ { question: "Cracking produces:", correct: "Alkanes and alkenes", options: ["Only alkanes","Only alkenes","Alkanes and alkenes","Alcohols"] },
+ { question: "Which hydrocarbon reacts fastest?", correct: "Alkenes", options: ["Alkanes","Alkenes","Alkynes","Cycloalkanes"] },
+ { question: "Which reaction breaks large molecules?", correct: "Cracking", options: ["Polymerisation","Cracking","Addition","Substitution"] },
+ { question: "Which catalyst is used in hydrogenation?", correct: "Nickel", options: ["Iron","Copper","Nickel","Zinc"] },
+ { question: "Combustion is an example of:", correct: "Oxidation", options: ["Reduction","Oxidation","Neutralisation","Addition"] },
+ { question: "Which reaction forms PVC?", correct: "Polymerisation", options: ["Substitution","Polymerisation","Cracking","Oxidation"] },
+ { question: "Which hydrocarbon does NOT decolourise bromine water?", correct: "Alkanes", options: ["Alkanes","Alkenes","Alkynes","Dienes"] },
+ { question: "Which reaction gives heat and light?", correct: "Combustion", options: ["Addition","Combustion","Substitution","Cracking"] },
+ { question: "Which reagent oxidises alkenes?", correct: "KMnO₄", options: ["NaCl","KMnO₄","HCl","NaOH"] },
+ { question: "Which reaction is exothermic?", correct: "Combustion", options: ["Hydrolysis","Substitution","Combustion","Elimination"] }
+];
+
+const alcoholAcidEster = [
+ { question: "Which functional group is present in esters?", correct: "–COO–", options: ["–COOH","–OH","–COO–","–CHO"] },
+ { question: "Alcohols react with acids to form:", correct: "Esters", options: ["Salts","Esters","Aldehydes","Ketones"] },
+ { question: "Which compound is an alcohol?", correct: "Ethanol", options: ["Ethene","Ethanoic acid","Ethanol","Ethane"] },
+ { question: "Which acid is found in vinegar?", correct: "Ethanoic acid", options: ["Methanoic acid","Ethanoic acid","Citric acid","Sulphuric acid"] },
+ { question: "Esters have:", correct: "Fruity smell", options: ["Sharp smell","No smell","Fruity smell","Pungent smell"] },
+ { question: "Alcohols react with sodium to produce:", correct: "Hydrogen", options: ["Oxygen","Carbon dioxide","Hydrogen","Nitrogen"] },
+ { question: "Which is a carboxylic acid?", correct: "Methanoic acid", options: ["Methanol","Methanal","Methanoic acid","Methane"] },
+ { question: "Which is an ester?", correct: "Ethyl ethanoate", options: ["Ethanol","Ethanoic acid","Ethyl ethanoate","Ethene"] },
+ { question: "Which reaction forms esters?", correct: "Esterification", options: ["Hydrolysis","Oxidation","Esterification","Reduction"] },
+ { question: "Which acid reacts with alcohol?", correct: "Carboxylic acid", options: ["Mineral acid","Organic acid","Carboxylic acid","Fatty acid"] },
+ { question: "Which reagent oxidises alcohols?", correct: "Acidified KMnO₄", options: ["NaOH","HCl","Acidified KMnO₄","Water"] },
+ { question: "Which alcohol is secondary?", correct: "Propan-2-ol", options: ["Methanol","Ethanol","Propan-2-ol","Butanol"] },
+ { question: "Which compound turns blue litmus red?", correct: "Ethanoic acid", options: ["Ethanol","Ethene","Ethanoic acid","Ethane"] },
+ { question: "Which reaction breaks esters?", correct: "Hydrolysis", options: ["Esterification","Hydrolysis","Oxidation","Reduction"] },
+ { question: "Which acid has the formula HCOOH?", correct: "Methanoic acid", options: ["Ethanoic acid","Methanoic acid","Propanoic acid","Butanoic acid"] },
+ { question: "Which alcohol has lowest boiling point?", correct: "Methanol", options: ["Methanol","Ethanol","Propanol","Butanol"] },
+ { question: "Which compound is neutral?", correct: "Ethanol", options: ["Ethanoic acid","Methanoic acid","Ethanol","Citric acid"] },
+ { question: "Which is a weak acid?", correct: "Ethanoic acid", options: ["HCl","H₂SO₄","Ethanoic acid","HNO₃"] },
+ { question: "Which reaction uses concentrated H₂SO₄?", correct: "Esterification", options: ["Hydrolysis","Esterification","Combustion","Neutralisation"] },
+ { question: "Which compound gives pleasant smell?", correct: "Esters", options: ["Alcohols","Acids","Esters","Alkanes"] }
+];
+
+const polymers = [
+ { question: "A polymer is:", correct: "A large molecule made from monomers", options: ["Small molecule","Inorganic compound","A large molecule made from monomers","Metal"] },
+ { question: "The small units of polymers are called:", correct: "Monomers", options: ["Polymers","Dimers","Monomers","Catalysts"] },
+ { question: "Which is a synthetic polymer?", correct: "Polythene", options: ["Starch","Protein","Polythene","Cellulose"] },
+ { question: "Which is a natural polymer?", correct: "Starch", options: ["PVC","Nylon","Starch","Polythene"] },
+ { question: "Polymerisation is:", correct: "Joining of monomers", options: ["Breaking molecules","Joining of monomers","Oxidation","Reduction"] },
+ { question: "Which polymer is used for pipes?", correct: "PVC", options: ["Polythene","PVC","Nylon","Rubber"] },
+ { question: "Which polymer is biodegradable?", correct: "Starch", options: ["PVC","Polythene","Starch","Nylon"] },
+ { question: "Addition polymerisation occurs in:", correct: "Alkenes", options: ["Alkanes","Alkenes","Alkynes","Alcohols"] },
+ { question: "Which polymer is elastic?", correct: "Rubber", options: ["PVC","Nylon","Rubber","Polythene"] },
+ { question: "Which polymer is used for ropes?", correct: "Nylon", options: ["Polythene","PVC","Nylon","Rubber"] },
+ { question: "The monomer of polythene is:", correct: "Ethene", options: ["Ethane","Ethene","Ethyne","Ethanol"] },
+ { question: "Which polymer is used in clothing?", correct: "Nylon", options: ["PVC","Nylon","Polythene","Rubber"] },
+ { question: "Which polymer is thermoplastic?", correct: "Polythene", options: ["Rubber","Bakelite","Polythene","Melamine"] },
+ { question: "Which polymer is thermosetting?", correct: "Bakelite", options: ["PVC","Polythene","Bakelite","Rubber"] },
+ { question: "Which polymer is used for electrical fittings?", correct: "Bakelite", options: ["Polythene","Nylon","Bakelite","Rubber"] },
+ { question: "Which polymer is resistant to heat?", correct: "Bakelite", options: ["Rubber","Polythene","PVC","Bakelite"] },
+ { question: "Which polymer is formed from amino acids?", correct: "Protein", options: ["Starch","Protein","Cellulose","PVC"] },
+ { question: "Which polymer is a carbohydrate?", correct: "Starch", options: ["Protein","Nylon","PVC","Starch"] },
+ { question: "Which polymer is flexible?", correct: "Rubber", options: ["Bakelite","Rubber","Glass","Metal"] },
+ { question: "Which polymer is used for plastic bags?", correct: "Polythene", options: ["PVC","Polythene","Nylon","Rubber"] }
+];
+
+
+
+const organicQuestions = [
+  ...homologousSeries,
+  ...functionalGroups,
+  ...hydrocarbons,
+  ...isomerism,
+  ...iupacNaming,
+  ...hydrocarbonReactions,
+  ...alcoholAcidEster,
+  ...polymers
+];
+
+// ===== LOAD HIGH SCORE =====
+let highScore = localStorage.getItem("chemReactionHighScore") || 0;
+document.getElementById("highScore").textContent = highScore;
+
+// ================= UTIL =================
+function randomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ================= TIMER =================
+function startTimer() {
+    clearInterval(timerInterval);
+    timeLeft = 30;
+    document.getElementById("timer").textContent = timeLeft;
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft === 0) {
+          gameOverSound.play()
+            clearInterval(timerInterval);
+            timeUp();
+        }
+    }, 1000);
+}
+
+// ================= GENERATOR =================
+function generateQuestion() {
+  let data = randomItem(organicQuestions);
+
+    document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
+    startTimer();
+
+    correctAnswer = data.correct;
+    document.getElementById("question").textContent = data.question;
+
+    document.getElementById("options").innerHTML =
+        data.options
+            .sort(() => Math.random() - 0.5)
+            .map(o => `<button onclick="checkAnswer('${o}')">${o}</button>`)
+            .join("");
+}
+
+// ================= CHECK =================
+function checkAnswer(choice) {
+    clearInterval(timerInterval);
+    const result = document.getElementById("result");
+
+    if (choice === correctAnswer) {
+        correctSound.play()
+        score++;
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+        result.textContent = "✅ Correct!";
+        result.className = "correct";
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("chemReactionHighScore", highScore);
+            document.getElementById("highScore").textContent = highScore;
+        }
+    } else {
+      gameOverSound.play()
+        result.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
+        result.className = "wrong";
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`
+    }
+
+    setTimeout(generateQuestion, 1500);
+}
+
+// ================= TIME UP =================
+function timeUp() {
+    
+    const result = document.getElementById("result");
+    result.textContent = `⏰ Time up! Answer: ${correctAnswer}`;
+    result.className = "timeup";
+    TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`
+    setTimeout(generateQuestion, 1500);
+}
+
+// ================= START =================
+generateQuestion();
+</script>
+
+</body>
+</html>

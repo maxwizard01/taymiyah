@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Reactions Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-card {
+    background: #fff;
+    width: 480px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+#question {
+    font-size: 1.3rem;
+    margin: 20px 0;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+button {
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #2a5298;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.correct { color: green; }
+.wrong { color: red; }
+.timeup { color: orange; }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-card">
+    <h2>⚗ Chemistry Quiz</h2>
+
+    <div class="status">
+        <span>⏱ <span id="timer">12</span>s</span>
+        <span>⭐ <span id="score">0</span></span>
+        <span>🏆 <span id="highScore">0</span></span>
+    </div>
+
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="result"></p>
+</div>
+
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+<script>
+// ================= DATA =================
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+// Balancing equations
+
+let TotalScore=0
+let correctAnswer = "";
+let score = 0;
+let timeLeft = 12;
+let timerInterval;
+const solubilityRules = [
+{
+ question: "Which of the following salts is soluble in water?",
+ correct: "Sodium chloride",
+ options: ["Silver chloride", "Lead(II) sulphate", "Barium sulphate", "Sodium chloride"]
+},
+{
+ question: "All nitrates are generally:",
+ correct: "Soluble in water",
+ options: ["Insoluble in water", "Soluble in water", "Partially soluble", "Soluble only in hot water"]
+},
+{
+ question: "Which of the following sulphates is insoluble in water?",
+ correct: "Barium sulphate",
+ options: ["Sodium sulphate", "Potassium sulphate", "Barium sulphate", "Ammonium sulphate"]
+},
+{
+ question: "Which chloride is insoluble in water?",
+ correct: "Silver chloride",
+ options: ["Sodium chloride", "Potassium chloride", "Silver chloride", "Ammonium chloride"]
+},
+{
+ question: "All potassium salts are:",
+ correct: "Soluble in water",
+ options: ["Insoluble", "Slightly soluble", "Soluble in water", "Soluble in acids only"]
+},
+{
+ question: "Which of the following salts is soluble in cold water?",
+ correct: "Ammonium nitrate",
+ options: ["Lead(II) chloride", "Silver chloride", "Barium sulphate", "Ammonium nitrate"]
+},
+{
+ question: "Which salt is insoluble in water but soluble in hot water?",
+ correct: "Lead(II) chloride",
+ options: ["Sodium chloride", "Lead(II) chloride", "Barium sulphate", "Silver chloride"]
+},
+{
+ question: "Which carbonate is soluble in water?",
+ correct: "Sodium carbonate",
+ options: ["Calcium carbonate", "Copper(II) carbonate", "Sodium carbonate", "Lead(II) carbonate"]
+},
+{
+ question: "All ammonium salts are:",
+ correct: "Soluble in water",
+ options: ["Insoluble", "Slightly soluble", "Soluble in water", "Decomposed by water"]
+},
+{
+ question: "Which hydroxide is soluble in water?",
+ correct: "Sodium hydroxide",
+ options: ["Iron(III) hydroxide", "Copper(II) hydroxide", "Sodium hydroxide", "Aluminium hydroxide"]
+},
+{
+ question: "Which of the following is insoluble in water?",
+ correct: "Calcium carbonate",
+ options: ["Sodium nitrate", "Potassium sulphate", "Calcium carbonate", "Ammonium chloride"]
+},
+{
+ question: "Which sulphate is soluble in water?",
+ correct: "Sodium sulphate",
+ options: ["Barium sulphate", "Lead(II) sulphate", "Calcium sulphate", "Sodium sulphate"]
+},
+{
+ question: "Which salt will dissolve completely in water?",
+ correct: "Potassium nitrate",
+ options: ["Silver chloride", "Barium sulphate", "Potassium nitrate", "Lead(II) chloride"]
+},
+{
+ question: "Which of the following salts is insoluble in water?",
+ correct: "Silver bromide",
+ options: ["Potassium bromide", "Ammonium bromide", "Silver bromide", "Sodium bromide"]
+},
+{
+ question: "All sodium salts are:",
+ correct: "Soluble in water",
+ options: ["Insoluble", "Partially soluble", "Soluble in water", "Soluble only in acids"]
+},
+{
+ question: "Which salt is insoluble in cold water?",
+ correct: "Lead(II) sulphate",
+ options: ["Sodium chloride", "Potassium nitrate", "Lead(II) sulphate", "Ammonium sulphate"]
+},
+{
+ question: "Which phosphate is insoluble in water?",
+ correct: "Calcium phosphate",
+ options: ["Sodium phosphate", "Potassium phosphate", "Calcium phosphate", "Ammonium phosphate"]
+},
+{
+ question: "Which salt is soluble in water?",
+ correct: "Ammonium sulphate",
+ options: ["Barium sulphate", "Lead(II) sulphate", "Ammonium sulphate", "Silver sulphate"]
+},
+{
+ question: "Which hydroxide is insoluble in water?",
+ correct: "Iron(III) hydroxide",
+ options: ["Sodium hydroxide", "Potassium hydroxide", "Iron(III) hydroxide", "Ammonium hydroxide"]
+},
+{
+ question: "Which chloride dissolves in water?",
+ correct: "Potassium chloride",
+ options: ["Silver chloride", "Lead(II) chloride", "Potassium chloride", "Mercury(I) chloride"]
+},
+{
+ question: "Which carbonate is insoluble in water?",
+ correct: "Copper(II) carbonate",
+ options: ["Sodium carbonate", "Potassium carbonate", "Copper(II) carbonate", "Ammonium carbonate"]
+},
+{
+ question: "All nitrates except ____ are soluble in water.",
+ correct: "None",
+ options: ["Silver nitrate", "Lead(II) nitrate", "Copper(II) nitrate", "None"]
+},
+{
+ question: "Which sulphate is slightly soluble in water?",
+ correct: "Calcium sulphate",
+ options: ["Sodium sulphate", "Potassium sulphate", "Calcium sulphate", "Ammonium sulphate"]
+},
+{
+ question: "Which salt is insoluble in water?",
+ correct: "Lead(II) iodide",
+ options: ["Potassium iodide", "Sodium iodide", "Lead(II) iodide", "Ammonium iodide"]
+},
+{
+ question: "Which of the following salts is soluble?",
+ correct: "Sodium nitrate",
+ options: ["Silver chloride", "Barium sulphate", "Sodium nitrate", "Calcium carbonate"]
+},
+{
+ question: "Which hydroxide dissolves in water to give an alkaline solution?",
+ correct: "Potassium hydroxide",
+ options: ["Iron(II) hydroxide", "Copper(II) hydroxide", "Potassium hydroxide", "Zinc hydroxide"]
+},
+{
+ question: "Which salt is insoluble in water but soluble in acids?",
+ correct: "Calcium carbonate",
+ options: ["Sodium chloride", "Potassium nitrate", "Calcium carbonate", "Ammonium sulphate"]
+},
+{
+ question: "Which salt is soluble in water?",
+ correct: "Ammonium chloride",
+ options: ["Silver chloride", "Lead(II) chloride", "Ammonium chloride", "Mercury(I) chloride"]
+},
+{
+ question: "Which sulphide is insoluble in water?",
+ correct: "Copper(II) sulphide",
+ options: ["Sodium sulphide", "Potassium sulphide", "Copper(II) sulphide", "Ammonium sulphide"]
+},
+{
+ question: "Which salt dissolves readily in water?",
+ correct: "Potassium sulphate",
+ options: ["Barium sulphate", "Silver sulphate", "Potassium sulphate", "Lead(II) sulphate"]
+}
+];
+
+const naohTests = [
+{
+ question: "A blue precipitate is formed when NaOH is added to a salt solution. Which cation is present?",
+ correct: "Cu²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "A green precipitate insoluble in excess NaOH suggests the presence of:",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Ca²⁺"]
+},
+{
+ question: "A reddish-brown precipitate is observed on adding NaOH to a solution. The cation present is:",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Al³⁺"]
+},
+{
+ question: "A white precipitate soluble in excess NaOH indicates:",
+ correct: "Zn²⁺",
+ options: ["Ca²⁺", "Mg²⁺", "Zn²⁺", "Fe²⁺"]
+},
+{
+ question: "A white gelatinous precipitate soluble in excess NaOH suggests:",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Mg²⁺"]
+},
+{
+ question: "A dirty green precipitate formed with NaOH which turns brown on standing indicates:",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "No precipitate is formed when NaOH is added. Which cation is likely present?",
+ correct: "Na⁺",
+ options: ["Cu²⁺", "Fe³⁺", "Zn²⁺", "Na⁺"]
+},
+{
+ question: "A white precipitate insoluble in excess NaOH indicates:",
+ correct: "Ca²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Pb²⁺"]
+},
+{
+ question: "Which cation forms a blue precipitate with NaOH?",
+ correct: "Cu²⁺",
+ options: ["Fe³⁺", "Cu²⁺", "Zn²⁺", "Ca²⁺"]
+},
+{
+ question: "A brown precipitate formed with NaOH suggests:",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Cu²⁺", "Fe³⁺", "Al³⁺"]
+},
+{
+ question: "A white precipitate soluble in excess NaOH but reappears on dilution indicates:",
+ correct: "Zn²⁺",
+ options: ["Ca²⁺", "Zn²⁺", "Mg²⁺", "Fe²⁺"]
+},
+{
+ question: "Which cation gives a gelatinous white precipitate with NaOH?",
+ correct: "Al³⁺",
+ options: ["Ca²⁺", "Mg²⁺", "Al³⁺", "Cu²⁺"]
+},
+{
+ question: "A pale green precipitate formed with NaOH turns brown on exposure to air. The cation present is:",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "Which ion gives no precipitate with NaOH?",
+ correct: "K⁺",
+ options: ["Ca²⁺", "Fe²⁺", "Zn²⁺", "K⁺"]
+},
+{
+ question: "A white precipitate soluble in excess NaOH indicates an amphoteric hydroxide of:",
+ correct: "Al³⁺",
+ options: ["Ca²⁺", "Mg²⁺", "Al³⁺", "Fe³⁺"]
+},
+{
+ question: "Which cation forms a white precipitate insoluble in excess NaOH?",
+ correct: "Mg²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Mg²⁺", "Pb²⁺"]
+},
+{
+ question: "A blue precipitate formed with NaOH dissolves slightly in excess. Which cation is present?",
+ correct: "Cu²⁺",
+ options: ["Cu²⁺", "Fe²⁺", "Zn²⁺", "Ca²⁺"]
+},
+{
+ question: "A brown precipitate formed immediately with NaOH indicates:",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "Which cation gives a white precipitate soluble in excess NaOH but not with NH₃?",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Cu²⁺"]
+},
+{
+ question: "Which cation forms a white precipitate insoluble in excess NaOH and NH₃?",
+ correct: "Ca²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Cu²⁺"]
+},
+{
+ question: "A green precipitate with NaOH suggests the presence of:",
+ correct: "Fe²⁺",
+ options: ["Fe³⁺", "Fe²⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "Which ion gives a gelatinous precipitate with NaOH?",
+ correct: "Al³⁺",
+ options: ["Na⁺", "Al³⁺", "K⁺", "NH₄⁺"]
+},
+{
+ question: "A white precipitate formed with NaOH is soluble in excess. Which cation is absent?",
+ correct: "Ca²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Pb²⁺"]
+},
+{
+ question: "Which cation gives a dirty green precipitate with NaOH?",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "A precipitate formed with NaOH remains unchanged in excess. The cation present may be:",
+ correct: "Fe³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Fe³⁺", "Pb²⁺"]
+},
+{
+ question: "Which cation forms an insoluble hydroxide with NaOH?",
+ correct: "Fe³⁺",
+ options: ["Na⁺", "K⁺", "Fe³⁺", "NH₄⁺"]
+},
+{
+ question: "Which ion will not react with NaOH to form a precipitate?",
+ correct: "NH₄⁺",
+ options: ["Zn²⁺", "Cu²⁺", "NH₄⁺", "Fe²⁺"]
+},
+{
+ question: "A white precipitate formed with NaOH dissolves in excess NaOH. Which hydroxide is formed?",
+ correct: "Zinc hydroxide",
+ options: ["Calcium hydroxide", "Magnesium hydroxide", "Zinc hydroxide", "Iron(II) hydroxide"]
+},
+{
+ question: "Which cation forms a blue gelatinous precipitate with NaOH?",
+ correct: "Cu²⁺",
+ options: ["Fe²⁺", "Cu²⁺", "Zn²⁺", "Al³⁺"]
+},
+{
+ question: "A precipitate formed with NaOH turns brown on standing. The cation present is:",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+}
+];
+
+const nh3Tests = [
+{
+ question: "A blue precipitate is formed when NH₃ is added to a solution and dissolves in excess. Which cation is present?",
+ correct: "Cu²⁺",
+ options: ["Fe²⁺", "Cu²⁺", "Zn²⁺", "Ca²⁺"]
+},
+{
+ question: "A white precipitate formed with NH₃ dissolves in excess NH₃. The cation present is:",
+ correct: "Zn²⁺",
+ options: ["Al³⁺", "Ca²⁺", "Zn²⁺", "Mg²⁺"]
+},
+{
+ question: "A white precipitate formed with NH₃ is insoluble in excess. The cation present is:",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Cu²⁺"]
+},
+{
+ question: "No precipitate is formed when NH₃ is added. Which cation may be present?",
+ correct: "Na⁺",
+ options: ["Cu²⁺", "Fe²⁺", "Zn²⁺", "Na⁺"]
+},
+{
+ question: "A dirty green precipitate formed with NH₃ suggests the presence of:",
+ correct: "Fe²⁺",
+ options: ["Fe³⁺", "Fe²⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "A reddish-brown precipitate is observed when NH₃ is added. Which cation is present?",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "A blue solution is obtained when excess NH₃ is added to a blue precipitate. The cation present is:",
+ correct: "Cu²⁺",
+ options: ["Zn²⁺", "Cu²⁺", "Fe²⁺", "Al³⁺"]
+},
+{
+ question: "Which cation forms a white precipitate soluble in excess NH₃?",
+ correct: "Zn²⁺",
+ options: ["Al³⁺", "Ca²⁺", "Zn²⁺", "Mg²⁺"]
+},
+{
+ question: "A white precipitate formed with NH₃ remains insoluble in excess. This suggests:",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Cu²⁺", "Al³⁺", "Pb²⁺"]
+},
+{
+ question: "A brown precipitate formed with NH₃ indicates the presence of:",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Cu²⁺", "Fe³⁺", "Zn²⁺"]
+},
+{
+ question: "Which cation gives no precipitate with NH₃?",
+ correct: "K⁺",
+ options: ["Zn²⁺", "Cu²⁺", "Fe²⁺", "K⁺"]
+},
+{
+ question: "A pale green precipitate formed with NH₃ turns brown on standing. Which ion is present?",
+ correct: "Fe²⁺",
+ options: ["Fe³⁺", "Fe²⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "Which cation gives a blue precipitate with NH₃?",
+ correct: "Cu²⁺",
+ options: ["Fe³⁺", "Cu²⁺", "Zn²⁺", "Ca²⁺"]
+},
+{
+ question: "A white precipitate formed with NH₃ dissolves in excess to give a colourless solution. Identify the cation.",
+ correct: "Zn²⁺",
+ options: ["Ca²⁺", "Al³⁺", "Zn²⁺", "Fe²⁺"]
+},
+{
+ question: "A white gelatinous precipitate insoluble in excess NH₃ suggests:",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Cu²⁺", "Fe³⁺"]
+},
+{
+ question: "Which cation forms a dirty green precipitate with NH₃?",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "Which cation forms a reddish-brown precipitate with NH₃?",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Cu²⁺", "Zn²⁺", "Fe³⁺"]
+},
+{
+ question: "A blue precipitate formed with NH₃ dissolves in excess to form a deep blue solution. Which ion is present?",
+ correct: "Cu²⁺",
+ options: ["Zn²⁺", "Cu²⁺", "Al³⁺", "Fe²⁺"]
+},
+{
+ question: "Which cation gives a white precipitate with NH₃ but is soluble in excess NaOH?",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Cu²⁺", "Al³⁺", "Ca²⁺"]
+},
+{
+ question: "Which ion gives a white precipitate with NH₃ that dissolves in excess NH₃ but not in excess NaOH?",
+ correct: "Zn²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Fe²⁺"]
+},
+{
+ question: "A solution gives no reaction with NH₃ and NaOH. Which cation is present?",
+ correct: "NH₄⁺",
+ options: ["Zn²⁺", "Fe³⁺", "NH₄⁺", "Cu²⁺"]
+},
+{
+ question: "Which cation forms a precipitate with NH₃ but dissolves in excess to give a colourless solution?",
+ correct: "Zn²⁺",
+ options: ["Al³⁺", "Zn²⁺", "Fe²⁺", "Cu²⁺"]
+},
+{
+ question: "Which cation gives a brown precipitate with both NaOH and NH₃?",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Cu²⁺", "Zn²⁺", "Fe³⁺"]
+},
+{
+ question: "Which cation forms a blue precipitate with both NaOH and NH₃?",
+ correct: "Cu²⁺",
+ options: ["Fe³⁺", "Cu²⁺", "Zn²⁺", "Ca²⁺"]
+},
+{
+ question: "A white precipitate formed with NH₃ is insoluble in excess and remains gelatinous. Identify the cation.",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Mg²⁺", "Ca²⁺"]
+},
+{
+ question: "Which cation gives a precipitate with NH₃ but not with NaOH?",
+ correct: "Mg²⁺",
+ options: ["Zn²⁺", "Mg²⁺", "Al³⁺", "Fe²⁺"]
+},
+{
+ question: "Which cation gives a deep blue solution with excess NH₃?",
+ correct: "Cu²⁺",
+ options: ["Zn²⁺", "Cu²⁺", "Fe³⁺", "Ca²⁺"]
+},
+{
+ question: "Which cation forms a white precipitate with NH₃ that remains unchanged in excess?",
+ correct: "Ca²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Cu²⁺"]
+},
+{
+ question: "A solution forms a precipitate with NH₃ but none with NaOH. Which cation is suspected?",
+ correct: "Mg²⁺",
+ options: ["Fe²⁺", "Zn²⁺", "Mg²⁺", "Cu²⁺"]
+},
+{
+ question: "Which cation test with NH₃ confirms copper(II) ions?",
+ correct: "Formation of deep blue solution in excess NH₃",
+ options: [
+   "White precipitate insoluble in excess",
+   "Green precipitate",
+   "Formation of deep blue solution in excess NH₃",
+   "Brown precipitate"
+ ]
+}
+];
+
+const baCl2Tests = [
+{
+ question: "A white precipitate is formed when BaCl₂ is added to a solution and remains insoluble in dilute HCl. The anion present is:",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which anion gives a white precipitate with BaCl₂ that dissolves in dilute HCl with effervescence?",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "Cl⁻", "NO₃⁻"]
+},
+{
+ question: "A white precipitate formed with BaCl₂ dissolves in dilute HCl without effervescence. Which anion is present?",
+ correct: "SO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which anion does NOT give a precipitate with BaCl₂?",
+ correct: "NO₃⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "A white precipitate with BaCl₂ that is insoluble in acids indicates the presence of:",
+ correct: "Sulphate ion",
+ options: ["Carbonate ion", "Sulphate ion", "Sulphite ion", "Nitrate ion"]
+},
+{
+ question: "BaCl₂ is used in qualitative analysis mainly to test for:",
+ correct: "Sulphate ions",
+ options: ["Chloride ions", "Nitrate ions", "Sulphate ions", "Hydroxide ions"]
+},
+{
+ question: "Which anion gives effervescence when dilute HCl is added after BaCl₂ test?",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "NO₃⁻", "CO₃²⁻", "Cl⁻"]
+},
+{
+ question: "A solution gives a white precipitate with BaCl₂. On addition of dilute HCl, the precipitate dissolves with a choking smell. Identify the anion.",
+ correct: "SO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which anion forms barium sulphate when treated with BaCl₂?",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₃²⁻", "SO₄²⁻", "NO₃⁻"]
+},
+{
+ question: "A white precipitate is formed with BaCl₂ and remains unchanged after adding dilute HCl. Which salt may be present?",
+ correct: "Sodium sulphate",
+ options: ["Sodium carbonate", "Sodium sulphite", "Sodium sulphate", "Sodium nitrate"]
+},
+{
+ question: "Which anion forms a white precipitate with BaCl₂ but dissolves in dilute acids?",
+ correct: "Carbonate",
+ options: ["Sulphate", "Carbonate", "Nitrate", "Chloride"]
+},
+{
+ question: "BaCl₂ test distinguishes sulphate from carbonate by:",
+ correct: "Addition of dilute HCl",
+ options: [
+   "Heating the solution",
+   "Addition of NaOH",
+   "Addition of dilute HCl",
+   "Addition of ammonia"
+ ]
+},
+{
+ question: "Which anion gives a white precipitate with BaCl₂ and produces SO₂ gas on adding dilute HCl?",
+ correct: "SO₃²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which gas is evolved when dilute HCl reacts with a sulphite after BaCl₂ test?",
+ correct: "Sulphur dioxide",
+ options: ["Carbon dioxide", "Hydrogen", "Sulphur dioxide", "Chlorine"]
+},
+{
+ question: "A white precipitate formed with BaCl₂ disappears on adding excess dilute HCl with effervescence. The anion present is:",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "SO₃²⁻", "CO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which anion is confirmed if BaCl₂ gives no precipitate?",
+ correct: "Nitrate",
+ options: ["Carbonate", "Sulphate", "Sulphite", "Nitrate"]
+},
+{
+ question: "A salt gives a white precipitate with BaCl₂ and a choking smell on acidification. Identify the anion.",
+ correct: "Sulphite",
+ options: ["Carbonate", "Sulphite", "Sulphate", "Nitrate"]
+},
+{
+ question: "Which anion forms an insoluble barium salt?",
+ correct: "Sulphate",
+ options: ["Nitrate", "Chloride", "Sulphate", "Acetate"]
+},
+{
+ question: "Which of the following salts will give a positive BaCl₂ test?",
+ correct: "Sodium sulphate",
+ options: ["Sodium chloride", "Sodium nitrate", "Sodium sulphate", "Sodium acetate"]
+},
+{
+ question: "BaCl₂ gives a precipitate with sulphate ions because:",
+ correct: "Barium sulphate is insoluble",
+ options: [
+   "Barium sulphate is soluble",
+   "Barium sulphate is insoluble",
+   "Sulphates are acidic",
+   "Barium ions are acidic"
+ ]
+},
+{
+ question: "Which anion forms a precipitate with BaCl₂ but dissolves in dilute HCl without gas evolution?",
+ correct: "SO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which anion produces carbon dioxide when acidified after BaCl₂ test?",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "SO₃²⁻", "CO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which salt will NOT react with BaCl₂ solution?",
+ correct: "Potassium nitrate",
+ options: ["Sodium carbonate", "Sodium sulphate", "Potassium nitrate", "Sodium sulphite"]
+},
+{
+ question: "BaCl₂ test is commonly followed by adding dilute HCl in order to:",
+ correct: "Confirm the anion present",
+ options: [
+   "Form more precipitate",
+   "Neutralize the solution",
+   "Confirm the anion present",
+   "Remove impurities"
+ ]
+},
+{
+ question: "A solution gives a white precipitate with BaCl₂ that does not dissolve in acids. Identify the anion.",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₃²⁻", "SO₄²⁻", "NO₃⁻"]
+},
+{
+ question: "Which anion gives no visible change with BaCl₂?",
+ correct: "NO₃⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Which salt gives effervescence on acidification after BaCl₂ test?",
+ correct: "Sodium carbonate",
+ options: ["Sodium sulphate", "Sodium nitrate", "Sodium carbonate", "Potassium chloride"]
+},
+{
+ question: "The confirmatory test for sulphate ion involves:",
+ correct: "BaCl₂ followed by dilute HCl",
+ options: [
+   "AgNO₃ test",
+   "NaOH test",
+   "BaCl₂ followed by dilute HCl",
+   "NH₃ test"
+ ]
+},
+{
+ question: "Which anion forms a precipitate with BaCl₂ and releases a colourless choking gas on adding acid?",
+ correct: "SO₃²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "NO₃⁻"]
+}
+];
+
+
+const hclTests = [
+{
+ question: "When dilute HCl is added to a carbonate, which gas is evolved?",
+ correct: "CO₂",
+ options: ["H₂", "CO₂", "NH₃", "Cl₂"]
+},
+{
+ question: "A salt gives a white precipitate with BaCl₂ and effervescence with HCl. Which anion is present?",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "Dilute HCl added to a sulphite solution produces a choking gas. The gas is:",
+ correct: "SO₂",
+ options: ["CO₂", "H₂S", "SO₂", "NH₃"]
+},
+{
+ question: "A solution gives bubbles when HCl is added, and the gas turns limewater milky. Identify the gas.",
+ correct: "CO₂",
+ options: ["CO₂", "H₂", "Cl₂", "NH₃"]
+},
+{
+ question: "Which cation reacts with HCl to evolve hydrogen gas?",
+ correct: "Zn²⁺ / Zn metal",
+ options: ["Cu²⁺", "Fe³⁺", "Zn²⁺ / Zn metal", "Na⁺"]
+},
+{
+ question: "HCl added to NH₄⁺ salt liberates which gas?",
+ correct: "NH₃",
+ options: ["CO₂", "H₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Which anion produces no gas when HCl is added?",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₃²⁻", "SO₄²⁻", "S²⁻"]
+},
+{
+ question: "HCl reacts with sulphide salts to release a gas that smells of rotten eggs. The gas is:",
+ correct: "H₂S",
+ options: ["CO₂", "H₂", "NH₃", "H₂S"]
+},
+{
+ question: "Which gas is liberated when HCl reacts with solid zinc?",
+ correct: "H₂",
+ options: ["CO₂", "H₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Dilute HCl reacts with Na₂CO₃ to give bubbles. The precipitate formed on passing the gas through limewater is:",
+ correct: "CaCO₃",
+ options: ["BaCO₃", "CaCO₃", "CaSO₄", "BaSO₄"]
+},
+{
+ question: "HCl added to a salt produces a colourless, choking gas that turns limewater milky. Which anion is present?",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "When HCl is added to Na₂SO₃, which observation is expected?",
+ correct: "Effervescence; gas is colourless with choking smell",
+ options: ["No reaction", "Effervescence; gas is colourless with choking smell", "Precipitate forms", "Gas with rotten egg smell"]
+},
+{
+ question: "HCl added to Na₂S liberates a gas with what smell?",
+ correct: "Rotten eggs",
+ options: ["Choking", "Rotten eggs", "Sweet", "Pungent"]
+},
+{
+ question: "Which gas is evolved when HCl reacts with an ammonium salt?",
+ correct: "NH₃",
+ options: ["CO₂", "NH₃", "H₂", "Cl₂"]
+},
+{
+ question: "Which of the following anions gives no reaction with dilute HCl?",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₃²⁻", "SO₄²⁻", "S²⁻"]
+},
+{
+ question: "Effervescence observed when HCl reacts with a salt indicates the presence of which anion?",
+ correct: "CO₃²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "NO₃⁻", "Cl⁻"]
+},
+{
+ question: "A salt liberates H₂S gas when HCl is added. Which cation may be present?",
+ correct: "Pb²⁺ / Cu²⁺ / any suitable metal cation forming sulphide",
+ options: ["Na⁺", "K⁺", "Pb²⁺ / Cu²⁺", "Ca²⁺"]
+},
+{
+ question: "HCl added to NaHCO₃ evolves a gas that turns limewater milky. Gas is:",
+ correct: "CO₂",
+ options: ["NH₃", "CO₂", "H₂S", "H₂"]
+},
+{
+ question: "Which observation confirms the presence of NH₄⁺ ion in a salt with HCl?",
+ correct: "Pungent gas smelling of ammonia evolved",
+ options: ["Bubbles formed", "White precipitate", "Pungent gas smelling of ammonia evolved", "Effervescence with choking gas"]
+},
+{
+ question: "HCl reacts with FeS to produce which gas?",
+ correct: "H₂S",
+ options: ["CO₂", "H₂", "H₂S", "NH₃"]
+},
+{
+ question: "Addition of dilute HCl to sodium sulphite produces which gas?",
+ correct: "SO₂",
+ options: ["CO₂", "SO₂", "H₂S", "NH₃"]
+},
+{
+ question: "Which gas is evolved when HCl reacts with a metal carbonate?",
+ correct: "CO₂",
+ options: ["CO₂", "H₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Dilute HCl added to Na₂S releases a gas. Observation is:",
+ correct: "Colourless gas with rotten egg smell",
+ options: [
+   "Colourless gas with choking smell",
+   "Colourless gas with rotten egg smell",
+   "Blue gas",
+   "No reaction"
+ ]
+},
+{
+ question: "Which gas evolves from reaction of NH₄Cl with NaOH (similar to HCl in confirming ammonium ion)?",
+ correct: "NH₃",
+ options: ["CO₂", "H₂", "NH₃", "Cl₂"]
+},
+{
+ question: "HCl reacts with carbonate ion to evolve which gas?",
+ correct: "CO₂",
+ options: ["NH₃", "CO₂", "H₂", "Cl₂"]
+},
+{
+ question: "Effervescence with choking colourless gas on acidification indicates:",
+ correct: "Carbonate or sulphite ion",
+ options: ["Chloride ion", "Sulfate ion", "Carbonate or sulphite ion", "Ammonium ion"]
+},
+{
+ question: "Which gas is formed when HCl reacts with Zn metal?",
+ correct: "H₂",
+ options: ["CO₂", "H₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Choking colourless gas evolved on acidification of BaSO₃ solution is:",
+ correct: "SO₂",
+ options: ["CO₂", "SO₂", "H₂", "NH₃"]
+}
+];
+
+const deductionQuestions = [
+{
+ question: "A solution gives a blue precipitate with NaOH which dissolves in excess NH₃ to form a deep blue solution. Identify the cation.",
+ correct: "Cu²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Cu²⁺", "Fe²⁺"]
+},
+{
+ question: "A white precipitate forms with NaOH but is insoluble in excess. Which cation is suspected?",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Mg²⁺"]
+},
+{
+ question: "A solution gives a white precipitate with BaCl₂ and effervescence with HCl. Identify the anion.",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "A brown precipitate is formed with NaOH. Which cation is present?",
+ correct: "Fe³⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "A solution gives a white precipitate with BaCl₂ that remains insoluble in HCl. Identify the anion.",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "A solution gives no reaction with NaOH or NH₃. Which cation is suspected?",
+ correct: "K⁺ / Na⁺",
+ options: ["K⁺ / Na⁺", "Cu²⁺", "Fe³⁺", "Zn²⁺"]
+},
+{
+ question: "A solution liberates a choking gas when acidified. Which anion is present?",
+ correct: "CO₃²⁻ or SO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻ or SO₃²⁻", "Cl⁻", "NO₃⁻"]
+},
+{
+ question: "A white precipitate forms with NaOH and dissolves in excess to give a colourless solution. Identify the cation.",
+ correct: "Zn²⁺",
+ options: ["Al³⁺", "Zn²⁺", "Ca²⁺", "Cu²⁺"]
+},
+{
+ question: "Effervescence observed when HCl is added to a solution that forms a white precipitate with BaCl₂. Identify the anion.",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "A greenish precipitate with NaOH that darkens on standing suggests which cation?",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "No precipitate with NaOH, but a white precipitate with NH₃ soluble in excess. Identify the cation.",
+ correct: "Zn²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Cu²⁺"]
+},
+{
+ question: "White gelatinous precipitate with NaOH insoluble in excess indicates:",
+ correct: "Al³⁺",
+ options: ["Zn²⁺", "Al³⁺", "Mg²⁺", "Ca²⁺"]
+},
+{
+ question: "Blue precipitate with NaOH turning deep blue in excess NH₃ indicates:",
+ correct: "Cu²⁺",
+ options: ["Fe²⁺", "Zn²⁺", "Cu²⁺", "Fe³⁺"]
+},
+{
+ question: "White precipitate with BaCl₂ dissolving in dilute HCl with effervescence indicates:",
+ correct: "CO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "Choking gas evolved on adding HCl to a BaSO₃ solution confirms which anion?",
+ correct: "SO₃²⁻",
+ options: ["CO₃²⁻", "SO₃²⁻", "SO₄²⁻", "Cl⁻"]
+},
+{
+ question: "Effervescence with HCl and limewater turns milky. Which anion is present?",
+ correct: "CO₃²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "White precipitate with BaCl₂ that does not dissolve in acids indicates:",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "A solution liberates NH₃ on addition of NaOH. The cation is:",
+ correct: "NH₄⁺",
+ options: ["NH₄⁺", "Cu²⁺", "Zn²⁺", "Fe³⁺"]
+},
+{
+ question: "A white precipitate with BaCl₂ disappears in dilute HCl without effervescence. Which anion is present?",
+ correct: "SO₃²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "Green precipitate with NaOH turning brown on standing indicates:",
+ correct: "Fe²⁺",
+ options: ["Fe²⁺", "Fe³⁺", "Cu²⁺", "Zn²⁺"]
+},
+{
+ question: "Blue precipitate with NaOH that dissolves in excess NH₃. Cation is:",
+ correct: "Cu²⁺",
+ options: ["Cu²⁺", "Zn²⁺", "Fe³⁺", "Al³⁺"]
+},
+{
+ question: "White precipitate with NH₃ soluble in excess suggests:",
+ correct: "Zn²⁺",
+ options: ["Zn²⁺", "Al³⁺", "Ca²⁺", "Mg²⁺"]
+},
+{
+ question: "Choking gas with HCl indicates presence of which anion?",
+ correct: "CO₃²⁻ or SO₃²⁻",
+ options: ["SO₄²⁻", "CO₃²⁻ or SO₃²⁻", "Cl⁻", "NO₃⁻"]
+},
+{
+ question: "Effervescence observed when HCl reacts with a salt forming white BaCl₂ precipitate confirms:",
+ correct: "CO₃²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "Cl⁻"]
+},
+{
+ question: "No precipitate with NaOH or NH₃. Salt contains which cation?",
+ correct: "Na⁺ / K⁺",
+ options: ["Na⁺ / K⁺", "Zn²⁺", "Cu²⁺", "Fe³⁺"]
+},
+{
+ question: "White precipitate with NaOH that dissolves in excess indicates:",
+ correct: "Zn²⁺",
+ options: ["Al³⁺", "Zn²⁺", "Mg²⁺", "Ca²⁺"]
+},
+{
+ question: "Gas with rotten egg smell on acidification of a salt indicates:",
+ correct: "S²⁻",
+ options: ["CO₃²⁻", "SO₃²⁻", "S²⁻", "NH₄⁺"]
+},
+{
+ question: "White precipitate with BaCl₂ that does not dissolve in HCl suggests:",
+ correct: "SO₄²⁻",
+ options: ["CO₃²⁻", "SO₄²⁻", "SO₃²⁻", "NO₃⁻"]
+},
+{
+ question: "NH₄⁺ salt gives pungent gas on warming with NaOH. Gas is:",
+ correct: "NH₃",
+ options: ["H₂", "NH₃", "CO₂", "SO₂"]
+}
+];
+
+
+const gasTests = [
+{
+ question: "Which gas turns limewater milky when passed through it?",
+ correct: "CO₂",
+ options: ["NH₃", "H₂", "Cl₂", "CO₂"]
+},
+{
+ question: "Which gas has a pungent smell and turns red litmus blue?",
+ correct: "NH₃",
+ options: ["CO₂", "NH₃", "H₂", "Cl₂"]
+},
+{
+ question: "Which gas is colourless, highly flammable and gives a pop sound with a burning splint?",
+ correct: "H₂",
+ options: ["CO₂", "NH₃", "H₂", "Cl₂"]
+},
+{
+ question: "Which gas bleaches damp litmus paper and has a greenish-yellow colour?",
+ correct: "Cl₂",
+ options: ["H₂", "Cl₂", "NH₃", "CO₂"]
+},
+{
+ question: "Which gas gives white fumes when exposed to NH₄OH?",
+ correct: "HCl",
+ options: ["HCl", "NH₃", "CO₂", "H₂"]
+},
+{
+ question: "A gas evolved from NaHCO₃ + HCl turns limewater milky. Identify the gas.",
+ correct: "CO₂",
+ options: ["CO₂", "NH₃", "H₂", "Cl₂"]
+},
+{
+ question: "Gas evolved from NH₄Cl + NaOH has which properties?",
+ correct: "Pungent smell, turns red litmus blue",
+ options: ["Colourless, flammable", "Pungent smell, turns red litmus blue", "Greenish-yellow, bleaches litmus", "Choking smell, colourless"]
+},
+{
+ question: "Which gas gives a pop sound with a burning splint when collected over water?",
+ correct: "H₂",
+ options: ["CO₂", "NH₃", "H₂", "Cl₂"]
+},
+{
+ question: "Which gas changes moist blue litmus red?",
+ correct: "Cl₂",
+ options: ["NH₃", "HCl", "Cl₂", "H₂"]
+},
+{
+ question: "Which gas is acidic and forms white fumes with NH₄OH?",
+ correct: "HCl",
+ options: ["HCl", "NH₃", "CO₂", "H₂"]
+},
+{
+ question: "Which gas is soluble in water to give an alkaline solution?",
+ correct: "NH₃",
+ options: ["H₂", "CO₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Gas evolved from Zn + HCl is collected. Which test confirms its identity?",
+ correct: "Pop test with a burning splint",
+ options: ["Turn limewater milky", "Bleaches litmus", "Pop test with a burning splint", "White fumes with NH₄OH"]
+},
+{
+ question: "A greenish-yellow gas with choking smell evolved in a reaction. Identify it.",
+ correct: "Cl₂",
+ options: ["HCl", "Cl₂", "NH₃", "CO₂"]
+},
+{
+ question: "Gas evolved from reaction of BaCO₃ with HCl has which property?",
+ correct: "Turns limewater milky",
+ options: ["Pungent smell", "Pop sound", "Turns limewater milky", "Bleaches litmus"]
+},
+{
+ question: "Which gas has a strong characteristic smell and turns moist red litmus blue?",
+ correct: "NH₃",
+ options: ["H₂", "CO₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Gas that is colourless, flammable, and gives pop sound is:",
+ correct: "H₂",
+ options: ["H₂", "CO₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Which gas turns moist litmus paper red and forms white fumes with ammonia?",
+ correct: "HCl",
+ options: ["HCl", "Cl₂", "H₂", "NH₃"]
+},
+{
+ question: "Which gas is collected from the action of dilute HCl on MnO₂?",
+ correct: "Cl₂",
+ options: ["Cl₂", "HCl", "H₂", "CO₂"]
+},
+{
+ question: "Which gas evolves from NH₄Cl + NaOH and is soluble in water to form a basic solution?",
+ correct: "NH₃",
+ options: ["HCl", "NH₃", "CO₂", "H₂"]
+},
+{
+ question: "Gas that turns limewater milky is evolved from which reaction?",
+ correct: "CO₂ from carbonates + acid",
+ options: ["H₂ from Zn + HCl", "NH₃ from NH₄⁺ + NaOH", "CO₂ from carbonates + acid", "Cl₂ from MnO₂ + HCl"]
+},
+{
+ question: "Gas evolved is greenish-yellow and bleaches damp litmus. Identify the gas.",
+ correct: "Cl₂",
+ options: ["H₂", "Cl₂", "NH₃", "CO₂"]
+},
+{
+ question: "Gas collected over water, colourless and flammable. How to confirm?",
+ correct: "Pop test with burning splint",
+ options: ["Bleaches litmus", "Turns limewater milky", "Pop test with burning splint", "White fumes with NH₄OH"]
+},
+{
+ question: "Which gas gives pungent smell and forms white fumes with HCl?",
+ correct: "NH₃",
+ options: ["H₂", "NH₃", "CO₂", "Cl₂"]
+},
+{
+ question: "Gas evolved from reaction of Na₂CO₃ with acid is:",
+ correct: "CO₂",
+ options: ["CO₂", "H₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Colourless, pungent gas turns red litmus blue. Identify.",
+ correct: "NH₃",
+ options: ["H₂", "NH₃", "HCl", "Cl₂"]
+},
+{
+ question: "Gas formed from reaction of HCl on Zn is:",
+ correct: "H₂",
+ options: ["H₂", "CO₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Which gas is greenish-yellow and has bleaching action?",
+ correct: "Cl₂",
+ options: ["Cl₂", "HCl", "H₂", "NH₃"]
+},
+{
+ question: "Gas that forms white fumes with NH₄OH is:",
+ correct: "HCl",
+ options: ["HCl", "NH₃", "CO₂", "H₂"]
+},
+{
+ question: "Which gas is soluble in water to give alkaline solution and has pungent smell?",
+ correct: "NH₃",
+ options: ["H₂", "CO₂", "NH₃", "Cl₂"]
+},
+{
+ question: "Gas that turns limewater milky when passed through it is:",
+ correct: "CO₂",
+ options: ["NH₃", "H₂", "Cl₂", "CO₂"]
+}
+];
+
+const practicalChemQuestions = [
+  ...solubilityRules,
+  ...naohTests,
+  ...nh3Tests,
+  ...baCl2Tests,
+  ...hclTests,
+  ...deductionQuestions,
+  ...gasTests
+];
+
+
+// ===== LOAD HIGH SCORE =====
+let highScore = localStorage.getItem("chemReactionHighScore") || 0;
+document.getElementById("highScore").textContent = highScore;
+
+// ================= UTIL =================
+function randomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ================= TIMER =================
+function startTimer() {
+    clearInterval(timerInterval);
+    timeLeft = 30;
+    document.getElementById("timer").textContent = timeLeft;
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft === 0) {
+          gameOverSound.play()
+            clearInterval(timerInterval);
+            timeUp();
+        }
+    }, 1000);
+}
+
+// ================= GENERATOR =================
+function generateQuestion() {
+  let data = randomItem(practicalChemQuestions);
+
+    document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
+    startTimer();
+
+    correctAnswer = data.correct;
+    document.getElementById("question").textContent = data.question;
+
+    document.getElementById("options").innerHTML =
+        data.options
+            .sort(() => Math.random() - 0.5)
+            .map(o => `<button onclick="checkAnswer('${o}')">${o}</button>`)
+            .join("");
+}
+
+// ================= CHECK =================
+function checkAnswer(choice) {
+    clearInterval(timerInterval);
+    const result = document.getElementById("result");
+
+    if (choice === correctAnswer) {
+        correctSound.play()
+        score++;
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+        result.textContent = "✅ Correct!";
+        result.className = "correct";
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("chemReactionHighScore", highScore);
+            document.getElementById("highScore").textContent = highScore;
+        }
+    } else {
+      gameOverSound.play()
+        result.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
+        result.className = "wrong";
+        TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`
+    }
+
+    setTimeout(generateQuestion, 1500);
+}
+
+// ================= TIME UP =================
+function timeUp() {
+    
+    const result = document.getElementById("result");
+    result.textContent = `⏰ Time up! Answer: ${correctAnswer}`;
+    result.className = "timeup";
+    TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`
+    setTimeout(generateQuestion, 1500);
+}
+
+// ================= START =================
+generateQuestion();
+</script>
+
+</body>
+</html>

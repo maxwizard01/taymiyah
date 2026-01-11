@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Quiz Game</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.quiz-card {
+    background: #ffffff;
+    max-width: 440px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.quiz-card h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+#question {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #444;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+button {
+    padding: 14px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background: #667eea;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+    background: #5563d6;
+    transform: scale(1.05);
+}
+
+#result {
+    margin-top: 18px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.correct { color: #28a745; }
+.wrong { color: #dc3545; }
+.timeup { color: #ff9800; }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-card">
+    <h2>🧠 Math Quiz</h2>
+
+    <div class="status">
+        <span>⏱ <span id="timer">10</span>s</span>
+        <span>⭐ <span id="score">0</span></span>
+        <span>🏆 <span id="highScore">0</span></span>
+    </div>
+
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="result"></p>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="gameOverSound" src="wrong.mp3"></audio>
+</div>
+
+<script>
+let correctAnswer = 0;
+let score = 0;
+let timeLeft = 10;
+let interval;
+let TotalScore=0
+const correctSound = document.getElementById("correctSound");
+const gameOverSound = document.getElementById("gameOverSound");
+// ===== LOAD HIGH SCORE =====
+let highScore = localStorage.getItem("mathHighScore") || 0;
+document.getElementById("highScore").textContent = highScore;
+
+// ===== UTIL =====
+function randomInt() {
+    return Math.floor(Math.random() * 20);
+}
+
+// ===== TIMER =====
+function startTimer() {
+    clearInterval(interval);
+    timeLeft = 20;
+    document.getElementById("timer").textContent = timeLeft;
+
+    interval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft === 0) {
+            gameOverSound.play()
+            clearInterval(interval);
+            timeUp();
+        }
+    }, 1000);
+}
+
+// ===== GENERATE EXPRESSION =====
+function generateExpression() {
+    let termsCount = Math.floor(Math.random() * 3) + 2;
+    let expression = "";
+    let result = 0;
+
+    for (let i = 0; i < termsCount; i++) {
+        let num = randomInt();
+
+        if (i === 0) {
+            expression += num;
+            result = num;
+        } else {
+            let operator = Math.random() < 0.5 ? "+" : "-";
+            expression += ` ${operator} ${Math.abs(num)}`;
+            result = operator === "+" ? result + Math.abs(num) : result - Math.abs(num);
+        }
+    }
+    return { expression, result };
+}
+
+// ===== QUESTION =====
+function generateQuestion() {
+    document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
+
+    startTimer();
+
+    const data = generateExpression();
+    correctAnswer = data.result;
+
+    document.getElementById("question").textContent =
+        `What is ${data.expression}?`;
+
+    let options = new Set([correctAnswer]);
+    while (options.size < 4) {
+        options.add(correctAnswer + randomInt());
+    }
+
+    document.getElementById("options").innerHTML =
+        [...options]
+            .sort(() => Math.random() - 0.5)
+            .map(opt => `<button onclick="checkAnswer(${opt})">${opt}</button>`)
+            .join("");
+}
+
+// ===== ANSWER CHECK =====
+function checkAnswer(choice) {
+    clearInterval(interval);
+    const result = document.getElementById("result");
+
+    if (choice === correctAnswer) {
+        score++;
+        TotalScore++;
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+        result.textContent = "✅ Correct!";
+        result.className = "correct";
+        correctSound.play()
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("mathHighScore", highScore);
+            document.getElementById("highScore").textContent = highScore;
+
+        }
+    } else {
+        result.textContent = `❌ Wrong! Answer: ${correctAnswer}`;
+        result.className = "wrong";
+        gameOverSound.play()
+         TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore};`
+    }
+
+    setTimeout(generateQuestion, 1500);
+}
+
+// ===== TIME UP =====
+function timeUp() {
+    const result = document.getElementById("result");
+    result.textContent = `⏰ Time up! Answer: ${correctAnswer}`;
+    result.className = "timeup";
+    setTimeout(generateQuestion, 1500);
+     TotalScore++
+        document.getElementById("score").textContent = `${score}/${TotalScore}`;
+
+}
+
+// ===== START =====
+generateQuestion();
+</script>
+
+</body>
+</html>

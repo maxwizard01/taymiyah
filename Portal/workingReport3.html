@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ibnu Taemiyyah Model College — Student Report</title>
+
+<style>
+/* ================= ROOT VARIABLES ================= */
+:root{
+  --accent:#0b5f84;
+  --muted:#6b7280;
+  --paper:#ffffff;
+  --table-header:#083a4a;
+}
+
+/* ================= GLOBAL RESET ================= */
+*{
+  box-sizing:border-box;
+  font-family:"Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body{
+  margin:0;
+  background:#f4f7f9;
+  color:#12202b;
+}
+
+/* ================= LOGIN CARD ================= */
+.wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.login-card{
+  background:white;
+  width:100%;
+  max-width:380px;
+  padding:32px;
+  border-radius:10px;
+  box-shadow:0 15px 40px rgba(0,0,0,.1);
+}
+
+.school-logo{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.school-logo img{
+  max-width:100%;
+  height:auto;
+}
+
+.title{
+  text-align:center;
+  font-weight:700;
+  margin-bottom:4px;
+}
+
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+label{
+  font-weight:600;
+  display:block;
+  margin-bottom:6px;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin-bottom:14px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+.error{
+  color:#e74c3c;
+  font-size:.9rem;
+  margin-bottom:10px;
+  text-align:center;
+}
+
+/* ================= DASHBOARD ================= */
+.container{
+  max-width:1100px;
+  margin:auto;
+  background:white;
+  padding:16px;
+  display:none;
+}
+
+.topbar{
+  border-bottom:2px solid var(--accent);
+  padding-bottom:12px;
+  margin-bottom:16px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.brand img{
+  width:80px;
+  height:auto;
+}
+
+#school{
+  margin:0;
+  font-size:1.4rem;
+}
+
+/* ================= REPORT ================= */
+.page{
+  overflow-x:auto;
+}
+
+.student-row{
+  margin-bottom:12px;
+}
+
+.meta div{
+  margin-bottom:6px;
+}
+
+/* ================= TABLE ================= */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th,td{
+  border:1px solid #ccc;
+  padding:6px;
+  font-size:.9rem;
+  text-align:center;
+}
+
+thead{
+  background:var(--table-header);
+  color:white;
+}
+
+/* ================= SUMMARY ================= */
+.summary{
+  display:flex;
+  gap:12px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+.summary .card{
+  flex:1;
+  background:#eef6fa;
+  padding:12px;
+  border-radius:6px;
+  text-align:center;
+}
+
+.big{
+  font-size:1.4rem;
+  font-weight:bold;
+}
+
+/* ================= COMMENTS ================= */
+.comments{
+  display:flex;
+  gap:12px;
+  margin-top:16px;
+  flex-wrap:wrap;
+}
+
+.comment-box{
+  flex:1;
+  border:1px solid #ccc;
+  padding:10px;
+  border-radius:6px;
+}
+
+.comment-box textarea{
+  width:100%;
+  height:50px;
+  margin-top:6px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  margin-top:20px;
+  text-align:center;
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:600px){
+  .brand{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  #school{
+    font-size:1.1rem;
+  }
+}
+
+/* ================= PRINT ================= */
+@media print{
+  body{
+    background:white;
+  }
+
+  .wrap,
+  #downloadPdf,
+  footer{
+    display:none !important;
+  }
+
+  .container{
+    display:block;
+    max-width:100%;
+    padding:0;
+  }
+
+  thead{
+    display:table-header-group;
+  }
+
+  tr{
+    page-break-inside:avoid;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div class="wrap">
+  <div class="login-card" id="loginCard">
+    <div class="school-logo">
+      <img src="logo2.PNG">
+    </div>
+    <div class="title">Ibnu Taemiyyah Model College</div>
+    <div class="subtitle">Student Login Portal</div>
+
+    <div id="errorMsg" class="error" style="display:none;">Invalid name or roll number</div>
+
+    <label>Full Name</label>
+    <input type="text" id="name">
+
+    <label>Roll Number</label>
+    <input type="password" id="pwd">
+
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div class="container" id="dashboardCard">
+  <div class="topbar">
+    <div class="brand">
+      <img src="Taemiyyah Logo.png">
+      <h1 id="school">Ibnu Taemiyyah Model College</h1>
+    </div>
+  </div>
+
+  <div id="reportArea" class="page"></div>
+
+  <button id="downloadPdf" onclick="window.print()">Download PDF</button>
+
+  <footer>
+    Designed by Maxwizard — 2025
+  </footer>
+</div>
+
+<script src="Exam.js"></script>
+
+<script>
+const Term="First Term";
+const session="2025/2026";
+
+function calcTotals(student){
+  let total=0;
+  student.subjects.forEach(s=>{
+    s.total=(+s["C.A Test"]||0)+(+s.EXAM||0);
+    total+=s.total;
+  });
+  student.total_obtained=total;
+  student.total_mark_obtainable=student.subjects.length*100;
+  student.percentage=(total/student.total_mark_obtainable)*100;
+  student.grade=student.percentage>=70?"A":
+                student.percentage>=60?"B":
+                student.percentage>=50?"C":
+                student.percentage>=40?"D":"E";
+  return student;
+}
+
+function renderReport(student){
+  student=calcTotals(student);
+  const el=document.getElementById("reportArea");
+  el.innerHTML=`
+    <div class="student-row">
+      <div><strong>Name:</strong> ${student.name}</div>
+      <div><strong>Roll:</strong> ${student['Roll No']} |
+           <strong>Class:</strong> ${student.Summary.Class} |
+           <strong>Sex:</strong> ${student.Summary.Sex} |
+           <strong>Session:</strong> ${session} |
+           <strong>Term:</strong> ${Term}
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>CA</th>
+          <th>Exam</th>
+          <th>Total</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${student.subjects.map(s=>`
+          <tr>
+            <td>${s.name}</td>
+            <td>${s["C.A Test"]}</td>
+            <td>${s.EXAM}</td>
+            <td>${s.total}</td>
+            <td>${s.total>=70?"A":s.total>=60?"B":s.total>=50?"C":s.total>=40?"D":"E"}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <div class="card">
+        <div>Total Obtained</div>
+        <div class="big">${student.total_obtained}</div>
+      </div>
+      <div class="card">
+        <div>Percentage</div>
+        <div class="big">${student.percentage.toFixed(2)}%</div>
+      </div>
+    </div>
+
+    <div class="comments">
+      <div class="comment-box">
+        <strong>Class Teacher</strong>
+        <p>${student.class_teacher_comments}</p>
+      </div>
+      <div class="comment-box">
+        <strong>Principal</strong>
+        <p>${student.principal_comment}</p>
+      </div>
+    </div>
+  `;
+}
+
+function login(){
+  const name = document.getElementById('name')
+  const pwd = document.getElementById('pwd')
+  const n=name.value.trim().toLowerCase();
+  const p=pwd.value.trim();
+  const s=SchoolData.students.find(st=>st.name.toLowerCase()==n && st['Roll No']==p);
+  if(!s){alert("Invalid login");return;}
+  loginCard.style.display="none";
+  dashboardCard.style.display="block";
+  renderReport(s);
+}
+</script>
+
+</body>
+</html>

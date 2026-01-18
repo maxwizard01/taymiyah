@@ -2,103 +2,6 @@ var  SchoolData={
   "students":
 [
   {
-    "Roll No": "Roll No.",
-    "name": "Name",
-    "subjects": [
-      {
-        "name": "Mathematics",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "English Language",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Yoruba",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "IRS",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Arabic",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Quran",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Civic Ed.",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Info. Tech",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Prevoc.",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Basic Science",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Basic Tech",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Physical Health Ed.",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "Business Studies",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      },
-      {
-        "name": "R.N.V",
-        "C.A Test": " C. A Test",
-        "EXAM": "EXAM",
-        "Total": "TOTAL"
-      }
-    ],
-    "Summary": {
-      "TOTAL": "TOTAL",
-      "average": "Average",
-      "Position": "Position",
-      "Class": "Class",
-      "Sex": "Sex"
-    }
-  },
-  {
     "Roll No": "1",
     "name": "ABDULLAH RIDWAN",
     "subjects": [
@@ -14745,4 +14648,5 @@ var  SchoolData={
       "Sex": "Female"
     }
   }
+
 ]}
